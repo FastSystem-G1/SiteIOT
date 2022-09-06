@@ -1,0 +1,103 @@
+/*===============================================TELA LOGIN======================================*/
+.containerForm {
+    width: 70%;
+    height: 400px;
+
+    display: flex;
+}
+
+.conteudoform {
+    width: 100%;
+    padding: 3% 0%;
+    margin: 0;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.cardForm {
+    width: 100%;
+    padding: 0%;
+
+    display: flex;
+    border-radius: 40px;
+
+    overflow: hidden;
+}
+
+.logoForm {
+    width: 30%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: #010E3C;
+}
+
+.formularioForm {
+    width: 70%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+    background-color: rgb(255, 255, 255, 0.4);
+    fill-opacity: blur(20px);
+}
+
+.formularioForm .tituloForm {
+    color: white;
+}
+
+.botaoForm {
+    padding: 5px 40px;
+
+    background-color: transparent;
+    color: white;
+    font-size: large;
+
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    border-radius: 20px;
+    transition: 1.5s;
+}
+
+.botaoForm:hover {
+    cursor: pointer;
+    background-color: white;
+    color: #010E3C;
+}
+
+.containerInputsForm {
+    width: 80%;
+    height: 60%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.containerInputsForm input {
+    width: 80%;
+    padding: 4px;
+
+    border: 0;
+    border-bottom: 1px solid rgb(255, 255, 255, 0.4);
+    outline: none;
+
+    background-color: transparent;
+    color: rgba(255, 255, 255);
+}
+
+input::-webkit-input-placeholder {
+    color: #FFF;
+}
+
+.emailContainer,
+.senhaContainer {
+    display: flex;
+    flex-direction: column;
+}
