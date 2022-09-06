@@ -40,15 +40,9 @@
 
                     <ul class="navbar">
                         <li class="agora"><a href="index.html">Início</a></li>
-                        <button onclick="telaValores()">Valores</button>
-                        <button onclick="telaServico()">Serviços</button>
-                        <button onclick="telaAboutUs()">Sobre Nós</button>
-
-                        <!--  <li><a href="index.html">Contato</a></li>
-                    <li><a href="index.html">Valores</a></li>
-                    <li><a href="index.html">Serviços</a></li>
-                    <li><a href="index.html">Sobre Nós</a></li> -->
-
+                    <li><a href="#valores">Valores</a></li>
+                    <li><a href="#servico">Serviços</a></li>
+                    <li><a href="#sobre">Sobre Nós</a></li> 
                         <li><a href="login.html">Login</a></li>
                     </ul>
 
@@ -75,7 +69,7 @@
 
             </div>
 
-            <div class="quemSomos">
+            <div class="quemSomos" id="valores">
                 <div class="quemSomosCentro">
                     <div class="quemSomosConteudo">
                         <img src="img/icone1.png">
@@ -104,7 +98,7 @@
                 </div>
             </div>
 
-            <div class="servicos">
+            <div class="servicos" id="servico">
                 <div class="titulo">
                     <h1>Serviços</h1>
                 </div>
@@ -135,7 +129,7 @@
 
             </div>
 
-            <div class="sobreBanner">
+            <div class="sobreBanner" id="sobre">
 
                 <div class="titulo">
                     <h1>Sobre Nós</h1>
@@ -187,15 +181,22 @@
 
     }
 
-    function telaValores() {
-        window.scroll(0, 693);
+    const menuItems = document.querySelectorAll('.navbar a[href^="#"]');
+
+    menuItems.forEach(item =>{
+        item.addEventListener('click', scrollToIdOnClick);
+    });
+
+    function scrollToIdOnClick(event){
+        event.preventDefault();
+        const element = event.target;
+        const id = element.getAttribute('href');
+        const to = document.querySelector(id).offsetTop;
+
+        window.scroll({
+            top: to,
+            behavior: "smooth",
+        });
     }
 
-    function telaServico() {
-        window.scroll(0, 1310);
-    }
-
-    function telaAboutUs() {
-        window.scroll(0, 1977);
-    }
 </script>

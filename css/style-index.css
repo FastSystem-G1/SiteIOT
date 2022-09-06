@@ -153,7 +153,22 @@ background-image: url(../img/fundo_login.png);
     display: flex;
     align-items: center;
     font-size: 15px;
+    width: 100%;
+    z-index: 999;
+    position: fixed;
 }
+
+.headerL{
+    height: 15vh;
+    background-color: #010E3C;
+    background-size: cover;
+    color: #00C2CB;
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    width: 100%;
+}
+
 .container img{
     width: 35%;
 }
