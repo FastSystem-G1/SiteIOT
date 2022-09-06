@@ -33,22 +33,23 @@ h2 {
 
 /*HEADER*/
 
-/* .header {
+.header {
+    height: 15vh;
     width: 100%;
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: #010E3C;
+    font-size: 15px;
 }
 
 .containerHeader {
+    height: 17vh;
+    width: 98vw;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 15vh;
-    width: 98%;
-    display: flex;
-
+    position: relative;
+    float: left;
 }
 
 .navbar {
@@ -57,8 +58,8 @@ h2 {
     display: flex;
     align-items: center;
     width: 30vw;
+    padding: 10px;
     color: rgba(0, 194, 203, 1);
-    cursor: pointer;
 }
 
 .headerIcon {
@@ -71,7 +72,7 @@ h2 {
 .fotoUsuario {
     margin-top: 1%;
     height: 10vh;
-}*/
+}
 
 a{
     color: #03C8DC;
@@ -172,7 +173,7 @@ a{
 
 option {
     font-size: 15px;
-    background-color: #010d1e;
+    background-color: #010E3C;
     color: white;
     border-radius: 10px;
 }

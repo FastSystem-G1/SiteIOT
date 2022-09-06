@@ -170,6 +170,7 @@ background-image: url(../img/fundo_login.png);
 
 .agora{
     font-weight: bolder;
+    font-size: 18px;
 }
 .navbar{
     display: flex;
