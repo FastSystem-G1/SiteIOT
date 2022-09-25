@@ -1,5 +1,22 @@
 /*===============================================TELA LOGIN======================================*/
-.containerForm {
+.containerPrincipal{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+}
+#headerLogin{
+
+        height: 15vh;
+        background-color: #010E3C;
+        background-size: cover;
+        color: #00C2CB;
+        display: flex;
+        align-items: center;
+        font-size: 15px;
+        width: 100%;
+
+}.containerForm {
     width: 70%;
     height: 400px;
 
@@ -100,4 +117,45 @@ input::-webkit-input-placeholder {
 .senhaContainer {
     display: flex;
     flex-direction: column;
+}
+.navbar{
+    
+    list-style: none;
+
+    
+    position: fixed;
+}
+/*===============================================RESPONSIVIDADE======================================*/
+@media only screen and (max-width: 425px) {
+
+
+    .containerLogin .navbar{
+    display: none;
+}
+.navbar-mobile{
+    display: block;
+}
+.divNavbar img{
+    display: block;
+}
+#menuBurger{
+    display: block;
+}
+}
+@media only screen and (min-width: 600px) {
+    .navbar{
+        display: flex;
+        width: 15%;
+        justify-content: space-evenly;
+    align-items: center;
+    }
+    .navbar-mobile{
+        display: none;
+    }
+    .divNavbar img{
+        display: none;
+    }
+    #menuBurger{
+        display: none;
+    }
 }
