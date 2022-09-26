@@ -121,11 +121,10 @@
               console.log(json);
               console.log(JSON.stringify(json));
 
-              sessionStorage.EMAIL_USUARIO = json.email;
-              sessionStorage.NOME_USUARIO = json.nome_usuario;
-              sessionStorage.ID_USUARIO = json.idUsuario;
-              sessionStorage.FUNCAO = json.funcao;
-              sessionStorage.TOKEN = json.fk_empresa;
+              sessionStorage.EMAIL_USUARIO = json.email_funcionario;
+              sessionStorage.NOME_USUARIO = json.nome_funcionario;
+              sessionStorage.ID_USUARIO = json.id_funcionario;
+              sessionStorage.EMPRESA = json.fk_empresa;
 
               setTimeout(function () {
                 window.location = "./pos-login.html";

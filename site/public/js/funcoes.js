@@ -7,28 +7,31 @@ function validarSessao() {
 
    
 
-if (email != null && nome != null & funcao == 'adm')  {
+if (email != null && nome != null)  {
     
        /*  document.getElementsByClassName('nome_usuario')[0].innerHTML = sessionStorage.NOME_USUARIO; */
 
         // finalizarAguardar();
-}else if(email != null && nome != null & funcao == 'fun'){
-      
-    document.getElementById('nav-content').innerHTML = `      
-  
-    <ul>
-      <li><a href="cards.html"> Visão Geral</a></li>
-      <li><a href="ajuda.html"> Ajuda </a></li>
-      <li>
-        <a href="index.html" style="color: red" onclick="limparSessao()">
-          Sair
-        </a>
-      </li>
-    </ul>
- `
+    } else {
+        window.location = "../login.html";
     }
-     else {
-        window.location = "./login.html";
+}
+
+function validarSessao2() {
+    // aguardar();
+
+    var email = sessionStorage.EMAIL_USUARIO;
+    var nome = sessionStorage.NOME_USUARIO;
+
+   
+
+if (email != null && nome != null)  {
+    
+       /*  document.getElementsByClassName('nome_usuario')[0].innerHTML = sessionStorage.NOME_USUARIO; */
+
+        // finalizarAguardar();
+    } else {
+        window.location = "../../../login.html";
     }
 }
 

@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/style-pos-login.css">
+    <script src="js/script.js"></script>
+    <script src="js/funcoes.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="icon" href="img/logo.png">
@@ -14,7 +16,7 @@
     <title>Cadastros | Fast System</title>
 </head>
 
-<body>
+<body onload="validarSessao()">
     <div class="containerPrincipal">
 
         <div class="header">
@@ -25,7 +27,7 @@
                  </div>
                  <ul class="navbar">
                     <!--  <li><a href="">Contato</a></li> -->
-                     <li><a href="login.html">Sair</a></li>
+                     <li><a href="login.html"onclick="sair()">sair</a></li>
                  </ul>
                  <div class="fotoUsuario">
                      <img src="img/img_usuario.png" id="imagem_usuario" style="width: 6vw;">
@@ -66,4 +68,11 @@
 
 </html>
 
-<script src="js/script.js"></script>
+
+<script>
+    window.onload = validarSessao();
+
+    function sair(){
+        limparSessao();
+    }
+</script>
