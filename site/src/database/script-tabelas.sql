@@ -22,9 +22,11 @@ CREATE TABLE Funcionario(
 id_funcionario INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
 fk_empresa INT,
 nome_funcionario VARCHAR(100),
+cargo_funcionario VARCHAR(25),
 cpf_funcionario VARCHAR(11),
 email_funcionario VARCHAR(50),
 senha_funcionario VARCHAR(25),
+telefone_funcionario VARCHAR(13),
 FOREIGN KEY(fk_empresa) REFERENCES Empresa(id_empresa)
 )AUTO_INCREMENT = 100;
 
@@ -83,6 +85,11 @@ INSERT INTO Empresa (nome_empresa, cnpj_empresa, cep_empresa, numero_empresa, te
 		('KFC Av.Paulista', '57992929000161', '04913140', 885, '(11)8485-6547', 'Ivete Sangalo', 'kfc885@gmail.com', '12345678');
 
 SELECT * FROM Empresa;
+
+INSERT INTO Funcionario(fk_empresa, nome_funcionario, cargo_funcionario, cpf_funcionario, email_funcionario, senha_funcionario, telefone_funcionario)
+	 VALUES (2, 'Cleber', 'Administrador', '55500088833', 'felipe@gmail.com', '12345678', 11984564858);
+     
+SELECT * FROM Funcionario;
 
 
 /* para sql server - remoto - produção 

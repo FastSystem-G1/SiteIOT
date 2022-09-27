@@ -13,7 +13,7 @@ if (email != null && nome != null)  {
 
         // finalizarAguardar();
     } else {
-        window.location = "../login.html";
+        window.location = "login.html";
     }
 }
 
@@ -40,6 +40,10 @@ function limparSessao() {
     sessionStorage.clear();
     // finalizarAguardar();
    /*  window.location = "../login.html"; */
+}
+
+function limparFormulario() {
+    document.getElementById("campos_cadastro").reset();
 }
 
 /* // carregamento (loading)
