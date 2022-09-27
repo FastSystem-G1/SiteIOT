@@ -64,8 +64,8 @@
                             <!-- <h2>Função/Cargo:</h2> -->
                             <select id="cargo_select" class="inputs_cadastro" style="width: 300px; cursor: pointer;">
                                 <option value="">Selecione o cargo:</option>
-                                <option value="">Administrador</option>
-                                <option value="">Suporte de TI</option>
+                                <option value="adm">Administrador</option>
+                                <option value="ti">Suporte de TI</option>
                             </select>
                         </div>
                         <div class="div_inputs">
@@ -152,6 +152,15 @@
       erroValidacao++;
     } else {
       console.log("Nome válido");
+      /* erroValidacao = 0; */
+    }
+                               
+    /* =======================cargo===================== */
+    if (cargoVar == "") {
+      console.log("Selecione o cargo para prosseguir !!!");
+      erroValidacao++;
+    } else {
+      console.log("Cargo selecionado");
       /* erroValidacao = 0; */
     }
 
