@@ -59,32 +59,44 @@
                         <div class="div_inputs">
                             <!-- <h2>Nome:</h2> -->
                             <input id="nome_input" class="inputs_cadastro" placeholder="Nome completo:">
+                            <div id="erroCadastroNome" class="erroCadastro"></div>
                         </div>
                         <div class="div_inputs">
                             <!-- <h2>Função/Cargo:</h2> -->
                             <select id="cargo_select" class="inputs_cadastro" style="width: 300px; cursor: pointer;">
                                 <option value="">Selecione o cargo:</option>
-                                <option value="1">Administrador</option>
-                                <option value="0">Suporte de TI</option>
+                                <option value="adm">Administrador</option>
+                                <option value="ti">Suporte de TI</option>
                             </select>
+                            <div id="erroCadastroCargo" class="erroCadastro"></div>
                         </div>
                         <div class="div_inputs">
                            <!--  <h2>Email:</h2> -->
                             <input id="email_input" class="inputs_cadastro" placeholder="Email: (seuemail@provedora.com)" type="email">
                             <!-- <img src="img/imagem_erro.png" id="imagem_erro" alt=""> <span id="mensagem_erro_email">Email inválidoaaaa</span> -->
+                            <div id="erroCadastroEmail" class="erroCadastro"></div>
                         </div>
                         <div class="div_inputs">
                             <!-- <h2>Senha:</h2> -->
                             <input id="senha_input" class="inputs_cadastro" placeholder="Senha (Mínimo de 8 caracteres)" type="password">
                             <!-- <img src="img/imagem_acerto2.png" id="imagem_acerto" alt=""> -->
+                            <div id="erroCadastroSenha" class="erroCadastro"></div>
                         </div>
+                        <div class="div_inputs">
+                          <!-- <h2>Senha:</h2> -->
+                          <input id="senha2_input" class="inputs_cadastro" placeholder="Confirme a senha" type="password">
+                          <!-- <img src="img/imagem_acerto2.png" id="imagem_acerto" alt=""> -->
+                          <div id="erroCadastroSenha2" class="erroCadastro"></div>
+                      </div>
                         <div class="div_inputs">
                             <!-- <h2>CPF:</h2> -->
                             <input id="cpf_input" class="inputs_cadastro" placeholder="CPF: (Apenas números)" type="number" min="0">
+                            <div id="erroCadastroCpf" class="erroCadastro"></div>
                         </div>
                         <div class="div_inputs">
                            <!--  <h2>Telefone:</h2> -->
                             <input id="telefone_input" class="inputs_cadastro" placeholder="Telefone: (Exemplo: 5511954622727)" type="number" min="0">
+                            <div id="erroCadastroTelefone" class="erroCadastro"></div>
                         </div>
                         <button onclick="cadastrar()" id="botao_cadastro">Cadastrar</button>
                     </div>
@@ -141,14 +153,18 @@
         var cpfVar = cpf_input.value;
         var telefoneVar = telefone_input.value;
 
+        var senha2Var = senha2_input.value
+
     //validações
 
     /* =======================nome===================== */
     if (nomeVar == "") {
       console.log("Preencha este campo para prosseguir !!!");
+      erroCadastroNome.innerHTML = "Preencha este campo para prosseguir!"
       erroValidacao++;
     } else if (nomeVar.lenght < 3) {
       console.log("Nome Inválido !! Verifique se esta digitando corretamente");
+      erroCadastroNome.innerHTML = "Nome Inválido!"
       erroValidacao++;
     } else {
       console.log("Nome válido");
@@ -158,6 +174,7 @@
     /* =======================cargo===================== */
     if (cargoVar == "") {
       console.log("Selecione o cargo para prosseguir !!!");
+      erroCadastroCargo.innerHTML = "Selecione o cargo para prosseguir!"
       erroValidacao++;
     } else {
       console.log("Cargo selecionado");
@@ -167,14 +184,17 @@
     /* =======================email===================== */
     if (emailVar == "") {
       console.log("Preencha este campo para prosseguir");
+      erroCadastroEmail.innerHTML = "Preencha este campo para prosseguir"
       erroValidacao++;
 
     } else if (emailVar.indexOf("@") == -1) {
       console.log("Email Inválido - Verifique se esta digitando corretamente");
+      erroCadastroEmail.innerHTML = "É necerrario o uso de '@'"
       erroValidacao++;
 
     } else if (!emailVar.endsWith(".com") || !emailVar.endsWith(".br")) {
         console.log("Email válido");
+        erroCadastroEmail.innerHTML = "É necessario o uso de '.com' ou '.br'"
          /* erroValidacao = 0; */
     } else {
         console.log("Email Inválido - Verifique se esta digitando corretamente");
@@ -184,16 +204,20 @@
     /* =======================senha===================== */
     if (senhaVar == "" || senhaVar.length <= 7) {
       console.log("Senha precisa ter no mínimo 8 caracteres");
+      erroCadastroSenha.innerHTML = "Senha precisa ter no mínimo 8 caracteres"
       erroValidacao++;
-
-    } else {
+    }else if(senha2Var != senhaVar){
+      console.log("Senhas são diferentes")
+      erroCadastroSenha2.innerHTML = "Senhas diferentes."
+    }else {
       console.log("Senha válida");
       /* erroValidacao = 0; */
     }
 
     /* =======================cpf===================== */
-    if (cpfVar == "" || cpfVar.length < 11 || cpfVar.length > 12) {
+    if (cpfVar == "" || cpfVar.length < 11 || cpfVar.length > 11) {
       console.log("CPF inválido!");
+      erroCadastroCpf.innerHTML = "CPF inválido!"
       erroValidacao++;
 
     } else {
@@ -203,8 +227,12 @@
 
     if(telefoneVar == ""){
         console.log("Preencha este campo para prosseguir");
+        erroCadastroTelefone.innerHTML = "Preencha este campo para prosseguir!"
         erroValidacao++;
-    } else{
+    }else if(telefoneVar.lenght < 10){
+      console.log("Preencha o telefone com o DDD")
+      erroCadastroTelefone.innerHTML = "Preencha o telefone com o DDD"
+    }else{
         console.log("Telefone válido");
         /* erroValidacao = 0; */
     }
