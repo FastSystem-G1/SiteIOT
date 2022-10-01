@@ -65,8 +65,8 @@
                             <!-- <h2>Função/Cargo:</h2> -->
                             <select id="cargo_select" class="inputs_cadastro" style="width: 300px; cursor: pointer;">
                                 <option value="">Selecione o cargo:</option>
-                                <option value="adm">Administrador</option>
-                                <option value="ti">Suporte de TI</option>
+                                <option value="1">Administrador</option>
+                                <option value="0 ">Suporte de TI</option>
                             </select>
                             <div id="erroCadastroCargo" class="erroCadastro"></div>
                         </div>
@@ -175,11 +175,12 @@
     if (cargoVar == "") {
       console.log("Selecione o cargo para prosseguir !!!");
       erroCadastroCargo.innerHTML = "Selecione o cargo para prosseguir!"
-      erroValidacao++;
+      erroValidacao++; 
     } else {
       console.log("Cargo selecionado");
       /* erroValidacao = 0; */
     }
+
 
     /* =======================email===================== */
     if (emailVar == "") {
@@ -192,9 +193,9 @@
       erroCadastroEmail.innerHTML = "É necerrario o uso de '@'"
       erroValidacao++;
 
-    } else if (!emailVar.endsWith(".com") || !emailVar.endsWith(".br")) {
+    } else if (!emailVar.endsWith(".com")) {
         console.log("Email válido");
-        erroCadastroEmail.innerHTML = "É necessario o uso de '.com' ou '.br'"
+        erroCadastroEmail.innerHTML = "É necessario o uso de '.com'"
          /* erroValidacao = 0; */
     } else {
         console.log("Email Inválido - Verifique se esta digitando corretamente");
