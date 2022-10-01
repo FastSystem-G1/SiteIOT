@@ -67,7 +67,9 @@
 
                           <button onclick="entrar()" class="botaoForm">Entrar</button>
                         </div>
+                        <div id="divErroLogin" class="divErroLogin">
 
+                        </div>
                     </div>
                 </div>
             </div>
@@ -96,8 +98,10 @@
 
     if (emailVar.length == 0 || senhaVar.length == 0) {
         console.log("Campos vazios");
+        divErroLogin.innerHTML ="Preencha todos os campos para continuar!"
     } else if (emailVar.indexOf("@") == -1 || emailVar.indexOf(".com") == -1 || senhaVar.length <=7){
-        console.log("Email ou senha inválido! Verifique e tente novamente");        
+        console.log("Email ou senha inválido! Verifique e tente novamente"); 
+        divErroLogin.innerHTML = "Email ou senha inválido! Verifique e tente novamente"       
     } else {
       fetchlogin();
     }
@@ -137,7 +141,7 @@
             
             resposta.text().then((texto) => {
               console.error(texto);
-              // finalizarAguardar(texto);
+              finalizarAguardar(texto);
             });
           }
         })
