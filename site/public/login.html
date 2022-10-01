@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style-index.css">
+    <link rel="stylesheet" href="css/index-responsividade.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="icon" href="img/logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style-login.css">
+    <script src="js/script.js"></script>
+    <script src="js/funcoes.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Login | Fast System</title>
+</head>
+
+<body>
+    <div class="containerPrincipal">
+
+        <div class="" id="headerLogin">
+            <div class="container containerLogin">
+                <h1>
+                    <img src="img/logo.png" alt="">
+                </h1>
+
+
+                <div class="divNavbar">
+                    <span class="material-icons" id="menuBurger" onclick="clickmenu()">
+                        <img src="img/burger.png" alt="">
+                    </span>
+
+                    
+
+                    <ul class="navbar">
+                        <li><a href="index.html">Início</a></li>
+                        <li class="agora"><a href="login.html">Login</a></li>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+
+        <ul id="itens" class="navbar-mobile">
+            <li class="agora"><a href="index.html">Inicio</a></li>
+            <li><a href="login.html">Login</a></li>
+        </ul>
+
+        <div class="containerForm container">
+            <div class="conteudoform">
+                <div class="cardForm">
+                    <div class="logoForm">
+                        <img src="img/logo.png">
+                    </div>
+                    <div class="formularioForm">
+                        <div class="tituloForm">
+                            <h2>Login</h2>
+                        </div>
+
+
+                        <div class="containerInputsForm">
+                            <input type="text" id="emailInput" placeholder="E-mail">
+                            <input type="password" id="senhaInput" placeholder="Senha">
+
+                          <button onclick="entrar()" class="botaoForm">Entrar</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <h3>Copyright &copy; 2022 Fast System</h3>
+            </div>
+
+        </div>
+
+        <div id="div_aguardar">
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
+
+<script>
+    function entrar() {
+    var emailVar = emailInput.value.toLowerCase();
+    var senhaVar = senhaInput.value;
+
+    if (emailVar.length == 0 || senhaVar.length == 0) {
+        console.log("Campos vazios");
+    } else if (emailVar.indexOf("@") == -1 || emailVar.indexOf(".com") == -1 || senhaVar.length <=7){
+        console.log("Email ou senha inválido! Verifique e tente novamente");        
+    } else {
+      fetchlogin();
+    }
+
+    function fetchlogin() {
+      fetch("/usuarios/autenticar", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          emailServer: emailVar,
+          senhaServer: senhaVar,
+        }),
+      })
+        .then(function (resposta) {
+          console.log("ESTOU NO THEN DO entrar()!");
+
+          if (resposta.ok) {
+            console.log(resposta);
+
+            resposta.json().then((json) => {
+              console.log(json);
+              console.log(JSON.stringify(json));
+
+              sessionStorage.EMAIL_USUARIO = json.email_funcionario;
+              sessionStorage.NOME_USUARIO = json.nome_funcionario;
+              sessionStorage.ID_USUARIO = json.id_funcionario;
+              sessionStorage.EMPRESA = json.fk_empresa;
+
+              setTimeout(function () {
+                window.location = "./pos-login.html";
+              }, 1000); // apenas para exibir o loading
+            });
+          } else {
+            console.log("Houve um erro ao tentar realizar o login!");
+            
+            resposta.text().then((texto) => {
+              console.error(texto);
+              // finalizarAguardar(texto);
+            });
+          }
+        })
+        .catch(function (erro) {
+          console.log(erro);
+        });
+
+      return false;
+    }
+}
+</script>

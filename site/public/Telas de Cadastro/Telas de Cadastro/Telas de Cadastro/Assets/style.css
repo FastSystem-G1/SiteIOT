@@ -1,0 +1,153 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Red Hat Display', 'QuickSand', 'Lucida', 'Sans Unicode';
+}
+
+h2 {
+    text-align: center;
+    color: white;
+}
+
+/*HEADER*/
+
+.header {
+    width: 100vw;
+    position: relative;
+    position: fixed;
+    height: 20vh;
+}
+
+.backgroundHeader {
+    width: 100vw;
+    position: relative;
+    position: fixed;
+    height: 20vh;
+}
+
+.containerHeader {
+    width: 100vw;
+    display: flex;
+    position: relative;
+    float: left;
+}
+
+.navbar {
+    list-style: none;
+    justify-content: space-evenly;
+    display: flex;
+    align-items: center;
+    width: 30vw;
+    padding: 10px;
+    color: rgba(0, 194, 203, 1);
+}
+
+.headerIcon {
+    width: 80%;
+    display: flex;
+    align-self: center;
+    padding: 10px;
+}
+
+/*MAIN*/
+
+.main {
+    height: fit-content;
+    width: 100vw;
+    display: flex;
+}
+
+.containerMain {
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(289.13deg, #03C8DC 0%, #01558F 28.83%, #003E73 59.87%, #021545 93.23%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10% 0;
+}
+
+.caixa {
+    width: 90%;
+    height: 80%;
+    display: flex;
+}
+
+.box1 {
+    width: 30%;
+    height: 100%;
+    border-radius: 70px 0px 0px 70px;
+}
+
+.box2 {
+    width: 60%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 0px 70px 70px 0px;
+}
+
+.boxAplicativo {
+    justify-content: space-between;
+    display: flex;
+    margin: 0 5% 3% 5%;
+}
+
+.bordaAplicativo {
+    width: 40%;
+    border-bottom: 1px solid white;
+    color: white;
+    cursor: pointer;
+}
+
+.bordaCadastro {
+    margin: auto;
+    width: 90%;
+    height: 45%;
+    border: 1px solid white;
+}
+
+.boxCampoCadastro {
+    border-bottom: 1px solid white;
+    color: white;
+    padding: 1%;
+    margin: 1%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.boxButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.buttonCadastrar {
+    margin: 3%;
+    border: 2px solid white;
+    border-radius: 20px;
+    padding: 1%;
+    width: 22%;
+    cursor: pointer;
+    background-color: #010e3c42;
+}
+
+/*FOOTER*/
+
+.footer {
+    width: 100vw;
+    height: 20vh;
+    background: #010E3C;
+    display: flex;
+}
+
+.navbarFooter {
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    align-items: center;
+    color: white;
+}

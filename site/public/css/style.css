@@ -1,0 +1,329 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.containerPrincipal {
+    width: 100%;
+    background: rgb(70, 164, 151);
+    background-image: url(../img/fundo_login.png);
+}
+
+/*centralizar*/
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+/*=========================BANNER=============================================================== */
+.banner {
+    display: flex;
+    background-image: url(../img/bg_home1.png);
+    width: 100%;
+    height: 30em;
+}
+
+
+/*=========================Quem Somos=============================================================== */
+.quemSomos {
+    display: flex;
+    justify-content: space-around;
+    height: 40em;
+    width: 100%;
+    margin: 0 auto;
+    background-image: url('../img/fundobg_login.png');
+    background-size: cover;
+}
+
+.quemSomosCentro {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 1%;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.quemSomosConteudo {
+
+    display: flex;
+    padding: 1%;
+    align-items: center;
+    flex-direction: column;
+    width: 250px;
+
+    background-color: rgba(245, 245, 245, 0.2);
+
+    border: #8eabc0 3px solid;
+    border-radius: 20px;
+
+
+
+
+}
+
+.quemSomosConteudo img {
+    width: 40%;
+}
+
+.quemSomosTexto {
+    display: flex;
+    width: 75%;
+    text-align: center;
+}
+
+.quemSomosTexto h3 {
+    color: white;
+}
+
+/*================================================NAVBAR=============================================*/
+.header {
+
+    background-image: url(../img/header_bg.png);
+    background-size: cover;
+    color: #00C2CB;
+    
+}
+
+.container img {
+    width: 35%;
+}
+
+.header .container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.banner .container.login,
+.container.cadastro {
+    justify-content: center;
+}
+
+.agora {
+    font-weight: bolder;
+}
+
+.navbar {
+    display: flex;
+    list-style: none;
+    width: 45%;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #00C2CB;
+}
+
+/*===========================================FOOTER==========================================*/
+
+.footer {
+    background-color: #010E3C;
+    width: 100%;
+    height: 110px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer h3 {
+    color: white;
+}
+
+/*===============================================RESPONSIVIDADE======================================*/
+
+
+.navbarMobile div {
+    width: 32px;
+    height: 2px;
+    margin: 8px;
+    background-color: #00C2CB;
+
+}
+
+@media (max-width: 999px) {
+    body {
+        overflow-x: hidden;
+    }
+
+    .navbar {
+        position: absolute;
+        top: 8vh;
+        right: 0;
+        width: 50vh;
+        height: 92vh;
+        background: #010E3C;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        transform: translateX(100%);
+
+    }
+
+    .navbar li {
+        margin-left: 0;
+        opacity: 0;
+    }
+
+    .navbarMobile {
+        display: block;
+    }
+
+    .navbar.ativo {
+        transform: translateX(0);
+    }
+
+
+}
+
+@media screen and (min-width: 300px) {
+
+    .quemSomosConteudo {
+
+        margin-top: 5%;
+        width: 250px;
+        height: 420px;
+        /* background-color: #00C2CB; */
+    }
+
+    .quemSomos {
+
+        height: max-content;
+        width: 100%;
+        margin: 0 auto;
+        /* background-image: url('../img/fundobg_login.png'); */
+        background-size: cover;
+        background-repeat: no-repeat;
+
+    }
+
+    .containerForm {
+
+        width: 100%;
+
+    }
+}
+
+@media screen and (min-width: 401px) {
+
+    .quemSomosConteudo {
+
+        margin-top: 5%;
+        width: 250px;
+        height: 420px;
+
+    }
+
+    .quemSomos {
+
+        width: 100%;
+        margin: 0 auto;
+        /*  background-image: url('../img/fundobg_login.png'); */
+        background-size: cover;
+        background-repeat: no-repeat;
+
+    }
+
+}
+
+.containerForm {
+
+    width: 100%;
+
+}
+
+@media screen and (min-width: 600px) {
+
+    .quemSomosConteudo {
+
+        margin-top: 5%;
+        width: 250px;
+        height: 420px;
+    }
+
+    .quemSomos {
+
+
+        width: 100%;
+        margin: 0 auto;
+        /* background-image: url('../img/fundobg_login.png'); */
+        background-size: cover;
+        background-repeat: no-repeat;
+
+    }
+
+    .containerForm {
+
+        width: 85%;
+
+    }
+
+}
+
+@media screen and (min-width: 768px) {
+
+    .quemSomosConteudo {
+
+        margin-top: 5%;
+        width: 300px;
+        height: 420px;
+    }
+
+    .quemSomos {
+
+
+        width: 100%;
+        margin: 0 auto;
+        /*  background-image: url('../img/fundobg_login.png'); */
+        background-size: cover;
+        background-repeat: no-repeat;
+
+    }
+
+    .containerForm {
+        width: 55%;
+
+    }
+
+}
+
+@media screen and (min-width: 992px) {
+    .quemSomosConteudo {
+
+        margin-top: 10%;
+        width: 390px;
+        height: 420px;
+    }
+
+    .containerForm {
+        width: 50%;
+
+    }
+
+}
+
+@media screen and (min-width: 1200px) {
+    .quemSomosConteudo {
+
+        display: flex;
+        padding: 1%;
+        align-items: center;
+        flex-direction: column;
+        width: 250px;
+
+        background-color: rgba(245, 245, 245, 0.2);
+
+        border: #8eabc0 3px solid;
+        border-radius: 20px;
+
+    }
+
+    .containerForm {
+
+        width: 50%;
+
+    }
+
+}
