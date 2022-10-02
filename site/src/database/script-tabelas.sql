@@ -43,8 +43,7 @@ CREATE TABLE App(
 id_app INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
 nome_app VARCHAR(60),
 funcao VARCHAR(45),
-prioridade INT,
-tamanho_gigabytes DOUBLE
+prioridade INT
 )AUTO_INCREMENT = 1000;
 
 CREATE TABLE App_Maquina(
@@ -98,6 +97,9 @@ INSERT INTO Funcionario(fk_empresa, nome_funcionario, is_admin, cpf_funcionario,
 	 VALUES (2, 'Cleber', true, '55500088833', 'felipe@gmail.com', '12345678', 11984564858);
      
 SELECT * FROM Funcionario;
+
+SELECT * FROM App;
+
 
 
 /* para sql server - remoto - produção 

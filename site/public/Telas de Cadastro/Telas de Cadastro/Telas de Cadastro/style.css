@@ -1,211 +1,305 @@
-@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 @media only screen and (max-width: 600px) {
-    .caixa {
-        font-size: 10px;
-    }
+  .caixa {
+    font-size: 10px;
+  }
 
-    .box1 {
-        height: 100%;
-        width: 80%;
-        border-radius: 70px 0px 0px 70px;
-    }
-    .box2{
-        padding: 10%;
-    }
-
+  .box1 {
+    height: 100%;
+    width: 80%;
+    border-radius: 70px 0px 0px 70px;
+  }
+  .box2 {
+    padding: 10%;
+  }
 }
 
 body {
-    height: 100%;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    font-family: 'Quicksand', sans-serif;
-    background: linear-gradient(289.13deg, #03C8DC 0%, #01558F 28.83%, #003E73 59.87%, #021545 93.23%);
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: "Quicksand", sans-serif;
+  background: linear-gradient(
+    289.13deg,
+    #03c8dc 0%,
+    #01558f 28.83%,
+    #003e73 59.87%,
+    #021545 93.23%
+  );
 }
 
 h2 {
-    text-align: center;
-    color: white;
+  text-align: center;
+  color: white;
 }
-
 
 /*HEADER*/
 
 .header {
-    height: 15vh;
-    width: 100%;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #010E3C;
-    font-size: 15px;
+  height: 15vh;
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #010e3c;
+  font-size: 15px;
 }
 
 .containerHeader {
-    height: 17vh;
-    width: 98vw;
-    display: flex;
-    position: relative;
-    float: left;
+  height: 17vh;
+  width: 98vw;
+  display: flex;
+  position: relative;
+  float: left;
 }
 
 .navbar {
-    list-style: none;
-    justify-content: space-evenly;
-    display: flex;
-    align-items: center;
-    width: 30vw;
-    padding: 10px;
-    color: rgba(0, 194, 203, 1);
+  list-style: none;
+  justify-content: space-evenly;
+  display: flex;
+  align-items: center;
+  width: 30vw;
+  padding: 10px;
+  color: rgba(0, 194, 203, 1);
 }
 
 .headerIcon {
-    width: 80%;
-    display: flex;
-    align-self: center;
-    padding: 10px;
+  width: 80%;
+  display: flex;
+  align-self: center;
+  padding: 10px;
 }
 
 .fotoUsuario {
-    margin-top: 1%;
-    height: 10vh;
+  margin-top: 1%;
+  height: 10vh;
 }
 
-a{
-    color: #03C8DC;
-    font-size: 15px;
-    text-decoration: none;
-} 
+a {
+  color: #03c8dc;
+  font-size: 15px;
+  text-decoration: none;
+}
 
 /*MAIN*/
 
 .main {
-    height: fit-content;
-    width: 98vw;
-    display: flex;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  height: fit-content;
+  width: 98vw;
+  display: flex;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .containerMain {
-    width: 90vw;
-    height: 70vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 3.5% 0;
+  width: 90vw;
+  height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3.5% 0;
 }
 
 .caixa {
-    width: 80%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
+  width: 80%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .box1 {
-    height: 100%;
-    width: 35%;
-    border-radius: 70px 0px 0px 70px;
-    background-color: #010E3C;
+  height: 100%;
+  width: 35%;
+  border-radius: 70px 0px 0px 70px;
+  background-color: #010e3c;
 }
 
 .box2 {
-    width: 60%;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.4);
-    border-radius: 0px 70px 70px 0px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  width: 60%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 0px 70px 70px 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .boxAplicativo {
-    width: 50%;
-    display: flex;
-    justify-content: space-between;
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
 }
 
 .borda01 {
-    width: 80%;
-    color: white;
+  width: 80%;
+  color: white;
 
+  text-align: center;
+  border-top: solid 1px white;
+  margin-bottom: 20%;
+}
+
+.titulo {
+    width: 90%;
+    margin-top: 10px;
+
+    border: 1px solid white;
+    border-radius: 10px 10px 0 0;
+
+    display: flex;
+    justify-content: center;
+}
+
+.titulo div {
+    width: 33%;
+
+    color: white;
     text-align: center;
-    border-top: solid 1px white;
-    margin-bottom: 20%;
 }
 
 .bordaCadastro {
-    margin: auto;
-    width: 90%;
-    height: 50%;
-    border: 1px solid white;
+  width: 90%;
+  height: 50%;
+  border: 1px solid white;
+  border-radius: 0 0 5px 5px;
+  overflow-y: scroll;
+}
+
+.bordaCadastro::-webkit-scrollbar {
+  width: 12px; /* width of the entire scrollbar */
+}
+
+.bordaCadastro::-webkit-scrollbar-track {
+  background: #010e3c; /* color of the tracking area */
+  border-radius: 10px;
+}
+
+.bordaCadastro::-webkit-scrollbar-thumb {
+  background-color: #00c2cb; /* color of the scroll thumb */
+  border-radius: 20px; /* roundness of the scroll thumb */
+  border: none;
 }
 
 .boxCampoCadastro {
-    border-bottom: 1px solid white;
-    color: white;
-    padding: 1%;
-    margin: 1%;
-    display: flex;
-    justify-content: space-between;
+  border-bottom: 1px solid white;
+  color: white;
+  padding: 1%;
+  margin: 1%;
+  display: flex;
+  justify-content: space-between;
 }
 
 .selectHardware {
-    padding: 7px;
-    padding: 4px;
-    width: 80%;
-    margin-top: 25px;
-    border: 0;
-    border-bottom: 1px solid rgb(255, 255, 255, 0.4);
-    outline: none;
-    background-color: transparent;
-    color: rgba(255, 255, 255);
-    cursor: pointer;
+  padding: 7px;
+  padding: 4px;
+  width: 80%;
+  margin-top: 25px;
+  border: 0;
+  border-bottom: 1px solid rgb(255, 255, 255, 0.4);
+  outline: none;
+  background-color: transparent;
+  color: rgba(255, 255, 255);
+  cursor: pointer;
 }
 
 option {
-    font-size: 15px;
-    background-color: #010E3C;
-    color: white;
-    border-radius: 10px;
+  font-size: 15px;
+  background-color: #010e3c;
+  color: white;
+  border-radius: 10px;
 }
 
 .boxButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+/*-------------------------------------------------------------------------------------------*/
+
+.div_inputs {
+  width: 90%;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.div_inputs_menores {
+  width: 100%;
+  margin-top: 10px;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.div_inputs input {
+  border: 0;
+  border-bottom: 1px solid rgb(255, 255, 255, 0.4);
+  outline: none;
+  background-color: transparent;
+  color: rgba(255, 255, 255);
+}
+
+.div_inputs_menores input {
+  width: 45%;
+}
+
+input::-webkit-input-placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.div_inputs select {
+  width: 45%;
+
+  border: 0;
+  border-bottom: 1px solid rgb(255, 255, 255, 0.4);
+  outline: none;
+  background-color: transparent;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.boxCampoCadastro div{
+    width: 33.33%;
+}
+
+#nome, #funcao, #prioridade {
     display: flex;
-    align-items: center;
     justify-content: center;
 }
 
-.buttonCadastrar {
-    color: white;
-    border: 2px solid white;
-    border-radius: 20px;
-    padding: 5px;
-    cursor: pointer;
-    background-color: #010e3c42;
-    transition: 1.5s;
+#botao_cadastro {
+  padding: 5px 40px;
+  margin-top: 3vh;
+  background-color: transparent;
+  color: white;
+  font-size: large;
+
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-radius: 20px;
+  transition: 1.5s;
 }
 
-.buttonCadastrar:hover{
-    cursor: pointer;
-    background-color: white;
-    color: #010E3C;
+#botao_cadastro:hover {
+  cursor: pointer;
+  background-color: white;
+  color: #010e3c;
 }
+
+/*-------------------------------------------------------------------------------------------*/
 
 .footer {
-    width: 100%;
-    height: 15vh;
-    color: #FFF;
-    background-color: #021545;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  width: 100%;
+  height: 15vh;
+  color: #fff;
+  background-color: #021545;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

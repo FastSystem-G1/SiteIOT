@@ -10,7 +10,7 @@
 
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <script src="../../../js/funcoes.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap" rel="stylesheet">
     <link rel="icon" href="../../../img/logo.png">
@@ -45,39 +45,28 @@
                     <h2>
                         APLICATIVOS QUE PODEM SER ACESSADOS
                     </h2>
-                    <div class="boxAplicativo">
-                        <div class="borda01">
-                            <h4>
-                                FORMATOS
 
-                            </h4>
-                        </div>
-                        <div class="borda01">
-                            <h4>
-                                COMPUTADOR
-
-                            </h4>
+                    <div class="div_inputs">
+                        <input type="text" id="nome_aplicativo" placeholder="NOME APLICATIVOS">
+                        <div class="div_inputs_menores">
+                            <select id="funcao_aplicativo">
+                                <option value="">SELECIONE FUNÇÃO</option>
+                                <option value="nativo">NATIVO</option>
+                                <option value="web">WEB</option>
+                                <option value="hibrido">HÍBRIDO</option>
+                            </select>
+                            <input type="number" max="3" min="1" id="prioridade_aplicativo" placeholder="PRIORIDADE">
                         </div>
                     </div>
 
-                    <div class="bordaCadastro">
-                        <div class="boxCampoCadastro">
-                            Google Chrome
-                            <img src="../Telas de Cadastro/Assets/Chrome.png">
-                        </div>
-                        <div class="boxCampoCadastro">
-                            Programa do caixa
-                            <img src="../Telas de Cadastro/Assets/image 23.png">
-                        </div>
-                        <div class="boxCampoCadastro">
-                            IFood
-                            <img src="../Telas de Cadastro/Assets/image 27.png" alt="">
-                        </div>
+                    <div class="titulo">
+                        <div>Nome</div>
+                        <div>Função</div>
+                        <div>Prioridade</div>
                     </div>
+                    <div class="bordaCadastro" id="tabela_aplicativos" ></div>
                     <div class="boxButton">
-                        <h3 class="buttonCadastrar">
-                            CADASTRAR
-                            <h3>
+                        <button onclick="cadastrarMaquina()" id="botao_cadastro">Cadastrar</button>
                     </div>
                 </div>
             </div>
@@ -91,5 +80,97 @@
 </html>
 
 <script>
-    window.onload = validarSessao2();
+    window.onload = obterDados();
+
+    function cadastrarMaquina() {
+        var nomeVar = nome_aplicativo.value
+        var funcaoVar = funcao_aplicativo.value
+        var prioridadeVar = prioridade_aplicativo.value
+
+        fetchcadastro()
+
+        function fetchcadastro() {
+            fetch("/aplicativos/cadastrar", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    // crie um atributo que recebe o valor recuperado aqui
+                    // Agora vá para o arquivo routes/usuario.js
+                    nomeServer: nomeVar,
+                    funcaoServer: funcaoVar,
+                    prioridadeServer: prioridadeVar
+                }),
+            })
+                .then(function (resposta) {
+                    console.log("resposta: ", resposta);
+
+                    if (resposta.ok) {
+                        console.log("Cadastro realizado com sucesso!")
+                        alert("Cadastro realizado com sucesso !!!");
+                        obterDados();
+                        /*  finalizarAguardar(); */
+                    } else {
+                        throw "Houve um erro ao tentar realizar o cadastro!";
+                    }
+                })
+                .catch(function (resposta) {
+                    console.log(`#ERRO: ${resposta}`);
+                    /*  finalizarAguardar(); */
+                });
+
+            return false;
+        }
+    }
+
+    function obterDados() {
+        fetch(`/aplicativos/listar`, { cache: "no-store" })
+            .then(function (response) {
+                if (response.ok) {
+                    response.json().then(function (resposta) {
+                        // console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                        resposta.reverse();
+
+                        plotarDados(resposta);
+                    });
+                } else {
+                    console.error("Nenhum dado encontrado ou erro na API");
+                }
+            })
+            .catch(function (error) {
+                console.error(
+                    `Erro na obtenção dos dados p/ gráfico: ${error.message}`
+                );
+            });
+    }
+
+    function plotarDados(resposta) {
+        console.log("iniciando plotagem dos livros...");
+        tabela_aplicativos.innerHTML = ""
+        var dados = {
+            id_app: [],
+            nome_app: [],
+            funcao: [],
+            prioridade: []
+        };
+
+        for (i = 0; i < resposta.length; i++) {
+            var registro = resposta[i];
+            dados.id_app.push(registro.id_app);
+            dados.nome_app.push(registro.nome_app);
+            dados.funcao.push(registro.funcao)
+            dados.prioridade.push(registro.prioridade);
+        }
+
+        for (var i = 0; i < dados.id_app.length; i++) {
+            tabela_aplicativos.innerHTML += `
+                <div class="boxCampoCadastro">
+                    <div id="nome">${dados.nome_app[i]}</div>
+                    <div id="funcao">${dados.funcao[i]}</div>
+                    <div id="prioridade">${dados.prioridade[i]}</div>
+                </div>
+            `
+        }
+    }
 </script>
