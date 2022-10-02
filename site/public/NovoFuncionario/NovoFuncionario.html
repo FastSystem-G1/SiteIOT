@@ -156,19 +156,14 @@
       console.log("Preencha este campo para prosseguir");
       erroCadastroEmail.innerHTML = "Preencha este campo para prosseguir"
       erroValidacao++;
-
-    } else if (emailVar.indexOf("@") == -1) {
+    } else if (emailVar.indexOf("@") == -1 || !emailVar.endsWith(".com")) {
       console.log("Email Inválido - Verifique se esta digitando corretamente");
-      erroCadastroEmail.innerHTML = "É necerrario o uso de '@'"
+      erroCadastroEmail.innerHTML = "É necerrario o uso de '@' e '.com'"
       erroValidacao++;
-
-    } else if (!emailVar.endsWith(".com")) {
-      console.log("Email válido");
-      erroCadastroEmail.innerHTML = "É necessario o uso de '.com'"
-      /* erroValidacao = 0; */
     } else {
-      console.log("Email Inválido - Verifique se esta digitando corretamente");
-      erroValidacao++;
+      console.log("Email válido");
+      nome_input.value = ""
+      senha_input.value= ""
     }
 
     /* =======================senha===================== */
