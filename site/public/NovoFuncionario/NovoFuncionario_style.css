@@ -1,14 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-
-/* html {
-    margin: 0;
-    padding: 0;
-} */
-
 body {
 
-    height: 100vh;
+    height: 100%;
     width: 100%;
     margin: 0;
     padding: 0;
@@ -42,16 +36,9 @@ h2 {
     background-color: #010E3C;
 }
 
-.backgroundHeader {
-    height: 25vh;
-    width: 98vw;
-    position: relative;
-    position: fixed;
-}
-
 .containerHeader {
     height: 17vh;
-    width: 98vw;
+    width: 98%;
     display: flex;
     position: relative;
     float: left;
@@ -68,7 +55,7 @@ a{
     justify-content: space-evenly;
     display: flex;
     align-items: center;
-    width: 30vw;
+    width: 10vw;
     padding: 10px;
     color: rgba(0, 194, 203, 1);
 }
@@ -83,7 +70,7 @@ a{
 .fotoUsuario {
     /* margin: 3%; */
     margin-top: 1%;
-    height: 10vh;
+    height: 80%;
 }
 
 /*MAIN*/
@@ -91,8 +78,8 @@ a{
 .main {
     height: fit-content;
     width: 100vw;
-    height: 85vh;
     display: flex;
+    padding:0 0 5px 0;
     align-items: center;
     justify-content: center;
 }
@@ -103,7 +90,7 @@ a{
     align-items: center;
     justify-content: center;
     width: 60%;
-    height: 95%;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -113,9 +100,8 @@ a{
 .caixa {
     /*  background-color: blue;  */
     width: 100%;
-    height: 100%;
+    height: 115vh;
     display: flex;
-    justify-content: flex;
 }
 
 #imagem_logo_cadastro {
@@ -123,7 +109,7 @@ a{
     border-style: solid;
     border-color: black;
     border-right: none; */
-    height: 100%;
+    width: 100%;
 
 }
 
@@ -131,7 +117,7 @@ a{
     border-radius: 80px 0px 0px 80px;
     background-color: #010E3C;
     width: 40%;
-    height: 100%;
+    height: 115vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -139,7 +125,7 @@ a{
 }
 
 .box2 {
-    color: black;
+    color: rgb(255, 255, 255);
   /*   border-radius: 3px;
     border-style: solid;
     border-color: black; */
@@ -315,19 +301,16 @@ input::-webkit-input-placeholder {
     background-color: #010e3c42;
 }
 
-/*FOOTER*/
-
-/* .footer {
-    width: 98vw;
-    height: 20vh;
-    display: flex;
-}
-
-.navbarFooter {
-    width: 90%;
-    display: flex;
-    justify-content: space-between;
-    list-style: none;
-    align-items: center;
-    color: white;
-} */
+body::-webkit-scrollbar {
+    width: 12px;               /* width of the entire scrollbar */
+  }
+  
+  body::-webkit-scrollbar-track {
+    background: #010E3C;        /* color of the tracking area */
+  }
+  
+  body::-webkit-scrollbar-thumb {
+    background-color: #00C2CB;    /* color of the scroll thumb */
+    border-radius: 20px;       /* roundness of the scroll thumb */
+    border: none;  
+  }

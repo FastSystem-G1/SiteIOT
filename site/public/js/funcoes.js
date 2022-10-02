@@ -17,6 +17,24 @@ if (email != null && nome != null)  {
     }
 }
 
+function validarSessao1() {
+    // aguardar();
+
+    var email = sessionStorage.EMAIL_USUARIO;
+    var nome = sessionStorage.NOME_USUARIO;
+
+   
+
+if (email != null && nome != null)  {
+    
+       /*  document.getElementsByClassName('nome_usuario')[0].innerHTML = sessionStorage.NOME_USUARIO; */
+
+        // finalizarAguardar();
+    } else {
+        window.location = "../login.html";
+    }
+}
+
 function validarSessao2() {
     // aguardar();
 
