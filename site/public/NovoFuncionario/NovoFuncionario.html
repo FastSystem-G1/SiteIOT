@@ -55,9 +55,14 @@
 
                 <div class="div_inputs">
                   <!-- <h2>Nome:</h2> -->
-                  <input id="nome_input" class="inputs_cadastro" placeholder="Nome completo:">
-                  <div id="erroCadastroNome" class="erroCadastro"></div>
+                  <div >
+                    <input id="nome_input" class="inputs_cadastro" placeholder="Nome completo:">
+                  </div>
+                  <div class="imagemVerificacao">
+                    <img src="img/imagem_erro.png" id="imagem_erro" alt=""> <span id="mensagem_erro_email"></span>
+                  </div>
                 </div>
+                <div id="erroCadastroNome" class="erroCadastro"></div>
                 <div class="div_inputs">
                   <!-- <h2>Função/Cargo:</h2> -->
                   <select id="cargo_select" class="inputs_cadastro" style="width: 300px; cursor: pointer;">
@@ -65,40 +70,55 @@
                     <option value="1">Administrador</option>
                     <option value="0 ">Suporte de TI</option>
                   </select>
-                  <div id="erroCadastroCargo" class="erroCadastro"></div>
+                  <div class="imagemVerificacao">
+                    <img src="img/imagem_erro.png" id="imagem_erro" alt=""> <span id="mensagem_erro_email"></span>
+                  </div>
                 </div>
+                <div id="erroCadastroCargo" class="erroCadastro"></div>
                 <div class="div_inputs">
                   <!--  <h2>Email:</h2> -->
                   <input id="email_input" class="inputs_cadastro" placeholder="Email: (seuemail@provedora.com)"
                     type="email">
-                  <!-- <img src="img/imagem_erro.png" id="imagem_erro" alt=""> <span id="mensagem_erro_email">Email inválidoaaaa</span> -->
-                  <div id="erroCadastroEmail" class="erroCadastro"></div>
+                  <div class="imagemVerificacao">
+                    <img src="img/imagem_erro.png" id="imagem_erro" alt=""> <span id="mensagem_erro_email"></span>
+                  </div> 
                 </div>
+                <div id="erroCadastroEmail" class="erroCadastro"></div>
                 <div class="div_inputs">
                   <!-- <h2>Senha:</h2> -->
                   <input id="senha_input" class="inputs_cadastro" placeholder="Senha (Mínimo de 8 caracteres)"
                     type="password">
-                   <img src="img/imagem_acerto2.png" id="imagem_acerto" alt=""> 
-                  <div id="erroCadastroSenha" class="erroCadastro"></div>
+                    <div class="imagemVerificacao">
+                      <img src="img/imagem_erro.png" id="imagem_erro" alt=""> <span id="mensagem_erro_email"></span>
+                    </div> 
                 </div>
+                <div id="erroCadastroSenha" class="erroCadastro"></div>
                 <div class="div_inputs">
                   <!-- <h2>Senha:</h2> -->
                   <input id="senha2_input" class="inputs_cadastro" placeholder="Confirme a senha" type="password">
-                  <!-- <img src="img/imagem_acerto2.png" id="imagem_acerto" alt=""> -->
-                  <div id="erroCadastroSenha2" class="erroCadastro"></div>
+                  <div class="imagemVerificacao">
+                    <img src="img/imagem_erro.png" id="imagem_erro" alt=""> <span id="mensagem_erro_email"></span>
+                  </div>
                 </div>
+                <div id="erroCadastroSenha2" class="erroCadastro"></div>
                 <div class="div_inputs">
                   <!-- <h2>CPF:</h2> -->
                   <input id="cpf_input" class="inputs_cadastro" placeholder="CPF: (Apenas números)" type="number"
-                    min="0">
-                  <div id="erroCadastroCpf" class="erroCadastro"></div>
+                  min="0">
+                  <div class="imagemVerificacao">
+                    <img src="img/imagem_erro.png" id="imagem_erro" alt=""> <span id="mensagem_erro_email"></span>
+                  </div>
                 </div>
+                <div id="erroCadastroCpf" class="erroCadastro"></div>
                 <div class="div_inputs">
                   <!--  <h2>Telefone:</h2> -->
                   <input id="telefone_input" class="inputs_cadastro" placeholder="Telefone: (Exemplo: 5511954622727)"
                     type="number" min="0">
-                  <div id="erroCadastroTelefone" class="erroCadastro"></div>
+                    <div class="imagemVerificacao">
+                      <img src="img/imagem_erro.png" id="imagem_erro" alt=""> <span id="mensagem_erro_email"></span>
+                    </div>
                 </div>
+                <div id="erroCadastroTelefone" class="erroCadastro"></div>
                 <button onclick="cadastrar()" id="botao_cadastro">Cadastrar</button>
               </div>
             </div>
@@ -138,6 +158,13 @@
     } else {
       console.log("Nome válido");
       /* erroValidacao = 0; */
+      nome_input.value = ""
+      cargo_select.value = ""
+      email_input.value = ""
+      senha_input.value= ""
+      senha2_input = ""
+      cpf_input.value = ""
+      telefone_input.value = ""
     }
 
     /* =======================cargo===================== */
@@ -154,7 +181,7 @@
     /* =======================email===================== */
     if (emailVar == "") {
       console.log("Preencha este campo para prosseguir");
-      erroCadastroEmail.innerHTML = "Preencha este campo para prosseguir"
+      erroCadastroEmail.innerHTML = "Preencha este campo para prosseguir!"
       erroValidacao++;
     } else if (emailVar.indexOf("@") == -1 || !emailVar.endsWith(".com")) {
       console.log("Email Inválido - Verifique se esta digitando corretamente");
@@ -162,8 +189,6 @@
       erroValidacao++;
     } else {
       console.log("Email válido");
-      nome_input.value = ""
-      senha_input.value= ""
     }
 
     /* =======================senha===================== */
@@ -174,9 +199,15 @@
     } else if (senha2Var != senhaVar) {
       console.log("Senhas são diferentes")
       erroCadastroSenha2.innerHTML = "Senhas diferentes."
+      erroValidacao++;
     } else {
       console.log("Senha válida");
       /* erroValidacao = 0; */
+    }
+
+    if(senha2Var == ""){
+      erroCadastroSenha2.innerHTML = "Preencha este campo para prosseguir!"
+      erroValidacao++
     }
 
     /* =======================cpf===================== */
@@ -197,6 +228,7 @@
     } else if (telefoneVar.lenght < 10) {
       console.log("Preencha o telefone com o DDD")
       erroCadastroTelefone.innerHTML = "Preencha o telefone com o DDD"
+      erroValidacao++;
     } else {
       console.log("Telefone válido");
       /* erroValidacao = 0; */
