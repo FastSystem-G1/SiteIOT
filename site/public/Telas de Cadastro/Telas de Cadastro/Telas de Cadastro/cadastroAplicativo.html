@@ -56,6 +56,7 @@
                                 <option value="hibrido">HÍBRIDO</option>
                             </select>
                             <input type="number" max="3" min="1" id="prioridade_aplicativo" placeholder="PRIORIDADE">
+                            
                         </div>
                     </div>
 
@@ -64,7 +65,8 @@
                         <div>Função</div>
                         <div>Prioridade</div>
                     </div>
-                    <div class="bordaCadastro" id="tabela_aplicativos" ></div>
+                    <div class="bordaCadastro" id="tabela_aplicativos"></div>
+                    <div id="divErroLogin"></div>
                     <div class="boxButton">
                         <button onclick="cadastrarMaquina()" id="botao_cadastro">Cadastrar</button>
                     </div>
@@ -87,7 +89,12 @@
         var funcaoVar = funcao_aplicativo.value
         var prioridadeVar = prioridade_aplicativo.value
 
-        fetchcadastro()
+        if (prioridadeVar > 3 || prioridadeVar <= 0) {
+            console.log("Número de prioridade inválido");
+            divErroLogin.innerHTML = "Insira uma prioridade válida! (1 à 3)"
+        } else {
+            fetchcadastro();
+        }
 
         function fetchcadastro() {
             fetch("/aplicativos/cadastrar", {
