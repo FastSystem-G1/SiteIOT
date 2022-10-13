@@ -107,10 +107,6 @@ h3{
     display: flex;
     align-items: center;
 }
-.agora {
-    color: white;
-    border-bottom: solid 1px white;
-}
 /*Caixa da lista*/
 .abaGrafico{
     height: 100%;
