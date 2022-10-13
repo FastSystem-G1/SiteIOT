@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Disco</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="DashDisco_style.css">
+    <link rel="stylesheet" href="dashCPUMemoria.css">
+    <script src="DashDisco.js"></script>
+</head>
+
+<body>
+    <div class="fundo"></div>
+    <div class="header">
+        <div class="containerHeader">
+
+            <div class="headerIcon">
+                <img src="img/logo3.png" style="height: 10%; width: 10%;">
+            </div>
+            <ul class="navbar">
+                <li><a href="../pos-login.html">Sair</a></li>
+            </ul>
+            <div class="fotoUsuario">
+                <img src="img/imagem_usuario.png" id="imagem_usuario">
+            </div>
+        </div>
+    </div>
+
+    <div class="main">
+        <div class="containerDash">
+            <div class="boxDashMenu">
+                
+                    <h1>Caixa 1</h1>
+                
+                <ul class="navbarMenu">
+                    <li><a href="dashCPU.html"><h3><img src="img/bi_cpu.png" alt=""> CPU</h3></a></li>
+                    <li><a href="dashMemoria.html"><h3><img src="img/bi_memory.png" alt=""> MEMÓRIA </h3></a></li>
+                    <li class="agora"><a href="DashDisco.html"><h3><img src="img/bi_disc.png" alt=""> DISCO </h3></a></li>
+                    <li><a href="dashProcessos.html"><h3><img src="img/arcticons_application-inspector.png" alt=""> PROCESSOS </h3></a></li>
+                </ul>                 
+            </div>
+            <div class="containerDashCPU">
+                <div class="corte_titulo_qtd_disco">
+                    <span>Quantidade de discos</span>
+                    <span>2</span>
+                </div><!-- Titulo -->
+                
+                <div class="container_parte_dash">
+                
+                    <div class="container_lista_discos">
+                
+                        <div class="titulo_lista_discos">
+                            Lista de discos
+                        </div>
+                
+                        <div class="div_lista_discos">
+                
+                            <div class="caixa_discos">
+                                <div class="caixa2_discos">
+                                    <div class="titulos_discos">
+                                        <span>Nome disco</span>
+                                        <span>Modelo disco</span>
+                                        <span>Tamanho disco</span>
+                                    </div>
+                                    <div class="divisao_titulo"></div>
+                
+                                    <div class="div_info_all_discos">
+                
+                                        <div class="div_disco_info">
+                                            <span>Nome disco 1</span>
+                                            <span>Modelo disco 1</span>
+                                            <span>Tamanho disco 1</span>
+                                        </div>
+                                        <div class="div_disco_info">
+                                            <span>Nome disco 2</span>
+                                            <span>Modelo disco 2</span>
+                                            <span>Tamanho disco 2</span>
+                                        </div>
+                                        <div class="div_disco_info">
+                                            <span>Nome disco 3</span>
+                                            <span>Modelo disco 3</span>
+                                            <span>Tamanho disco 3</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="div_botao_discos">
+                                <img src="img/seta_discos.png" style="height:45px;margin-top: 2%;" alt="">
+                            </div>
+                        </div>
+                
+                
+                
+                    </div> <!-- Fim da parte das info dos discos -->
+                
+                    <div class="container_grafico_disco">
+                        <!-- Parte direita da caixa -->
+                        <div class="container_uso_disco">
+                            <div class="container_uso">
+                                <span id="titulo_em_uso">Em uso</span>
+                                <span>90.24%</span>
+                            </div>
+                
+                            <div class="container_disponivel">
+                                <span id="titulo_disponivel">Disponível</span>
+                                <span>9.76%</span>
+                            </div>
+                        </div>
+                
+                        <div class="borda_uso">
+                
+                        </div>
+                
+                        <div class="container_dash">
+                            <!-- Parte da DASH  -->
+                            <div>
+                                <canvas id="myChart" style="position: relative; height:10vh; width:20vw">
+                
+                                </canvas>
+                            </div>
+                        </div>
+                
+                    </div>
+                
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
+<script>
+
+    const labels = [
+        'Em uso',
+        'Disponível',
+
+    ];
+
+    const data = {
+        labels: labels,
+        datasets: [{
+            label: 'My First dataset',
+            backgroundColor: [
+                'rgb(1, 110, 159)',
+                'gray',
+            ],
+            borderColor: 'white',
+            data: [90.24, 9.76],
+
+        }]
+    };
+
+    const config = {
+        type: 'pie',
+        data: data,
+        options: {}
+    };
+
+</script>
+
+<script>
+
+    const myChart = new Chart(
+        document.getElementById('myChart'),
+        config
+    );
+</script>

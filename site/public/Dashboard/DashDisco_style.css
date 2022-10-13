@@ -1,0 +1,335 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url(img/fundo_login.png);
+}
+
+.header {
+    height: 15vh;
+    background-color: #010E3C;
+    background-size: cover;
+    color: #00C2CB;
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    width: 100%;
+}
+
+.header_flex {
+    height: 100%;
+    width: 70%;
+    margin-left: 10%;
+    display: flex;
+    align-items: center;
+}
+
+#imagem_logo {
+    height: 75px;
+}
+
+.header_end {
+    height: 100%;
+    width: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 18px;
+
+}
+
+.header_end a {
+    text-decoration: none;
+    color: #00C2CB;
+}
+
+#imagem_usuario {
+    height: 65px;
+}
+
+.container_all {
+
+    height: 85vh;
+    width: 100%;
+}
+
+.div_teste {
+    /*     background-color: red; */
+    height: 8%;
+    width: 100%;
+}
+
+.first_left {
+    /*     background-color: red; */
+    height: 92%;
+    width: 28%;
+    float: left;
+}
+
+.container_menu {
+    height: 92%;
+    width: 80%;
+    margin-left: 20%;
+
+}
+
+.caixa_menu {
+    background-color: rgb(255, 255, 255, 0.4);
+    ;
+    height: 100%;
+    width: 100%;
+    border-radius: 25px;
+}
+
+.div_tipo_maquina {
+
+    height: 15%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    color: #FFF;
+}
+
+.div_alerta {
+    height: 75%;
+    width: 15%;
+    float: left;
+}
+
+.separacao {
+    /*  background-color: rgb(99, 204, 39); */
+    width: 100%;
+    height: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu_hardware {
+    /* background-color: blue; */
+    height: 75%;
+    width: 85%;
+    float: left;
+    margin-bottom: 10%;
+}
+
+.div_cpu {
+    height: 25%;
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    font-size: 18px;
+    color: azure;
+}
+
+.div_disco {
+    height: 24.8%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    color: azure;
+}
+
+.traco_disco {
+    background-color: #FFF;
+    width: 80%;
+    height: 0.2%;
+}
+
+.div_second {
+    height: 92%;
+    width: 3%;
+    float: left;
+}
+
+.div_corte1 {
+    width: 100%;
+    height: 92%;
+    margin-bottom: 8%;
+}
+
+.div_corte2 {
+    /*  background-color: rgb(198, 217, 31); */
+    height: 100%;
+    width: 100%;
+}
+
+.corte3 {
+    /*   background-color: red; */
+    height: 15%;
+    width: 100%;
+}
+
+.corte4 {
+    /*    background-color: green; */
+    height: 75%;
+    width: 100%;
+}
+
+.cortes_compo {
+    /* background-color: purple; */
+    height: 25%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.div_third {
+    height: 92%;
+    width: 60%;
+    float: left;
+}
+
+.corte_dash1 {
+    background-color: rgba(255, 255, 255, 0.854);
+    height: 92%;
+    width: 100%;
+    border-radius: 25px;
+}
+
+.corte_titulo_qtd_disco {
+    height: 15%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-size: 25px;
+    color: azure;
+}
+
+.container_parte_dash {
+    height: 85%;
+    width: 100%;
+}
+
+.container_lista_discos {
+    height: 100%;
+    width: 50%;
+    float: left;
+}
+
+.titulo_lista_discos {
+    height: 13%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 23px;
+    color: azure;
+}
+
+.div_lista_discos {
+    height: 87%;
+    width: 100%;
+
+}
+
+.caixa_discos {
+
+    height: 85%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.caixa2_discos {
+    border-radius: 20px;
+    border: 2px solid azure;
+    height: 100%;
+    width: 90%;
+
+}
+
+.titulos_discos {
+    margin-left: 2%;
+    height: 14%;
+    width: 96%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 17px;
+    font-weight: bold;
+    color: azure;
+}
+
+.divisao_titulo {
+    background-color: #FFF;
+    height: 0.3%;
+    width: 90%;
+    margin-left: 5%;
+}
+
+
+.div_disco_info {
+    height: 33%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.div_info_all_discos {
+    height: 85%;
+    width: 96%;
+    margin-left: 2%;
+}
+
+.container_grafico_disco {
+    float: left;
+    height: 100%;
+    width: 50%;
+}
+
+.container_uso_disco {
+    height: 12.7%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.borda_uso {
+    background-color: azure;
+    height: 0.3%;
+    width: 90%;
+    margin-left: 5%;
+}
+
+.container_uso,
+.container_disponivel {
+    height: 100%;
+    width: 50%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-direction: column;
+    font-size: 20px;
+    float: left;
+}
+
+#titulo_em_uso,
+#titulo_disponivel {
+    color: rgb(1, 110, 159);
+}
+
+.container_dash {
+    height: 87%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.div_botao_discos {
+    height: 15%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}

@@ -60,6 +60,11 @@ h2 {
     padding: 10px;
 }
 a{
+    color: rgba(0, 194, 203, 1);
+        font-size: 15px;
+        text-decoration: none;
+}
+.navbarMenu li a{
         color: black;
         font-size: 15px;
         text-decoration: none;
@@ -117,8 +122,8 @@ h3{
     margin-right: 10px;
 }
 
-.agora{
-    color: white;
+.agora h3{
+    color: azure;
     border-bottom: solid 1px white;
 }
 
