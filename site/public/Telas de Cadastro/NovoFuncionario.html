@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=div, initial-scale=1.0">
+
+  <title>Funcionário | Fast System</title>
+
+  <link rel="stylesheet" href="NovoFuncionario_style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap" rel="stylesheet">
+  <script src="../js/funcoes.js"></script>
+  <link rel="icon" href="img/logo.png">
+  
+</head>
+
+<body>
+  <div class="fundo"></div>
+  <div class="header">
+    <div class="containerHeader">
+
+      <div class="headerIcon">
+        <img src="img/logo3.png" style="height: 10%; width: 10%;">
+      </div>
+      <ul class="navbar">
+        <li><a href="../pos-login.html">Voltar</a></li>
+        <!-- <li><a href="">Contato</a></li> -->
+      </ul>
+      <div class="fotoUsuario">
+        <img src="img/img_usuario.png" id="imagem_usuario"">
+            </div>
+        </div>
+    </div>
+
+    <div class=" main">
+        <div class="containerMain">
+          <div class="caixa">
+            <div class="box1">
+              <img src="img/logo3.png" id="imagem_logo_cadastro">
+            </div>
+            <div class="box2">
+
+              <div class="titulo_novo_integrante">
+                <h2 id="h2_novo_integrante">
+                  Novo Integrante
+                </h2>
+              </div>
+
+              <div class="campos_cadastro">
+
+                <div class="div_inputs">
+                  <!-- <h2>Nome:</h2> -->
+                  <div >
+                    <input id="nome_input" class="inputs_cadastro" placeholder="Nome completo:">
+                  </div>
+                  <div class="imagemVerificacao">
+                    <img src="img/imagem_erro.png" id="imagem_erro" alt=""> <span id="mensagem_erro_email"></span>
+                  </div>
+                </div>
+                <div id="erroCadastroNome" class="erroCadastro"></div>
+                <div class="div_inputs">
+                  <!-- <h2>Função/Cargo:</h2> -->
+                  <select id="cargo_select" class="inputs_cadastro" style="width: 300px; cursor: pointer;">
+                    <option value="">Selecione o cargo:</option>
+                    <option value="1">Administrador</option>
+                    <option value="0 ">Suporte de TI</option>
+                  </select>
+                  <div class="imagemVerificacao">
+                    <img src="img/imagem_erro.png" id="imagem_erro" alt=""> <span id="mensagem_erro_email"></span>
+                  </div>
+                </div>
+                <div id="erroCadastroCargo" class="erroCadastro"></div>
+                <div class="div_inputs">
+                  <!--  <h2>Email:</h2> -->
+                  <input id="email_input" class="inputs_cadastro" placeholder="Email: (seuemail@provedora.com)"
+                    type="email">
+                  <div class="imagemVerificacao">
+                    <img src="img/imagem_erro.png" id="imagem_erro" alt=""> <span id="mensagem_erro_email"></span>
+                  </div> 
+                </div>
+                <div id="erroCadastroEmail" class="erroCadastro"></div>
+                <div class="div_inputs">
+                  <!-- <h2>Senha:</h2> -->
+                  <input id="senha_input" class="inputs_cadastro" placeholder="Senha (Mínimo de 8 caracteres)"
+                    type="password">
+                    <div class="imagemVerificacao">
+                      <img src="img/imagem_erro.png" id="imagem_erro" alt=""> <span id="mensagem_erro_email"></span>
+                    </div> 
+                </div>
+                <div id="erroCadastroSenha" class="erroCadastro"></div>
+                <div class="div_inputs">
+                  <!-- <h2>Senha:</h2> -->
+                  <input id="senha2_input" class="inputs_cadastro" placeholder="Confirme a senha" type="password">
+                  <div class="imagemVerificacao">
+                    <img src="img/imagem_erro.png" id="imagem_erro" alt=""> <span id="mensagem_erro_email"></span>
+                  </div>
+                </div>
+                <div id="erroCadastroSenha2" class="erroCadastro"></div>
+                <div class="div_inputs">
+                  <!-- <h2>CPF:</h2> -->
+                  <input id="cpf_input" class="inputs_cadastro" placeholder="CPF: (Apenas números)" type="number"
+                  min="0">
+                  <div class="imagemVerificacao">
+                    <img src="img/imagem_erro.png" id="imagem_erro" alt=""> <span id="mensagem_erro_email"></span>
+                  </div>
+                </div>
+                <div id="erroCadastroCpf" class="erroCadastro"></div>
+                <div class="div_inputs">
+                  <!--  <h2>Telefone:</h2> -->
+                  <input id="telefone_input" class="inputs_cadastro" placeholder="Telefone: (Exemplo: 5511954622727)"
+                    type="number" min="0">
+                    <div class="imagemVerificacao">
+                      <img src="img/imagem_erro.png" id="imagem_erro" alt=""> <span id="mensagem_erro_email"></span>
+                    </div>
+                </div>
+                <div id="erroCadastroTelefone" class="erroCadastro"></div>
+                <button onclick="cadastrar()" id="botao_cadastro">Cadastrar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+</body>
+
+</html>
+
+<script>
+  //window.onload = validarSessao1();
+  var erroValidacao = 0;
+
+  function cadastrar() {
+    var empresaVar = 1;
+    var nomeVar = nome_input.value;
+    var cargoVar = cargo_select.value;
+    var emailVar = email_input.value.toLowerCase();
+    var senhaVar = senha_input.value;
+    var senha2Var = senha2_input.value
+    var cpfVar = cpf_input.value;
+    var telefoneVar = telefone_input.value;
+
+
+    //validações
+
+    /* =======================nome===================== */
+    if (nomeVar == "") {
+      console.log("Preencha este campo para prosseguir !!!");
+      erroCadastroNome.innerHTML = "Preencha este campo para prosseguir!"
+      erroValidacao++;
+    } else if (nomeVar.length < 3) {
+      console.log("Nome Inválido !! Verifique se esta digitando corretamente");
+      erroCadastroNome.innerHTML = "Nome Inválido!"
+      erroValidacao++;
+    } else {
+      console.log("Nome válido");
+      /* erroValidacao = 0; */
+      nome_input.value = ""
+      cargo_select.value = ""
+      email_input.value = ""
+      senha_input.value= ""
+      senha2_input = ""
+      cpf_input.value = ""
+      telefone_input.value = ""
+    }
+
+    /* =======================cargo===================== */
+    if (cargoVar == "") {
+      console.log("Selecione o cargo para prosseguir !!!");
+      erroCadastroCargo.innerHTML = "Selecione o cargo para prosseguir!"
+      erroValidacao++;
+    } else {
+      console.log("Cargo selecionado");
+      /* erroValidacao = 0; */
+    }
+
+
+    /* =======================email===================== */
+    if (emailVar == "") {
+      console.log("Preencha este campo para prosseguir");
+      erroCadastroEmail.innerHTML = "Preencha este campo para prosseguir!"
+      erroValidacao++;
+    } else if (emailVar.indexOf("@") == -1 || !emailVar.endsWith(".com")) {
+      console.log("Email Inválido - Verifique se esta digitando corretamente");
+      erroCadastroEmail.innerHTML = "É necerrario o uso de '@' e '.com'"
+      erroValidacao++;
+    } else {
+      console.log("Email válido");
+<<<<<<< HEAD
+      nome_input.value = ""
+      senha_input.value= ""
+=======
+>>>>>>> 35d01c044a65466dfc3869bd0bfbf3319f1a006d
+    }
+
+    /* =======================senha===================== */
+    if (senhaVar == "" || senhaVar.length <= 7) {
+      console.log("Senha precisa ter no mínimo 8 caracteres");
+      erroCadastroSenha.innerHTML = "Senha precisa ter no mínimo 8 caracteres"
+      erroValidacao++;
+    } else if (senha2Var != senhaVar) {
+      console.log("Senhas são diferentes")
+      erroCadastroSenha2.innerHTML = "Senhas diferentes."
+      erroValidacao++;
+    } else {
+      console.log("Senha válida");
+      /* erroValidacao = 0; */
+    }
+
+    if(senha2Var == ""){
+      erroCadastroSenha2.innerHTML = "Preencha este campo para prosseguir!"
+      erroValidacao++
+    }
+
+    /* =======================cpf===================== */
+    if (cpfVar == "" || cpfVar.length < 11 || cpfVar.length > 11) {
+      console.log("CPF inválido!");
+      erroCadastroCpf.innerHTML = "CPF inválido!"
+      erroValidacao++;
+
+    } else {
+      console.log("Cpf válido");
+      /* erroValidacao = 0; */
+    }
+
+    if (telefoneVar == "") {
+      console.log("Preencha este campo para prosseguir");
+      erroCadastroTelefone.innerHTML = "Preencha este campo para prosseguir!"
+      erroValidacao++;
+    } else if (telefoneVar.lenght < 10) {
+      console.log("Preencha o telefone com o DDD")
+      erroCadastroTelefone.innerHTML = "Preencha o telefone com o DDD"
+      erroValidacao++;
+    } else {
+      console.log("Telefone válido");
+      /* erroValidacao = 0; */
+    }
+
+    /* =======================se validados===================== */
+    if (erroValidacao == 0) {
+      fetchcadastro();
+      alert("Cadastro efetuado com sucesso!!")
+    } else {
+      erroValidacao = 0;
+    }
+
+    function fetchcadastro() {
+      fetch("/usuarios/cadastrar", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          // crie um atributo que recebe o valor recuperado aqui
+          // Agora vá para o arquivo routes/usuario.js
+          empresaServer: empresaVar,
+          nomeServer: nomeVar,
+          cargoServer: cargoVar,
+          cpfServer: cpfVar,
+          emailServer: emailVar,
+          senhaServer: senhaVar,
+          telefoneServer: telefoneVar,
+        }),
+      })
+        .then(function (resposta) {
+          console.log("resposta: ", resposta);
+
+          if (resposta.ok) {
+            console.log("Cadastro realizado com sucesso!")
+            alert("Cadastro realizado com sucesso !!!");
+            limparFormulario();
+            /*  finalizarAguardar(); */
+          } else {
+            throw "Houve um erro ao tentar realizar o cadastro!";
+          }
+        })
+        .catch(function (resposta) {
+          console.log(`#ERRO: ${resposta}`);
+          /*  finalizarAguardar(); */
+        });
+
+      return false;
+    }
+  }
+
+
+</script>

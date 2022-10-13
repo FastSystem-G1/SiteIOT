@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboad || Memoria</title>
+    <link rel="stylesheet" href="dashCPUMemoria.css">
+    <link rel="icon" href="img/logo.png">
+    <script type="text/javascript" src="https://www.chartjs.org/dist/2.8.0/Chart.min.js"></script>
+
+</head>
+
+<body>
+    <div class="fundo"></div>
+    <div class="header">
+        <div class="containerHeader">
+
+            <div class="headerIcon">
+                <img src="img/logo3.png" style="height: 10%; width: 10%;">
+            </div>
+            <ul class="navbar">
+                <li><a href="../pos-login.html">Sair</a></li>
+            </ul>
+            <div class="fotoUsuario">
+                <img src="img/imagem_usuario.png" id="imagem_usuario">
+            </div>
+        </div>
+    </div>
+
+    <div class="main">
+        <div class="containerDash">
+            <div class="boxDashMenu">
+
+                <h1>Caixa 1</h1>
+
+                <ul class="navbarMenu">
+                    <li><a href="dashCPU.html"><h3><img src="img/bi_cpu.png" alt=""> CPU</h3></a></li>
+                    <li class="agora"><a href="dashMemoria.html"><h3><img src="img/bi_memory.png" alt=""> MEMÓRIA </h3></a></li>
+                    <li><a href="#disco"><h3><img src="img/bi_disc.png" alt=""> DISCO </h3></a></li>
+                    <li><a href="dashProcessos.html"><h3><img src="img/arcticons_application-inspector.png" alt=""> PROCESSOS </h3></a></li>
+                </ul> 
+            </div>
+
+            <div class="containerDashCPU">
+
+                <div class="boxInfoUso">
+                    <div class="box1">
+                        <h3>Em uso</h3>
+                        <h4>60.53%</h4>
+                    </div>
+                    <div class="box1">
+                        <h3>Disponível</h3>
+                        <h4>39.47%</h4>
+                    </div>
+                </div>
+                <h3>MEMÓRIA</h3>
+                <div class="boxGraph">
+                    <canvas id="myChart" class="graph"></canvas>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+</body>
+
+</html>
+
+<script>
+
+    const ctx = document.getElementById('myChart');
+    const myChart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: ['Em uso', 'Disponível'],
+            datasets: [{
+                label: '# of Votes',
+                data: [60.53, 39.47],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(75, 192, 192, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(75, 192, 192, 1)'
+                ],
+                borderWidth: 3
+            }]
+
+        },
+        options: {
+            maintainAspectRatio: false,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+
+    data = {
+        datasets: [{
+            data: [10, 20]
+        }],
+        labels: [
+            'Red',
+            'Green'
+        ]
+    };
+
+</script>

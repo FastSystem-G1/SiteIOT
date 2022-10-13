@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=div, initial-scale=1.0">
+
+    <title>Máquinas | Fast System</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap" rel="stylesheet">
+    <link rel="icon" href="../../../img/logo.png">
+    <script src="../../../js/funcoes.js"></script>
+    <link rel="stylesheet" href="../../../pos-login.html">
+
+
+</head>
+
+<body onload="validarSessao2()">
+    <div class="header">
+        <div class="containerHeader">
+            <div class="headerIcon">
+                <img src="../Telas de Cadastro/Assets/Logo.png" style="height: 10%; width: 10%;">
+            </div>
+            <ul class="navbar">
+                <li><a href="../../../pos-login.html">Voltar</a></li>
+                <!-- <li><a href="">Contato</a></li> -->
+            </ul>
+            <div class="fotoUsuario">
+                <img src="../../../img/img_usuario.png">
+            </div>
+        </div>
+    </div>
+
+    <div class="main">
+        <div class="containerMain">
+            <div class="caixa">
+                <div class="box1">
+                    <img src="../../../img/logo3.png" style="height: 100%; width: 100%;">
+                </div>
+                <div class="box2">
+
+                    <h2>
+                        CADASTRO DE MÁQUINAS
+                    </h2>
+                    <div class="boxAplicativo">
+                        <div class="borda01">
+                            <h3>
+                                HARDWARE
+                            </h3>
+                            <select id="selectHardware" class="selectHardware">
+                                <option value="">Selecione</option>
+                                <option value="totem">Totem</option>
+                                <option value="desktop">Desktop</option>
+                            </select>
+                        </div>
+                        <div class="borda01">
+                            <h3>
+                                NOME 
+                            </h3>
+                            <input type="text" id="inputNomeMaquina" class="selectHardware" placeholder="Digite aqui">
+                        </div>
+                    </div>
+                    <div class="boxButton">
+                        <button onclick="cadastrar()" id="botao_cadastro">Cadastrar</button>
+                    </div>
+                    <br>
+                    <div id="erroCadastro" class="erroCadastro"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- <div class="footer">
+        <h3>Copyright &copy; 2022 Fast System</h3>
+    </div> -->
+</body>
+
+</html>
+
+<script>
+    window.onload = validarSessao2();
+    var erroValidacao = 0;
+    //alert(sessionStorage.EMPRESA);
+
+    function cadastrar(){
+        var empresaVar = sessionStorage.EMPRESA;
+        var hardwareVar = selectHardware.value;
+        var nomeVar = inputNomeMaquina.value.toLowerCase();
+
+
+    //validações
+    if (hardwareVar == "" && nomeVar == "")  {
+      console.log("Preencha todos os campos para prosseguir !!!");
+      erroCadastro.innerHTML = "Preencha todos os campos para prosseguir !!!"
+      erroValidacao++;
+    /*} else if (empresaVar.lenght < 3) {
+      console.log("Nome Inválido !! Verifique se esta digitando corretamente");
+      erroCadastroNome.innerHTML = "Nome Inválido!"
+      erroValidacao++;
+    } else {
+      console.log("Nome válido");
+      /* erroValidacao = 0; */
+    }
+
+    /* =======================TIPO===================== */
+    else if (hardwareVar == "") {
+      console.log("Preencha este campo para prosseguir !!!");
+      erroCadastro.innerHTML = "Preencha o tipo de hardware para prosseguir!"
+      erroValidacao++;
+    /*} else if (empresaVar.lenght < 3) {
+      console.log("Nome Inválido !! Verifique se esta digitando corretamente");
+      erroCadastroNome.innerHTML = "Nome Inválido!"
+      erroValidacao++;
+    } else {
+      console.log("Nome válido");
+      /* erroValidacao = 0; */
+    }
+                               
+    /* =======================NOME===================== */
+    else if (nomeVar == "") {
+      console.log("Selecione o nome para prosseguir !!!");
+      erroCadastro.innerHTML = "Digite o nome da máquina para prosseguir!"
+      erroValidacao++; 
+    }
+      else if (nomeVar.length < 3) {
+      console.log("Nome Inválido !! Verifique se esta digitando corretamente");
+      erroCadastro.innerHTML = "Nome Inválido!"
+      erroValidacao++;
+    } else {
+      console.log("Nome válido");
+
+      /* erroValidacao = 0; */
+    }
+
+
+    /* =======================se validados===================== */
+    if (erroValidacao == 0) {
+        fetchcadastro();
+        //alert("Cadastro efetuado com sucesso!!")
+    } else {
+        erroValidacao = 0;
+    }
+
+    function fetchcadastro() {
+      fetch("/usuarios/cadastrarMaquina", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          // crie um atributo que recebe o valor recuperado aqui
+          // Agora vá para o arquivo routes/usuario.js
+          empresaServer: empresaVar,
+          nomeServer: nomeVar,
+          hardwareServer: hardwareVar,
+
+ 
+        }),
+      })
+        .then(function (resposta) {
+          console.log("resposta: ", resposta);
+
+          if (resposta.ok) {
+            console.log("Cadastro realizado com sucesso!")
+            alert("Cadastro realizado com sucesso !!!");
+            limparFormulario();
+           /*  finalizarAguardar(); */
+          } else {
+            throw "Houve um erro ao tentar realizar o cadastro!";
+          }
+        })
+        .catch(function (resposta) {
+          console.log(`#ERRO: ${resposta}`);
+         /*  finalizarAguardar(); */
+        });
+
+      return false;
+    }
+}
+
+</script>

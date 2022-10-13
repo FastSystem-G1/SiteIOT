@@ -1,0 +1,288 @@
+body {
+
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Red Hat Display', 'QuickSand', 'Lucida', 'Sans Unicode';
+    background: linear-gradient(289.13deg, #03C8DC 0%, #01558F 28.83%, #003E73 59.87%, #021545 93.23%);
+    
+}
+/* Navbar */
+.header {
+    height: 13vh;
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #010E3C;
+}
+.container {
+    height: 98%;
+    width: 95%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    /* border: red 2px solid; */
+}
+.navbar {
+    list-style: none;
+    justify-content: space-evenly;
+    display: flex;
+    align-items: center;
+    width: 10vw;
+    padding: 10px;
+    color: rgba(0, 194, 203, 1);
+}
+
+.headerIcon {
+        width: 80%;
+        display: flex;
+        align-self: center;
+        padding: 10px;
+}
+a{
+    color: #03C8DC;
+    font-size: 15px;
+    text-decoration: none;
+}
+/* Corpo */
+.banner{
+    width: 99.9%;
+    height: 86vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border: greenyellow 2px solid; */
+}
+.banner .container{
+    flex-direction: column;
+}
+.divSelectMaquinas{
+    width: 40%;
+    height: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    /* border: red 2px solid; */
+}
+.selectMaquinas{
+    width: 40%;
+    height: 40%;
+    border-radius: 30px;
+    background-color: rgba(255, 255, 255, 0.4);
+}
+.botaoSelectMaquinas{
+    width: 10%;
+    height: 30%;
+    border-radius: 30px;
+    background-color: rgba(255, 255, 255, 0.4);
+    display: flex;
+    margin-left: 3%;
+    align-items: center;
+    justify-content: center;
+}
+.fundoVidro {
+    color: black;
+    border-left: none;
+    border-radius: 30px 30px 30px 30px;
+    width: 95%;
+    height: 93%;
+    background: rgba(255, 255, 255, 0.4);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.vidroCima{
+    width: 100%;
+    height: 50%;
+    display: flex;
+    align-items: flex-start;
+}
+.vidroBaixo{
+    width: 100%;
+    height: 50%;
+    display: flex;
+    align-items: flex-start;
+}
+.box1{
+    width: 16%;
+    height: 90%;
+    margin-top: 1.6%;
+    margin-left: 7.4%;
+    float: left;
+    /* border: forestgreen 2px solid; */
+    border-radius: 30px;
+    box-shadow: yellow 5px 10px 10px;
+}
+.box2{
+    width: 16%;
+    height: 90%;
+    margin-top: 1.6%;
+    margin-left: 7.4%;
+    float: left;
+    /* border: forestgreen 2px solid; */
+    border-radius: 30px;
+}
+.box3{
+    width: 16%;
+    height: 90%;
+    margin-top: 1.6%;
+    margin-left: 7.4%;
+    float: left;
+    /* border: forestgreen 2px solid; */
+    border-radius: 30px;
+    box-shadow:red 5px 10px 10px;
+}
+.box4{
+    width: 16%;
+    height: 90%;
+    margin-top: 1.6%;
+    margin-left: 7.4%;
+    float: left;
+    /* border: forestgreen 2px solid; */
+    border-radius: 30px;
+}
+.box5{
+    width: 16%;
+    height: 90%;
+    margin-top: 1.6%;
+    margin-left: 7.4%;
+    float: left;
+    /* border: forestgreen 2px solid; */
+    border-radius: 30px;
+}
+.box6{
+    width: 16%;
+    height: 90%;
+    margin-top: 1.6%;
+    margin-left: 7.4%;
+    float: left;
+    /* border: forestgreen 2px solid; */
+    border-radius: 30px;
+}
+.box7{
+    width: 16%;
+    height: 90%;
+    margin-top: 1.6%;
+    margin-left: 7.4%;
+    float: left;
+    /* border: forestgreen 2px solid; */
+    border-radius: 30px;
+}
+.box8{
+    width: 16%;
+    height: 90%;
+    margin-top: 1.6%;
+    margin-left: 7.4%;
+    float: left;
+    /* border: forestgreen 2px solid; */
+    border-radius: 30px;
+}
+.boxCima{
+    width: 100%;
+    height: 77%;
+    background-color: #021545;
+    border-radius: 30px 30px 0px 0px;
+    display: flex;
+    flex-direction: column;
+}
+.divIconBox{
+    width: 100%;
+    height: 35%;
+    border-radius: 30px 30px 0px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    /* border-bottom: red 2px solid; */
+}
+.icons1{
+    width: 20%;
+    height: 70%;
+    border-radius: 100px;
+    background-color: azure;
+    border: green 5px solid;
+    margin-left: 3%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.icons2{
+    width: 20%;
+    height: 70%;
+    border-radius: 100px;
+    background-color: azure;
+    border: green 5px solid;
+    margin-left: 3%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.icons3{
+    width: 20%;
+    height: 70%;
+    border-radius: 100px;
+    background-color: azure;
+    border: green 5px solid;
+    margin-left: 3%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.box1 .icons3{
+    border: yellow 5px solid;
+}
+.box3 .icons1{
+    border: red 5px solid;
+}
+.divImagemNot{
+    width: 100%;
+    height: 65%;
+    border-radius: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.imagemNot{
+    width: 55%;
+    height: 85%;
+}
+#imagem_cpu{
+    height: 37px;
+    margin-top: 5px;
+}
+
+#imagem_memoria{
+    height: 35px;
+    margin-top: 2px;
+}
+
+#imagem_disco{
+    height: 30px;
+}
+.boxBaixo{
+    width: 100%;
+    height: 23%;
+    background-color: azure;
+    border-radius: 0px 0px 30px 30px;
+}
+.boxBaixoEsquerda{
+    width: 60%;
+    height: 80%;
+    display: flex;
+    float: left;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-left: 2%;
+}
+.boxBaixoDireita{
+    width: 37%;
+    height: 96%;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
