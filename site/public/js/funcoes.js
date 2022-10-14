@@ -53,13 +53,6 @@ if (email != null && nome != null)  {
     }
 }
 
-function limparSessao() {
-    // aguardar();
-    sessionStorage.clear();
-    // finalizarAguardar();
-   /*  window.location = "../login.html"; */
-}
-
 function limparFormulario() {
     document.getElementById("campos_cadastro").reset();
 }

@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
     <title>Dashboard</title>
-
+    <!-- <script src="../js/funcoes.js"></script> -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap" rel="stylesheet">
@@ -25,10 +25,10 @@
                 </div>
                 <ul class="nav-list">
                     <li class="agora"><a href="dashInicial.html">Início</a></li>
-                    <li><a href="#valores">Valores</a></li>                
-                    <li><a href="#servico">Serviços</a></li>
-                    <li><a href="#sobre">Sobre Nós</a></li>
-                    <li><a href="login.html">Login</a></li>
+                    <li><a href="../Telas de Cadastro/cadastroMaquina.html">Cadastrar máquina</a></li>                
+                    <li><a href="../Telas de Cadastro/cadastroAplicativo.html">Cadastrar aplicativo</a></li>
+                    <li><a href="../Telas de Cadastro/NovoFuncionario.html">Cadastrar funcionário</a></li>
+                    <li onclick="sair()"><a href="../login.html">Sair</a></li>
                     <li></li>
                 </ul>
             </nav>
@@ -229,6 +229,6 @@
     window.onload = validarSessao();
 
     function sair(){
-        limparSessao();
+        sessionStorage.clear();
     }
 </script>

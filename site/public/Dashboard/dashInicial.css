@@ -18,7 +18,8 @@ a{
 }
 
 a:hover{
-    opacity: 0.7;
+    font-weight: bold;
+
 }
 
 .logo img{
@@ -60,7 +61,7 @@ nav{
 
     .nav-list {
         position: absolute;
-        top: 13.2vh;
+        top: 12.2vh;
         right: 0;
         width: 25vw;
         height: 86vh;
@@ -81,12 +82,12 @@ nav{
         justify-content: space-around;
         align-items: center;
         letter-spacing: 3px;
-        font-size: 25px;
+        margin: 60px 0;
         opacity: 0;
     }
 
     .mobile-menu{
-        display: block;
+        display: block;   
     }
 
 
