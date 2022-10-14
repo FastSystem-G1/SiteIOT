@@ -1,3 +1,8 @@
+window.addEventListener('scroll', function(){
+    var menu = document.querySelector('nav');
+    menu.classList.toggle('sticky', window.scrollY > 0);
+  })
+
 class MobileNavbar {
     constructor(mobileMenu, navList, navLinks){
         this.mobileMenu = document.querySelector(mobileMenu);
@@ -38,5 +43,8 @@ const mobileNavbar = new MobileNavbar(
     ".nav-list li",
 );
 mobileNavbar.init();
+
+
+
 
 /* . */
