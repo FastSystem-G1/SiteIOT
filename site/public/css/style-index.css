@@ -156,12 +156,6 @@ a:hover{
     opacity: 0.7;
 }
 
-.logo{
-    font-size: 15px;
-    text-transform: uppercase;
-    letter-spacing: 4px;
-}
-
 .logo img{
     width: 50%;
 }
@@ -272,123 +266,6 @@ nav.sticky{
     background: #010e3cc9;
 }
 
-/* .header{
-    height: 15vh;
-    background-color: #010E3C;
-    background-size: cover;
-    color: #00C2CB;
-    display: flex;
-    align-items: center;
-    font-size: 15px;
-    width: 100%;
-    z-index: 999;
-    position: fixed;
-}
-
-.container img{
-    width: 35%;
-}
-
-.header .container{
-    display: flex;
-    justify-content:space-between;
-}
-.banner .container.login ,.container.cadastro{
-    justify-content: center;
-}
-
-.agora{
-    font-weight: bolder;
-    font-size: 18px;
-}
-.navbar{
-    display: flex;
-    list-style: none;
-    width: 40%;
-    justify-content: space-evenly;
-    align-items: center;
-    position: fixed;
-}
-.navbar a{
-    text-decoration: none;
-    color: #00C2CB;
-}
-
-.navbar button{
-    background-color: transparent;
-    background-size: cover;
-    color: #00C2CB;
-    cursor: pointer;
-    border: none;
-    font-family:  'Quicksand', sans-serif;
-    font-size: 15px;
-}
-
-.navbar-mobile{
-    position: absolute;
-    margin-top: 10%;
-    right: 0;
-    display: flex;
-    flex-direction: column;
-    list-style: none;
-    width: 35%;
-    height: 300px;
-    justify-content: space-evenly;
-    align-items: center;
-   
-}
-.navbar-mobile li{
-
-    background-color: #010E3C;
-    color: white;
-    width: 100%;
-    padding: 10%;
-}
-.navbar-mobile li:hover{
-
-    background-color: #00C2CB;
-    color: white;
-    cursor: pointer;
-}
-.navbar-mobile a{
-    text-decoration: none;
-    color: white;
-}
-.navbar-mobile a:hover{
-    text-decoration: none;
-    color: white;
-}
-#menuBurger{
-    color: white;
-    width: 15%;
-    text-align: center;
-    padding: 5px;
-    justify-content: center;
-}
-#menuBurger:hover{
-    cursor: pointer;
-}
-#itens{
-    display: none;
-}
-.divNavbar{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-end;
-    width: 50%;
-
-}
-.divNavbar img{
-    width: 25px;
-
-}
-.navbar{
-    display: none;
-}
-.material-icons{
-    width: 100%;
-} */
 /*================================================SERVIÇOS=============================================*/
 
 .servicos{
