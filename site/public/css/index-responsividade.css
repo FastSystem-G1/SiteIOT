@@ -1,15 +1,6 @@
 /*===============================================RESPONSIVIDADE======================================*/
 
 
-.navbarMobile div{
-    width: 32px;
-    height: 2px;
-    margin: 8px;
-    background-color: #00C2CB;
-
-}
-
-
 @media only screen and (min-width: 300px) {
 
     .quemSomosConteudo{
@@ -62,20 +53,6 @@
     display: none!important;
     }
 
-
-    .navbar{
-        display: none;
-    }
-    .navbar-mobile{
-        display: block;
-    }
-    .divNavbar img{
-        display: block;
-    }
-    #menuBurgerr{
-        display: block;
-    }
-
     .servicos {
 
         flex-direction: column;
@@ -107,20 +84,6 @@
      .divSuperior1,.divSuperior3, 
     .divInferior2{
     display: none!important;
-    }
-
-
-    .navbar{
-        display: none;
-    }
-    .navbar-mobile{
-        display: block;
-    }
-    .divNavbar img{
-        display: block;
-    }
-    #menuBurgerr{
-        display: block;
     }
 
     .servicos {
@@ -155,28 +118,9 @@
     
     }
     
-    
-    .navbar{
-        display: none;
-    }
-    .navbar-mobile{
-        display: block;
-    }
-    .divNavbar img{
-        display: block;
-    }
-    #menuBurgerr{
-        display: block;
-    }
-    
   }
   
   @media only screen and (min-width: 800px) {
-
-    
-    .divNavbar{
-        width: 75%;
-    }
 
     .quemSomosConteudo{
     
@@ -194,22 +138,11 @@
         background-repeat: no-repeat;
     
     }
-
-    .navbar{
-        display: flex;
-    }.bannerServico{
+    .bannerServico{
         display: flex;
         height: 100vh;
     }
-    .navbar-mobile{
-        display: none;
-    }
-    .divNavbar img{
-        display: none;
-    }
-    #menuBurger{
-        display: none;
-    }
+
     .bannerSuperior, .bannerInferior{
 
         flex-direction: row!important;
@@ -257,18 +190,7 @@
     .quemSomos{
         height: 100vh;
     }
-    .navbar{
-        display: flex;
-    }
-    .navbar-mobile{
-        display: none;
-    }
-    .divNavbar img{
-        display: none;
-    }
-    #menuBurger{
-        display: none;
-    }
+
     
 }
 @media only screen and (min-width: 1400px) {
@@ -286,18 +208,6 @@
         height: 100vh;
     }
   
-    .navbar{
-        display: flex;
-    }
-    .navbar-mobile{
-        display: none;
-    }
-    .divNavbar img{
-        display: none;
-    }
-    #menuBurger{
-        display: none;
-    }
     
 }
 /*teste*/
