@@ -28,6 +28,7 @@ body {
     #003e73 59.87%,
     #021545 93.23%
   );
+  overflow-x: hidden;
 }
 
 h2 {
@@ -37,51 +38,123 @@ h2 {
 
 /*HEADER*/
 
-.header {
+header a{
+  color: #00C2CB;
+  text-decoration: none;
+  transition: 0.3s;
+  font-family: 'Quicksand', sans-serif;
+}
+
+a{
+  color: #000000;
+  text-decoration: none;
+  transition: 0.3s;
+  font-family: 'Quicksand', sans-serif;
+}
+
+a:hover{
+  font-weight: bold;
+
+}
+
+.logo img{
+  width: 50%;
+}
+
+nav{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: #010E3C;
   height: 15vh;
   width: 100%;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #010e3c;
-  font-size: 15px;
 }
 
-.containerHeader {
-  height: 17vh;
-  width: 98vw;
-  display: flex;
-  position: relative;
-  float: left;
+/* .nav-list li{
+  letter-spacing: 3px;
+} */
+
+.mobile-menu{
+  display: none;
+  cursor: pointer;
 }
 
-.navbar {
-  list-style: none;
-  justify-content: space-evenly;
-  display: flex;
-  align-items: center;
-  width: 30vw;
-  padding: 10px;
-  color: rgba(0, 194, 203, 1);
+.mobile-menu div{
+  width: 32px;
+  height: 2px;
+  background: #fff;
+  margin: 8px;
+  transition: 0.3s;
 }
 
-.headerIcon {
-  width: 80%;
-  display: flex;
-  align-self: center;
-  padding: 10px;
+.agora{
+  font-weight: bolder;
+  font-size: 18px;
 }
 
-.fotoUsuario {
-  margin-top: 1%;
-  height: 10vh;
+
+
+  .nav-list {
+      position: absolute;
+      top: 12.2vh;
+      right: 0;
+      width: 25vw;
+      height: 86vh;
+      background: #010e3cf1;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+      transform: translateX(100%);
+      transition: transform 0.3s ease-in;
+      z-index: 999;
+  }
+
+  .nav-list li{
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+      align-items: center;
+      letter-spacing: 3px;
+      margin: 60px 0;
+      opacity: 0;
+  }
+
+  .mobile-menu{
+      display: block;   
+  }
+
+
+.nav-list.active{
+  transform: translateX(0);
 }
 
-a {
-  color: #03c8dc;
-  font-size: 15px;
-  text-decoration: none;
+@keyframes navLinkFade {
+  from {
+      opacity: 0;
+      transform: translateX(50px);
+  }
+  to {
+      opacity: 1;
+      transform: translateX(0);
+  }
+}
+
+.mobile-menu.active .line1 {
+  transform: rotate(-45deg) translate(-8px, 8px);
+}
+
+.mobile-menu.active .line2 {
+  opacity: 0;
+}
+
+.mobile-menu.active .line3 {
+  transform: rotate(45deg) translate(-5px, -7px);
+} /* . */
+
+nav.sticky{
+  background: #010e3cc9;
 }
 
 /*MAIN*/

@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=div, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
 
   <title>Funcionário | Fast System</title>
 
@@ -19,21 +19,24 @@
 
 <body>
   <div class="fundo"></div>
-  <div class="header">
-    <div class="containerHeader">
-
-      <div class="headerIcon">
-        <img src="img/logo3.png" style="height: 10%; width: 10%;">
-      </div>
-      <ul class="navbar">
-        <li><a href="../pos-login.html">Voltar</a></li>
-        <!-- <li><a href="">Contato</a></li> -->
-      </ul>
-      <div class="fotoUsuario">
-        <img src="img/img_usuario.png" id="imagem_usuario"">
-            </div>
+  <header>
+    <nav>
+        <a class="logo" href="../Dashboard/dashInicial.html"><img src="img/logo.png" alt=""></a>
+        <div class="mobile-menu">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
         </div>
-    </div>
+        <ul class="nav-list">
+            <li><a href="../Dashboard/dashInicial.html">Início</a></li>
+            <li><a href="../Telas de Cadastro/cadastroMaquina.html">Cadastrar máquina</a></li>                
+            <li><a href="../Telas de Cadastro/cadastroAplicativo.html">Cadastrar aplicativo</a></li>
+            <li class="agora"><a href="../Telas de Cadastro/NovoFuncionario.html">Cadastrar funcionário</a></li>
+            <li onclick="sair()"><a href="../login.html">Sair</a></li>
+            <li></li>
+        </ul>
+    </nav>
+</header>
 
     <div class=" main">
         <div class="containerMain">
@@ -123,16 +126,22 @@
           </div>
         </div>
       </div>
+      <script src="../headers/mobile-navbar.js"></script>
 </body>
 
 </html>
 
 <script>
+
+function sair(){
+    sessionStorage.clear();
+}
+
   //window.onload = validarSessao1();
   var erroValidacao = 0;
 
   function cadastrar() {
-    var empresaVar = 1;
+    var empresaVar = sessionStorage.ID_USUARIO;
     var nomeVar = nome_input.value;
     var cargoVar = cargo_select.value;
     var emailVar = email_input.value.toLowerCase();
@@ -187,11 +196,8 @@
       erroValidacao++;
     } else {
       console.log("Email válido");
-<<<<<<< HEAD
       nome_input.value = ""
       senha_input.value= ""
-=======
->>>>>>> 35d01c044a65466dfc3869bd0bfbf3319f1a006d
     }
 
     /* =======================senha===================== */

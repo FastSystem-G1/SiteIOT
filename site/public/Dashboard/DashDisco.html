@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+    <link rel="stylesheet" href="dashInicial.css">
     <title>Dashboard - Disco</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="DashDisco_style.css">
@@ -14,20 +15,24 @@
 
 <body>
     <div class="fundo"></div>
-    <div class="header">
-        <div class="containerHeader">
-
-            <div class="headerIcon">
-                <img src="img/logo3.png" style="height: 10%; width: 10%;">
+    <header>
+        <nav>
+            <a class="logo" href="dashInicial.html"><img src="img/logo.png" alt=""></a>
+            <div class="mobile-menu">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
             </div>
-            <ul class="navbar">
-                <li><a href="../pos-login.html">Sair</a></li>
+            <ul class="nav-list">
+                <li><a href="dashInicial.html">Início</a></li>
+                <li><a href="../Telas de Cadastro/cadastroMaquina.html">Cadastrar máquina</a></li>                
+                <li><a href="../Telas de Cadastro/cadastroAplicativo.html">Cadastrar aplicativo</a></li>
+                <li><a href="../Telas de Cadastro/NovoFuncionario.html">Cadastrar funcionário</a></li>
+                <li onclick="sair()"><a href="../login.html">Sair</a></li>
+                <li></li>
             </ul>
-            <div class="fotoUsuario">
-                <img src="img/imagem_usuario.png" id="imagem_usuario">
-            </div>
-        </div>
-    </div>
+        </nav>
+    </header>
 
     <div class="main">
         <div class="containerDash">
@@ -130,9 +135,14 @@
         </div>
 
     </div>
+    <script src="../headers/mobile-navbar.js"></script>
 </body>
 </html>
 <script>
+
+function sair(){
+    sessionStorage.clear();
+}
 
     const labels = [
         'Em uso',

@@ -4,14 +4,20 @@ function validarSessao() {
 
     var email = sessionStorage.EMAIL_USUARIO;
     var nome = sessionStorage.NOME_USUARIO;
+    var cargo = sessionStorage.CARGO;
 
-   
-
-if (email != null && nome != null)  {
+if (email != null && nome != null && cargo == 1)  {
     
        /*  document.getElementsByClassName('nome_usuario')[0].innerHTML = sessionStorage.NOME_USUARIO; */
 
         // finalizarAguardar();
+    }else if(email != null && nome != null & cargo == 0){
+        document.getElementById('nav-list').innerHTML =
+       ` <ul class="nav-list">
+            <li><a href="../Dashboard/dashInicial.html">Início</a></li>
+            <li onclick="sair()"><a href="../login.html">Sair</a></li>
+            <li></li>
+        </ul> `
     } else {
         window.location = "login.html";
     }

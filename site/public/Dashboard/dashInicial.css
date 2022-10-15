@@ -10,8 +10,15 @@ body {
 }
 /* Navbar */
 
-a{
+header a{
     color: #00C2CB;
+    text-decoration: none;
+    transition: 0.3s;
+    font-family: 'Quicksand', sans-serif;
+}
+
+a{
+    color: #000000;
     text-decoration: none;
     transition: 0.3s;
     font-family: 'Quicksand', sans-serif;
@@ -159,6 +166,10 @@ nav.sticky{
     border-radius: 30px;
     background-color: rgba(255, 255, 255, 0.4);
 }
+
+.selectMaquinas:hover{
+    cursor: pointer;
+}
 .botaoSelectMaquinas{
     width: 10%;
     height: 30%;
@@ -168,6 +179,10 @@ nav.sticky{
     margin-left: 3%;
     align-items: center;
     justify-content: center;
+}
+
+.botaoSelectMaquinas:hover{
+    cursor: pointer;
 }
 .fundoVidro {
     color: black;
@@ -370,3 +385,17 @@ nav.sticky{
     align-items: center;
     justify-content: end;
 }
+
+body::-webkit-scrollbar {
+    width: 12px;               /* width of the entire scrollbar */
+  }
+  
+  body::-webkit-scrollbar-track {
+    background: #010E3C;        /* color of the tracking area */
+  }
+  
+  body::-webkit-scrollbar-thumb {
+    background-color: #00C2CB;    /* color of the scroll thumb */
+    border-radius: 20px;       /* roundness of the scroll thumb */
+    border: none;  
+  }

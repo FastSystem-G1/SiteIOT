@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=div, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
 
     <title>Aplicativos | Fast System</title>
 
@@ -19,21 +19,24 @@
 </head>
 
 <body onload="validarSessao2()">
-    <div class="header">
-        <div class="containerHeader">
-
-            <div class="headerIcon">
-                <img src="../Telas de Cadastro/Assets/Logo.png" style="height: 10%; width: 10%;">
+    <header>
+        <nav>
+            <a class="logo" href="../Dashboard/dashInicial.html"><img src="img/logo.png" alt=""></a>
+            <div class="mobile-menu">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
             </div>
-            <ul class="navbar">
-                <li><a href="../../../pos-login.html">Voltar</a></li>
-                <!-- <li><a href="">Contato</a></li> -->
+            <ul class="nav-list">
+                <li><a href="../Dashboard/dashInicial.html">Início</a></li>
+                <li><a href="../Telas de Cadastro/cadastroMaquina.html">Cadastrar máquina</a></li>                
+                <li class="agora"><a href="../Telas de Cadastro/cadastroAplicativo.html">Cadastrar aplicativo</a></li>
+                <li><a href="../Telas de Cadastro/NovoFuncionario.html">Cadastrar funcionário</a></li>
+                <li onclick="sair()"><a href="../login.html">Sair</a></li>
+                <li></li>
             </ul>
-            <div class="fotoUsuario">
-                <img src="../../../img/img_usuario.png">
-            </div>
-        </div>
-    </div>
+        </nav>
+    </header>
 
     <div class="main">
         <div class="containerMain">
@@ -74,14 +77,17 @@
             </div>
         </div>
     </div>
-    <!-- <div class="footer">
-        <h3>Copyright &copy; 2022 Fast System</h3>
-    </div> -->
+    <script src="../headers/mobile-navbar.js"></script>
 </body>
 
 </html>
 
 <script>
+
+function sair(){
+    sessionStorage.clear();
+}
+
     window.onload = obterDados();
 
     function cadastrarMaquina() {
