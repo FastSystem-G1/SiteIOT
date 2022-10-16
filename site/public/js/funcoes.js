@@ -12,50 +12,21 @@ if (email != null && nome != null && cargo == 1)  {
 
         // finalizarAguardar();
     }else if(email != null && nome != null && cargo == 0){
-        document.getElementById('nav-content').innerHTML =
-       ` 
-            <li><a href="../Dashboard/dashInicial.html">Início</a></li>
-            <li onclick="sair()"><a href="../login.html">Sair</a></li>
-            <li></li>
-         `
+        document.getElementById('nav-content').innerHTML = 
+        `<div style="display: flex; justify-content: center; align-items: center; flex-direction: column; justify-content: space-around; align-items: center;
+        letter-spacing: 3px;
+        margin: 60px 0;">
+
+        <a href= "dashInicial.html" style = "margin-bottom: 60px; font-size: 25px;">Início</a>
+        <a href="../login.html" style = "margin-bottom: 60px; font-size: 25px;">Sair</a>
+
+
+        </div>
+        `;
+
+        // cad1.style.display = "none";
     } else {
         window.location = "../login.html";
-    }
-}
-
-function validarSessao1() {
-    // aguardar();
-
-    var email = sessionStorage.EMAIL_USUARIO;
-    var nome = sessionStorage.NOME_USUARIO;
-
-   
-
-if (email != null && nome != null)  {
-    
-       /*  document.getElementsByClassName('nome_usuario')[0].innerHTML = sessionStorage.NOME_USUARIO; */
-
-        // finalizarAguardar();
-    } else {
-        window.location = "../login.html";
-    }
-}
-
-function validarSessao2() {
-    // aguardar();
-
-    var email = sessionStorage.EMAIL_USUARIO;
-    var nome = sessionStorage.NOME_USUARIO;
-
-   
-
-if (email != null && nome != null)  {
-    
-       /*  document.getElementsByClassName('nome_usuario')[0].innerHTML = sessionStorage.NOME_USUARIO; */
-
-        // finalizarAguardar();
-    } else {
-        window.location = "../../../login.html";
     }
 }
 

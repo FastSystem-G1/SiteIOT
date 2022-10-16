@@ -23,7 +23,7 @@ var mySqlConfig = {
     database: "FastSystem",
     user: "root",
     // password: "Lucimar1808",
-    // password: "KarlTowns@103104105",
+     password: "KarlTowns@103104105",
     // password: "",
     // port: "3306"
 };
