@@ -126,10 +126,10 @@
               sessionStorage.NOME_USUARIO = json.nome_funcionario;
               sessionStorage.ID_USUARIO = json.id_funcionario;
               sessionStorage.EMPRESA = json.fk_empresa;
-              sessionStorage.CARGO = json.cargo;
+              sessionStorage.CARGO = json.is_admin;
 
               setTimeout(function () {
-                window.location = "./Dashboard./dashInicial";
+                window.location = "/Dashboard/dashInicial.html";
               }, 1000); // apenas para exibir o loading
             });
           } else {
