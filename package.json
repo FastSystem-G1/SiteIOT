@@ -5,5 +5,8 @@
   "scripts": {
     "start": "node ./site/app.js",
     "postinstall": "cd site && npm install"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3"
   }
 }

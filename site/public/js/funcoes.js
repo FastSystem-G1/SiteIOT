@@ -6,12 +6,12 @@ function validarSessao() {
     var nome = sessionStorage.NOME_USUARIO;
     var cargo = sessionStorage.CARGO;
 
-if (email != null && nome != null && cargo == 1)  {
+if (email != null && nome != null && cargo == true)  {
     
        /*  document.getElementsByClassName('nome_usuario')[0].innerHTML = sessionStorage.NOME_USUARIO; */
-
+       window.location = "./Dashboard/dashInicial";
         // finalizarAguardar();
-    }else if(email != null && nome != null && cargo == 0){
+    }else if(email != null && nome != null && cargo == false){
         document.getElementById('nav-content').innerHTML = 
         `<div style="display: flex; justify-content: center; align-items: center; flex-direction: column; justify-content: space-around; align-items: center;
         letter-spacing: 3px;
@@ -26,7 +26,7 @@ if (email != null && nome != null && cargo == 1)  {
 
         // cad1.style.display = "none";
     } else {
-        window.location = "../login.html";
+       // window.location = "../login.html";
     }
 }
 
