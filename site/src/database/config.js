@@ -1,4 +1,4 @@
-/* var mysql = require("mysql2"); */
+// var mysql = require("mysql2");
 var sql = require('mssql');
 
 // CONEXÃO DO SQL SERVER - AZURE (NUVEM)
@@ -17,13 +17,12 @@ var sqlServerConfig = {
     }
 }
 
-/* // CONEXÃO DO MYSQL WORKBENCH (LOCAL)
-var mySqlConfig = {
+// CONEXÃO DO MYSQL WORKBENCH (LOCAL)
+/* var mySqlConfig = {
     host: "localhost",
     database: "FastSystem",
     user: "root",
     // password: "Lucimar1808",
-    // password: "",
     // port: "3306"
 }; */
 

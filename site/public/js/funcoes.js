@@ -7,11 +7,22 @@ function validarSessao() {
     var cargo = sessionStorage.CARGO;
 
 if (email != null && nome != null && cargo == true)  {
-    
-       /*  document.getElementsByClassName('nome_usuario')[0].innerHTML = sessionStorage.NOME_USUARIO; */
-       window.location = "./Dashboard/dashInicial";
-        // finalizarAguardar();
+      // window.location = "./Dashboard/dashInicial";
+
+       document.getElementById('texto_func').innerHTML =
+       `
+        Olá, ${nome} ! </br>
+        Empresa: ${sessionStorage.EMPRESA}
+       `;
+
     }else if(email != null && nome != null && cargo == false){
+
+        document.getElementById('texto_func').innerHTML =
+        `
+         Olá, ${nome} ! </br>
+         Empresa: ${sessionStorage.EMPRESA}
+        `;
+
         document.getElementById('nav-content').innerHTML = 
         `<div style="display: flex; justify-content: center; align-items: center; flex-direction: column; justify-content: space-around; align-items: center;
         letter-spacing: 3px;
@@ -23,8 +34,6 @@ if (email != null && nome != null && cargo == true)  {
 
         </div>
         `;
-
-        // cad1.style.display = "none";
     } else {
        // window.location = "../login.html";
     }
