@@ -11,14 +11,14 @@
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <script src="../../../js/funcoes.js"></script>
+    <script src="../js/funcoes.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap" rel="stylesheet">
     <link rel="icon" href="../../../img/logo.png">
 
 
 </head>
 
-<body>
+<body window.onload="validarSessao2()">
     <header>
         <nav>
             <a class="logo" href="../Dashboard/dashInicial.html"><img src="img/logo.png" alt=""></a>
@@ -29,7 +29,7 @@
             </div>
             <ul class="nav-list" id="nav-content"  tabindex="0">
                 <div id="texto_func" style="width: 100%; display: flex; align-items: center; justify-content: center; color: #00C2CB; font-size: 25px; font-weight: bold; margin-top: 30px;"></div>
-                <li class="agora"><a href="dashInicial.html">Início</a></li>
+                <li class="agora"><a href="../Dashboard/dashInicial.html">Início</a></li>
                 <li class="cad1" id="cad1"><a href="../Telas de Cadastro/cadastroMaquina.html">Cadastrar máquina</a></li>                
                 <li class="cad1" id="cad1"><a href="../Telas de Cadastro/cadastroAplicativo.html">Cadastrar aplicativo</a></li>
                 <li class="cad1" id="cad1"><a href="../Telas de Cadastro/NovoFuncionario.html">Cadastrar funcionário</a></li>
@@ -84,10 +84,11 @@
 </html>
 
 <script>
-
+window.onload = validarSessao2();
 function sair(){
     sessionStorage.clear();
 }
+    
 
     window.onload = obterDados();
 

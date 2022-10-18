@@ -29,7 +29,7 @@ a:hover{
 }
 
 .logo img{
-    width: 50%;
+    width: 35%;
 }
 
 nav{
@@ -71,7 +71,7 @@ nav{
         right: 0;
         width: 25vw;
         height: 86vh;
-        background: #010e3cf1;
+        background: #010e3c;
         flex-direction: column;
         align-items: center;
         justify-content: space-around;
@@ -228,6 +228,7 @@ h3{
     align-items: center;
     justify-content: center;
     margin-left: 20%;
+    font-weight: bold;
 }
 .divAppDireitaN{
     width: 30%;
@@ -238,4 +239,7 @@ h3{
     align-items: center;
     justify-content: center;
     margin-left: 20%;
+    color: #000000;
+    font-weight: bold;
+    font-size: 20px;
 }

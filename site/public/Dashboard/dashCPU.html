@@ -6,13 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
     <title>Dashboar || CPU</title>
+    <script src="../js/funcoes.js"></script>
     <link rel="stylesheet" href="dashCPUMemoria.css">
     <link rel="icon" href="img/logo.png">
     <script type="text/javascript" src="https://www.chartjs.org/dist/2.8.0/Chart.min.js"></script>
 
 </head>
 
-<body>
+<body window.onload="validarSessao()">
     <div class="fundo"></div>
     <header>
         <nav>
@@ -86,7 +87,7 @@
 </html>
 
 <script>
-
+window.onload = validarSessao();
     function sair(){
         sessionStorage.clear();
     }

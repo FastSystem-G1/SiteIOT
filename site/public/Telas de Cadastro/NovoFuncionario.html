@@ -17,7 +17,7 @@
   
 </head>
 
-<body>
+<body window.onload="validarSessao2()">
   <div class="fundo"></div>
   <header>
     <nav>
@@ -29,7 +29,7 @@
         </div>
         <ul class="nav-list" id="nav-content"  tabindex="0">
           <div id="texto_func" style="width: 100%; display: flex; align-items: center; justify-content: center; color: #00C2CB; font-size: 25px; font-weight: bold; margin-top: 30px;"></div>
-          <li class="agora"><a href="dashInicial.html">Início</a></li>
+          <li class="agora"><a href="../Dashboard/dashInicial.html">Início</a></li>
           <li class="cad1" id="cad1"><a href="../Telas de Cadastro/cadastroMaquina.html">Cadastrar máquina</a></li>                
           <li class="cad1" id="cad1"><a href="../Telas de Cadastro/cadastroAplicativo.html">Cadastrar aplicativo</a></li>
           <li class="cad1" id="cad1"><a href="../Telas de Cadastro/NovoFuncionario.html">Cadastrar funcionário</a></li>
@@ -133,7 +133,7 @@
 </html>
 
 <script>
-
+window.onload = validarSessao2();
 function sair(){
     sessionStorage.clear();
 }
@@ -150,8 +150,7 @@ function sair(){
     var cpfVar = cpf_input.value;
     var telefoneVar = telefone_input.value;
 
-    cargoVar == 1 ? cargoVar == true : cargoVar == false;
-
+   cargoVar == "1" ? cargoVar == true : cargoVar == false;
 
     //validações
 

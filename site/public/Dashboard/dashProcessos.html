@@ -7,14 +7,14 @@
     <link rel="stylesheet" href="dashInicial.css">
     
     <title>Dashboard || Aplicativos</title>
-
+    <script src="../js/funcoes.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="dashProcessos.css">
     <link rel="stylesheet" href="dashCPUMemoria.css">
     <link rel="icon" href="img/logo.png">
 </head>
-<body>
+<body window.onload="validarSessao()">
     <div class="fundo"></div>
     <header>
         <nav>
@@ -90,6 +90,7 @@
 </html>
 
 <script>
+    window.onload = validarSessao();
     function sair(){
         sessionStorage.clear();
     }
