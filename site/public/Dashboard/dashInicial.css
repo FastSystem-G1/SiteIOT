@@ -8,6 +8,7 @@ body {
     background: linear-gradient(289.13deg, #03C8DC 0%, #01558F 28.83%, #003E73 59.87%, #021545 93.23%);
     overflow-x: hidden;
 }
+
 /* Navbar */
 
 header a{
@@ -30,7 +31,7 @@ a:hover{
 }
 
 .logo img{
-    width: 35%;
+    width: 20%;
 }
 
 nav{
@@ -38,7 +39,7 @@ nav{
     justify-content: space-around;
     align-items: center;
     background: #010E3C;
-    height: 15vh;
+    height: 7vh;
     width: 100%;
 }
 
@@ -131,7 +132,7 @@ nav.sticky{
 
 .container {
     height: 98%;
-    width: 95%;
+    width: 98%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -142,7 +143,7 @@ nav.sticky{
 /* Corpo */
 .banner{
     width: 99.9%;
-    height: 86vh;
+    height: 93vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -151,49 +152,75 @@ nav.sticky{
 .banner .container{
     flex-direction: column;
 }
-.divSelectMaquinas{
-    width: 40%;
-    height: 10%;
+.divCards{
     display: flex;
-    align-items: center;
-    justify-content: center;
     flex-direction: row;
-    /* border: red 2px solid; */
+    width: 80%;
+    height: 25%;
+    /* border: red solid 2px; */
 }
-.selectMaquinas{
-    width: 40%;
-    height: 40%;
-    border-radius: 30px;
-    background-color: rgba(255, 255, 255, 0.4);
-}
-
-.selectMaquinas:hover{
-    cursor: pointer;
-}
-.botaoSelectMaquinas{
-    width: 10%;
-    height: 30%;
-    border-radius: 30px;
-    background-color: rgba(255, 255, 255, 0.4);
+.cardExtremo{
+    width: 14%;
+    height: 95%;
     display: flex;
-    margin-left: 3%;
-    align-items: center;
+    float: left;
+    background-color: rgb(227, 32, 32);
+    margin-top: 0.5%;
+    margin-left: 1%;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
 }
-
-.botaoSelectMaquinas:hover{
-    cursor: pointer;
+.cardAlert{
+    width: 14%;
+    height: 95%;
+    display: flex;
+    float: left;
+    background-color: yellow;
+    margin-top: 0.5%;
+    margin-left: 1%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.cardCima{
+    width: 100%;
+    height: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.cardBaixo{
+    width: 100%;
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size:190%;
+}
+.cardTotal{
+    width: 14%;
+    height: 95%;
+    display: flex;
+    float: left;
+    background-color: #00C2CB;
+    margin-top: 0.5%;
+    margin-left: 1%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 .fundoVidro {
     color: black;
     border-left: none;
     border-radius: 30px 30px 30px 30px;
     width: 95%;
-    height: 93%;
+    height: 100%;
     background: rgba(255, 255, 255, 0.4);
     display: flex;
     flex-direction: column;
     justify-content: center;
+    margin-top: 3vh;
 }
 .vidroCima{
     width: 100%;
@@ -207,79 +234,15 @@ nav.sticky{
     display: flex;
     align-items: flex-start;
 }
-.box1{
+.box{
     width: 16%;
     height: 90%;
-    margin-top: 1.6%;
+    margin-top: 0.5%;
     margin-left: 7.4%;
     float: left;
     /* border: forestgreen 2px solid; */
     border-radius: 30px;
-    box-shadow: yellow 5px 10px 10px;
-}
-.box2{
-    width: 16%;
-    height: 90%;
-    margin-top: 1.6%;
-    margin-left: 7.4%;
-    float: left;
-    /* border: forestgreen 2px solid; */
-    border-radius: 30px;
-}
-.box3{
-    width: 16%;
-    height: 90%;
-    margin-top: 1.6%;
-    margin-left: 7.4%;
-    float: left;
-    /* border: forestgreen 2px solid; */
-    border-radius: 30px;
-    box-shadow:red 5px 10px 10px;
-}
-.box4{
-    width: 16%;
-    height: 90%;
-    margin-top: 1.6%;
-    margin-left: 7.4%;
-    float: left;
-    /* border: forestgreen 2px solid; */
-    border-radius: 30px;
-}
-.box5{
-    width: 16%;
-    height: 90%;
-    margin-top: 1.6%;
-    margin-left: 7.4%;
-    float: left;
-    /* border: forestgreen 2px solid; */
-    border-radius: 30px;
-}
-.box6{
-    width: 16%;
-    height: 90%;
-    margin-top: 1.6%;
-    margin-left: 7.4%;
-    float: left;
-    /* border: forestgreen 2px solid; */
-    border-radius: 30px;
-}
-.box7{
-    width: 16%;
-    height: 90%;
-    margin-top: 1.6%;
-    margin-left: 7.4%;
-    float: left;
-    /* border: forestgreen 2px solid; */
-    border-radius: 30px;
-}
-.box8{
-    width: 16%;
-    height: 90%;
-    margin-top: 1.6%;
-    margin-left: 7.4%;
-    float: left;
-    /* border: forestgreen 2px solid; */
-    border-radius: 30px;
+    /* box-shadow: yellow 5px 10px 10px; */
 }
 .boxCima{
     width: 100%;

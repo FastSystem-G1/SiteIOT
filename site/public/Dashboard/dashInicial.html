@@ -15,7 +15,7 @@
 </head>
 <body window.onload="validarSessao()">
     <div class="fundo">
-        <header>
+        <header class="header">
             <nav>
                 <a class="logo" href="dashInicial.html"><img src="img/logo.png" alt=""></a>
                 <div class="mobile-menu">
@@ -36,17 +36,39 @@
         </header>
         <div class="banner">
             <div class="container">
-                <div class="divSelectMaquinas">
-                    <select class="selectMaquinas" name="selectMaquinas" id="selectMaquinas">
-                        <option value="01">Todas</option>
-                        <option value="02">Em alerta</option>
-                        <option value="03">Estado crítico</option>
-                    </select>
-                    <button class="botaoSelectMaquinas">Filtrar</button>
+                <div class="divCards">
+                            <div class="cardExtremo">
+                                <div class="cardCima"><b>CPU</b></div>
+                                <div class="cardBaixo"><b>5</b></div>
+                            </div>
+                            <div class="cardExtremo">
+                                <div class="cardCima"><b>Memoria</b></div>
+                                <div class="cardBaixo"><b>5</b></div>
+                            </div>
+                            <div class="cardExtremo">
+                                <div class="cardCima"><b>Disco</b></div>
+                                <div class="cardBaixo"><b>5</b></div>
+                            </div>
+                            <div class="cardAlert">
+                                <div class="cardCima"><b>CPU</b></div>
+                                <div class="cardBaixo"><b>5</b></div>
+                            </div>
+                            <div class="cardAlert">
+                                <div class="cardCima"><b>Memoria</b></div>
+                                <div class="cardBaixo"><b>5</b></div>
+                            </div>
+                            <div class="cardAlert">
+                                <div class="cardCima"><b>Disco</b></div>
+                                <div class="cardBaixo"><b>5</b></div>
+                            </div>
+                            <div class="cardTotal">
+                                <div class="cardCima"><b>Total de Maquinas</b></div>
+                                <div class="cardBaixo"><b>20</b></div>
+                            </div>
                 </div>
                 <div class="fundoVidro">
                     <div class="vidroCima">
-                        <div class="box1">
+                        <div class="box">
                             <div class="boxCima">
                                 <div class="divIconBox">
                                     <div class="icons1"><a><img src="img/cpu-removebg-preview.png" id="imagem_cpu" alt=""></a></div>
@@ -69,7 +91,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="box2">
+                        <div class="box">
                             <div class="boxCima">
                                 <div class="divIconBox">
                                     <div class="icons1"><a><img src="img/cpu-removebg-preview.png" id="imagem_cpu" alt=""></a></div>
@@ -90,7 +112,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="box3">
+                        <div class="box">
                             <div class="boxCima">
                                 <div class="divIconBox">
                                     <div class="icons1"><a><img src="img/cpu-removebg-preview.png" id="imagem_cpu" alt=""></a></div>
@@ -111,7 +133,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="box4">
+                        <div class="box">
                             <div class="boxCima">
                                 <div class="divIconBox">
                                     <div class="icons1"><a><img src="img/cpu-removebg-preview.png" id="imagem_cpu" alt=""></a></div>
@@ -134,7 +156,7 @@
                         </div>
                     </div>
                     <div class="vidroBaixo">
-                        <div class="box5">
+                        <div class="box">
                             <div class="boxCima">
                                 <div class="divIconBox">
                                     <div class="icons1"><a><img src="img/cpu-removebg-preview.png" id="imagem_cpu" alt=""></a></div>
@@ -155,7 +177,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="box6">
+                        <div class="box">
                             <div class="boxCima">
                                 <div class="divIconBox">
                                     <div class="icons1"><a><img src="img/cpu-removebg-preview.png" id="imagem_cpu" alt=""></a></div>
@@ -176,7 +198,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="box7">
+                        <div class="box">
                             <div class="boxCima">
                                 <div class="divIconBox">
                                     <div class="icons1"><a><img src="img/cpu-removebg-preview.png" id="imagem_cpu" alt=""></a></div>
@@ -197,7 +219,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="box8">
+                        <div class="box">
                             <div class="boxCima">
                                 <div class="divIconBox">
                                     <div class="icons1"><a><img src="img/cpu-removebg-preview.png" id="imagem_cpu" alt=""></a></div>
@@ -227,7 +249,7 @@
 </body>
 </html>
 <script>
-    window.onload = validarSessao();
+   // window.onload = validarSessao();
 
     function sair(){
         sessionStorage.clear();
