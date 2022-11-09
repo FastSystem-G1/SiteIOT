@@ -7,8 +7,8 @@ function buscarUltimasMedidas(req, res) {
     
 
     console.log(`Recuperando as ultimas ${limite_linhas} medidas`);
-    var id_empresa = req.params.empresa;
-    medidaModel.buscarUltimasMedidas(id_empresa).then(function (resultado) {
+    var empresa = req.params.id_empresa;
+    medidaModel.buscarUltimasMedidas(empresa).then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {
