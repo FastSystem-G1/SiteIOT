@@ -201,48 +201,48 @@ function sair(){
       senha_input.value= ""
     }
 
-    /* =======================senha===================== */
-    if (senhaVar == "" || senhaVar.length <= 7) {
-      console.log("Senha precisa ter no mínimo 8 caracteres");
-      erroCadastroSenha.innerHTML = "Senha precisa ter no mínimo 8 caracteres"
-      erroValidacao++;
-    } else if (senha2Var != senhaVar) {
-      console.log("Senhas são diferentes")
-      erroCadastroSenha2.innerHTML = "Senhas diferentes."
-      erroValidacao++;
-    } else {
-      console.log("Senha válida");
-      /* erroValidacao = 0; */
-    }
+    // /* =======================senha===================== */
+    // if (senhaVar == "" || senhaVar.length <= 7) {
+    //   console.log("Senha precisa ter no mínimo 8 caracteres");
+    //   erroCadastroSenha.innerHTML = "Senha precisa ter no mínimo 8 caracteres"
+    //   erroValidacao++;
+    // } else if (senha2Var != senhaVar) {
+    //   console.log("Senhas são diferentes")
+    //   erroCadastroSenha2.innerHTML = "Senhas diferentes."
+    //   erroValidacao++;
+    // } else {
+    //   console.log("Senha válida");
+    //   /* erroValidacao = 0; */
+    // }
 
-    if(senha2Var == ""){
-      erroCadastroSenha2.innerHTML = "Preencha este campo para prosseguir!"
-      erroValidacao++
-    }
+    // if(senha2Var == ""){
+    //   erroCadastroSenha2.innerHTML = "Preencha este campo para prosseguir!"
+    //   erroValidacao++
+    // }
 
-    /* =======================cpf===================== */
-    if (cpfVar == "" || cpfVar.length < 11 || cpfVar.length > 11) {
-      console.log("CPF inválido!");
-      erroCadastroCpf.innerHTML = "CPF inválido!"
-      erroValidacao++;
+    // /* =======================cpf===================== */
+    // if (cpfVar == "" || cpfVar.length < 11 || cpfVar.length > 11) {
+    //   console.log("CPF inválido!");
+    //   erroCadastroCpf.innerHTML = "CPF inválido!"
+    //   erroValidacao++;
 
-    } else {
-      console.log("Cpf válido");
-      /* erroValidacao = 0; */
-    }
+    // } else {
+    //   console.log("Cpf válido");
+    //   /* erroValidacao = 0; */
+    // }
 
-    if (telefoneVar == "") {
-      console.log("Preencha este campo para prosseguir");
-      erroCadastroTelefone.innerHTML = "Preencha este campo para prosseguir!"
-      erroValidacao++;
-    } else if (telefoneVar.lenght < 10) {
-      console.log("Preencha o telefone com o DDD")
-      erroCadastroTelefone.innerHTML = "Preencha o telefone com o DDD"
-      erroValidacao++;
-    } else {
-      console.log("Telefone válido");
-      /* erroValidacao = 0; */
-    }
+    // if (telefoneVar == "") {
+    //   console.log("Preencha este campo para prosseguir");
+    //   erroCadastroTelefone.innerHTML = "Preencha este campo para prosseguir!"
+    //   erroValidacao++;
+    // } else if (telefoneVar.lenght < 10) {
+    //   console.log("Preencha o telefone com o DDD")
+    //   erroCadastroTelefone.innerHTML = "Preencha o telefone com o DDD"
+    //   erroValidacao++;
+    // } else {
+    //   console.log("Telefone válido");
+    //   /* erroValidacao = 0; */
+    // }
 
     /* =======================se validados===================== */
     if (erroValidacao == 0) {
@@ -276,6 +276,7 @@ function sair(){
           if (resposta.ok) {
             console.log("Cadastro realizado com sucesso!")
             alert("Cadastro realizado com sucesso !!!");
+            window.location = "funcionariosRead.html"
             limparFormulario();
             /*  finalizarAguardar(); */
           } else {

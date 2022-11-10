@@ -1,30 +1,30 @@
-// var mysql = require("mysql2");
-var sql = require('mssql');
+ var mysql = require("mysql2");
+//var sql = require('mssql');
 
 // CONEXÃO DO SQL SERVER - AZURE (NUVEM)
-var sqlServerConfig = {
-    server: "fast-system-server.database.windows.net",
-    database: "FastSystem",
-    user: "admin-fast-system",
-    password: "#Gfgrupo10",
-    pool: {
-        max: 10,
-        min: 0,
-        idleTimeoutMillis: 30000
-    },
-    options: {
-        encrypt: true, // for azure
-    }
-}
+// var sqlServerConfig = {
+//     server: "fast-system-server.database.windows.net",
+//     database: "FastSystem",
+//     user: "admin-fast-system",
+//     password: "#Gfgrupo10",
+//     pool: {
+//         max: 10,
+//         min: 0,
+//         idleTimeoutMillis: 30000
+//     },
+//     options: {
+//         encrypt: true, // for azure
+//     }
+// }
 
 // CONEXÃO DO MYSQL WORKBENCH (LOCAL)
-/* var mySqlConfig = {
+var mySqlConfig = {
     host: "localhost",
-    database: "FastSystem",
+    database: "fastsystem",
     user: "root",
-    // password: "Lucimar1808",
-    // port: "3306"
-}; */
+    password: "",
+    port: "3306"
+}; 
 
 function executar(instrucao) {
     // VERIFICA A VARIÁVEL DE AMBIENTE SETADA EM app.js

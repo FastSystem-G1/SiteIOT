@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+
+  <title>Funcionário | Fast System</title>
+
+  <link rel="stylesheet" href="NovoFuncionario_style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap" rel="stylesheet">
+  <script src="../js/funcoes.js"></script>
+  <link rel="icon" href="img/logo.png">
+
+  <style>
+    .box1 {
+    border-radius: 80px 0px 0px 80px;
+    background-color: #010E3C;
+    width: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border-radius: 70px 0px 0px 70px; */
+}
+  </style>
+  
+</head>
+
+<body>
+  <div class="fundo"></div>
+  <header>
+    <nav>
+        <a class="logo" href="../Dashboard/dashInicial.html"><img src="img/logo.png" alt=""></a>
+        <div class="mobile-menu">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
+        <ul class="nav-list" id="nav-content"  tabindex="0">
+          <div id="texto_func" style="width: 100%; display: flex; align-items: center; justify-content: center; color: #00C2CB; font-size: 25px; font-weight: bold; margin-top: 30px;"></div>
+          <li class="agora"><a href="../Dashboard/dashInicial.html">Início</a></li>
+          <li class="cad1" id="cad1"><a href="../Telas de Cadastro/cadastroMaquina.html">Cadastrar máquina</a></li>                
+          <li class="cad1" id="cad1"><a href="../Telas de Cadastro/cadastroAplicativo.html">Cadastrar aplicativo</a></li>
+          <li class="cad1" id="cad1"><a href="../Telas de Cadastro/NovoFuncionario.html">Cadastrar funcionário</a></li>
+          <li onclick="sair()"><a href="../login.html">Sair</a></li>
+          <li></li>
+      </ul>
+    </nav>
+</header>
+
+    <div class=" main">
+        <div class="containerMain">
+          <div class="caixa">
+            <div class="box1">
+              <img src="img/logo3.png" id="imagem_logo_cadastro">
+            </div>
+            <div class="box2">
+
+              <div class="titulo_novo_integrante">
+                <h2 id="h2_novo_integrante">
+                  Edição Funcionário
+                </h2>
+              </div>
+
+              <div class="campos_cadastro">
+
+                <div class="div_inputs">
+                  <!-- <h2>Nome:</h2> -->
+                  <div >
+                    <input id="nome_input" class="inputs_cadastro" placeholder="Nome completo:">
+                  </div>
+                  <div class="imagemVerificacao">
+                    <img src="img/imagem_erro.png" id="imagem_erro" alt=""> <span id="mensagem_erro_email"></span>
+                  </div>
+                </div>
+                <div id="erroCadastroNome" class="erroCadastro"></div>
+                <div class="div_inputs">
+                  <!-- <h2>Função/Cargo:</h2> -->
+                  <select id="cargo_select" class="inputs_cadastro" style="width: 300px; cursor: pointer;">
+                    <option value="">Selecione o cargo:</option>
+                    <option value="1">Administrador</option>
+                    <option value="0 ">Suporte de TI</option>
+                  </select>
+                  <div class="imagemVerificacao">
+                    <img src="img/imagem_erro.png" id="imagem_erro" alt=""> <span id="mensagem_erro_email"></span>
+                  </div>
+                </div>
+                <div id="erroCadastroCargo" class="erroCadastro"></div>
+                <div class="div_inputs">
+                  <!--  <h2>Email:</h2> -->
+                  <input id="email_input" class="inputs_cadastro" placeholder="Email: (seuemail@provedora.com)"
+                    type="email">
+                  <div class="imagemVerificacao">
+                    <img src="img/imagem_erro.png" id="imagem_erro" alt=""> <span id="mensagem_erro_email"></span>
+                  </div> 
+                </div>
+                <div id="erroCadastroEmail" class="erroCadastro"></div>
+             
+
+                <div class="div_inputs">
+                  <!-- <h2>CPF:</h2> -->
+                  <input id="cpf_input" class="inputs_cadastro" placeholder="CPF: (Apenas números)" type="number"
+                  min="0">
+                  <div class="imagemVerificacao">
+                    <img src="img/imagem_erro.png" id="imagem_erro" alt=""> <span id="mensagem_erro_email"></span>
+                  </div>
+                </div>
+                <div id="erroCadastroCpf" class="erroCadastro"></div>
+                <div class="div_inputs">
+                  <!--  <h2>Telefone:</h2> -->
+                  <input id="telefone_input" class="inputs_cadastro" placeholder="Telefone: (Exemplo: 5511954622727)"
+                    type="number" min="0">
+                    <div class="imagemVerificacao">
+                      <img src="img/imagem_erro.png" id="imagem_erro" alt=""> <span id="mensagem_erro_email"></span>
+                    </div>
+                </div>
+                <div id="erroCadastroTelefone" class="erroCadastro"></div>
+                <button onclick="editar()" id="botao_cadastro">Editar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <script src="../headers/mobile-navbar.js"></script>
+</body>
+
+</html>
+
+<script>
+// window.onload = validarSessao2();
+function sair(){
+    sessionStorage.clear();
+}
+
+//   var erroValidacao = 0;
+
+function editar() { //`/post/listarPosts/${idUsuario}`)
+
+var nomeVar = nome_input.value;
+var cargovar = cargo_select.value;
+var emailVar = email_input.value;
+var cpfVar = cpf_input.value;
+var telefoneVar = telefone_input.value;
+
+var idFuncionario = sessionStorage.getItem("ID_FUNCIONARIO_EDITANDO");
+//alert(idFuncionario)
+console.log("Apertou botão editar");
+    fetch(`/listas/editar/${idFuncionario}`, {
+        
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        
+        body: JSON.stringify({
+            
+            nomeServer: nomeVar,
+            cargoServer: cargovar,
+            
+            cpfServer: cpfVar,
+            emailServer: emailVar,
+            telefoneServer: telefoneVar,
+            idServer: idFuncionario
+
+        })
+    }).then(function (resposta) {
+
+        if (resposta.ok) {
+            window.alert("Funcionário atualizado com sucesso pelo usuario de email: " + sessionStorage.getItem("EMAIL_USUARIO") + "!");
+            window.location = "funcionariosRead.html"
+        } else if (resposta.status == 404) {
+            window.alert("Deu 404!");
+        } else {
+            throw ("Houve um erro ao tentar realizar a atualização! Código da resposta: " + resposta.status);
+        }
+    }).catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+    });
+}
+
+
+</script>
