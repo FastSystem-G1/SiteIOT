@@ -69,10 +69,10 @@ nav{
 
     .nav-list {
         position: absolute;
-        top: 4vh;
+        top: 4.5vh;
         right: 0;
         width: 25vw;
-        height: 150vh;
+        height: 100vh;
         background: #010e3c;
         flex-direction: column;
         align-items: center;
@@ -155,7 +155,7 @@ nav.sticky{
 .divCards{
     display: flex;
     flex-direction: row;
-    width: 80%;
+    width: 95%;
     height: 25%;
     /* border: red solid 2px; */
 }
