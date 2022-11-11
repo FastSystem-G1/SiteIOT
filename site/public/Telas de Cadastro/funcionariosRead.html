@@ -105,6 +105,7 @@
           <li class="cad1" id="cad1"><a href="../Telas de Cadastro/cadastroMaquina.html">Cadastrar máquina</a></li>                
           <li class="cad1" id="cad1"><a href="../Telas de Cadastro/cadastroAplicativo.html">Cadastrar aplicativo</a></li>
           <li class="cad1" id="cad1"><a href="../Telas de Cadastro/NovoFuncionario.html">Cadastrar funcionário</a></li>
+          <li class="cad1" id="cad1"><a href="../Telas de Cadastro/funcionariosRead.html">Editar funcionário</a></li>  
           <li onclick="sair()"><a href="../login.html">Sair</a></li>
           <li></li>
       </ul>
@@ -145,6 +146,7 @@ telefone -->
 
 <script>
 //window.onload = validarSessao2();
+var funcionarioAtual = sessionStorage.ID_USUARIO;
 function sair(){
     sessionStorage.clear();
 }
@@ -153,8 +155,8 @@ function atualizarFeed() {
     
     //erro();
     var idEmpresa = sessionStorage.EMPRESA;
-    //var idFuncionario = sessionStorage.ID_USUARIO;
-    //alert(idFuncionario)
+    
+    // alert(funcionarioAtual)
     fetch(`/listas/exibirFuncionarios/${idEmpresa}`).then(function (resposta) {
         if (resposta.ok) {
             
@@ -173,13 +175,16 @@ function atualizarFeed() {
                 feed.innerHTML = "";
                 for (let i = 0; i < resposta.length; i++) {
                     var funcionario = resposta[i];
-
+                    var cargo = 'Suporte de TI';
+                    if(funcionario.is_admin == 1){
+                        cargo = 'ADM'
+                    }
                     idInformacoes.innerHTML +=
                     `
                     <div class="colunaFuncionario">
                     <div style="display:none"><span id="spanFuncionario">${funcionario.id_funcionario}</span></div>
                     <div><span>${funcionario.nome_funcionario}</span></div>
-                    <div><span>${funcionario.is_admin}</span></div>
+                    <div><span>${cargo}</span></div>
                     <div><span>${funcionario.email_funcionario}</span></div>
                     <div><span>${funcionario.cpf_funcionario}</span></div>
                     <div><span>${funcionario.telefone_funcionario}</span></div>
@@ -206,6 +211,11 @@ function atualizarFeed() {
 
 function deletar(idFuncionario) {
         console.log("Criar função de apagar funcionario escolhido - ID" + idFuncionario);
+
+        if(funcionarioAtual == idFuncionario){
+            alert("Não pode se deletar")
+        }
+        else{
         fetch(`/listas/deletar/${idFuncionario}`, {
             method: "DELETE",
             headers: {
@@ -225,11 +235,13 @@ function deletar(idFuncionario) {
             console.log(`#ERRO: ${resposta}`);
         });
     }
+}
 
     function editar(idFuncionario) {
         sessionStorage.ID_FUNCIONARIO_EDITANDO = idFuncionario;
         console.log("cliquei em editar - " + idFuncionario);
         window.alert("Você será redirecionado à página de edição do Funcionario de id número: " + idFuncionario);
-        window.location = "edicao_funcionario.html"
+        // window.location = "edicao_funcionario.html"
+        window.location = "teste.html"
 
     }</script>
