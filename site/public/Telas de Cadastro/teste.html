@@ -99,13 +99,13 @@
                     teste.innerHTML +=
                     `
                     
-                    nome: <input id="nome_input" type="text" value="${funcionario.nome_funcionario}">
+                    nome: <input class="inputs_cadastro" id="nome_input" type="text" value="${funcionario.nome_funcionario}">
                     
                     adm:
                     <select id="cargo_select" class="inputs_cadastro" style="width: 300px; cursor: pointer;">
-                    <option value="${funcionario.is_admin}">Selecione o cargo:</option>
+                    <option value="${funcionario.isAdmin}">Selecione o cargo:</option>
                     <option value="1">Administrador</option>
-                    <option value="0 ">Suporte de TI</option>
+                    <option value="0">Suporte de TI</option>
                   </select>
                     email
                   <input id="email_input" class="inputs_cadastro" value="${funcionario.email_funcionario}"

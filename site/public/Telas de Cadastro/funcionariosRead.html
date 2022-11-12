@@ -103,7 +103,7 @@ function atualizarFeed() {
                 for (let i = 0; i < resposta.length; i++) {
                     var funcionario = resposta[i];
                     var cargo = 'Suporte de TI';
-                    if(funcionario.is_admin == 1){
+                    if(funcionario.isAdmin == '1'){
                         cargo = 'ADM'
                     }
                     idInformacoes.innerHTML +=
@@ -156,7 +156,7 @@ function deletar(idFuncionario) {
             } else if (resposta.status == 404) {
                 window.alert("Deu 404!");
             } else {
-                throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
+                throw ("Houve um erro ao tentar deletar o funcionario! Código da resposta: " + resposta.status);
             }
         }).catch(function (resposta) {
             console.log(`#ERRO: ${resposta}`);
