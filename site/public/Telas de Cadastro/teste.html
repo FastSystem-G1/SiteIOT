@@ -4,12 +4,64 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    
+    <title>Editar Funcionário | Fast System</title>
+
+  <link rel="stylesheet" href="NovoFuncionario_style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap" rel="stylesheet">
+  <script src="../js/funcoes.js"></script>
+  <link rel="icon" href="img/logo.png">
 </head>
 <body onload="listarEdicao()">
-    <div id="teste">
+    <div class="fundo"></div>
+  <header>
+    <nav>
+        <a class="logo" href="../Dashboard/dashInicial.html"><img src="img/logo.png" alt=""></a>
+        <div class="mobile-menu">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
+        <ul class="nav-list" id="nav-content"  tabindex="0">
+          <div id="texto_func" style="width: 100%; display: flex; align-items: center; justify-content: center; color: #00C2CB; font-size: 25px; font-weight: bold; margin-top: 30px;"></div>
+          <li class="cad1"><a href="../Dashboard/dashInicial.html">Início</a></li>
+          <li class="cad1" id="cad1"><a href="../Telas de Cadastro/cadastroMaquina.html">Cadastrar máquina</a></li>                
+          <li class="cad1" id="cad1"><a href="../Telas de Cadastro/cadastroAplicativo.html">Cadastrar aplicativo</a></li>
+          <li class="agora" id="cad1"><a href="../Telas de Cadastro/NovoFuncionario.html">Cadastrar funcionário</a></li>
+          <li class="cad1" id="cad1"><a href="../Telas de Cadastro/funcionariosRead.html">Editar funcionário</a></li>  
+          <li onclick="sair()"><a href="../login.html">Sair</a></li>
+          <li></li>
+      </ul>
+    </nav>
+  </header>
 
-    </div>
+    <div class="main">
+        <div class="containerMain">
+          <div class="caixa">
+            <div class="box1">
+              <img src="img/logo3.png" id="imagem_logo_cadastro">
+            </div>
+            <div class="box2">
+
+              <div class="titulo_novo_integrante">
+                <h2 id="h2_novo_integrante">
+                  Editar informações
+                </h2>
+              </div>
+
+              <div class="campos_cadastro">
+                <div id="teste">
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <script src="../headers/mobile-navbar.js"></script>
+    
 
     
 

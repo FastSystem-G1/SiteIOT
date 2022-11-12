@@ -148,7 +148,6 @@ nav.sticky{
 /*MAIN*/
 
 .main {
-    height: 95;
     width: 100vw;
     display: flex;
     padding:0 0 5px 0;
