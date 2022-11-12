@@ -78,20 +78,67 @@
 </html>
 
 <script>
-//window.onload = validarSessao();
+window.onload = validarSessao();
+var empresa = sessionStorage.EMPRESA;
+let proximaAtualizacao;
+    var nome_processador;
+    var emUso;
+    var memoriaLivre;
 function sair(){
     sessionStorage.clear();
 }
 
-    const ctx = document.getElementById('myChart');
-    const myChart = new Chart(ctx, {
-        type: 'pie',
-        data: {
-            labels: ['Em uso', 'Disponível'],
-            datasets: [{
-                label: '# of Votes',
-                data: [60.53, 39.47],
-                backgroundColor: [
+window.onload = obterDadosGrafico(empresa);
+
+function obterDadosGrafico(empresa) {
+        
+
+        if (proximaAtualizacao != undefined) {
+            clearTimeout(proximaAtualizacao);
+        }
+        var empresa = sessionStorage.EMPRESA;
+        fetch(`/medidas/ultimasMemoria/${empresa}`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    
+                    //alert("oi")
+                    plotarGrafico(resposta );
+
+                    //alert(resposta[0].modelo_componente)
+                    for (i = 0; i < resposta.length; i++) {
+                    var registro = resposta[i];
+                        //nome_processador = resposta[0].modelo_componente;
+                    //dados.datasets[i].data.push(resposta[i].re);
+            
+
+        }
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+    }
+
+
+    function plotarGrafico(resposta) {
+        console.log('iniciando plotagem do gráfico...');
+
+        // Criando estrutura para plotar gráfico - labels
+
+        const dados = {
+  labels: [
+    'Livre',
+    'Em uso',
+    
+  ],
+  datasets: [{
+    label: 'My First Dataset',
+    data: [],
+    backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
                     'rgba(75, 192, 192, 0.2)'
                 ],
@@ -100,28 +147,49 @@ function sair(){
                     'rgba(75, 192, 192, 1)'
                 ],
                 borderWidth: 3
-            }]
-
-        },
-        options: {
-            maintainAspectRatio: false,
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
+  }]
+};
+        
+        console.log('----------------------------------------------')
+        console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
+        console.log(resposta)
+        
+        // Inserindo valores recebidos em estrutura para plotar o gráfico
+        for (i = 0; i < resposta.length; i++) {
+            var registro = resposta[i];
+            //labels.push(registro.momento_grafico);
+            dados.datasets[i].data.push(registro.livre);
+            memoriaLivre = registro.livre;
+            id_disponivel.innerHTML = `<span>${memoriaLivre}%</span>`;
+            dados.datasets[i].data.push(registro.medida);
+            emUso = registro.medida;
+            id_em_uso.innerHTML = `<span>${emUso}%</span>`;
+            //dados.datasets[1].data.push(registro.livre);
         }
-    });
 
+        
+        
+        console.log('----------------------------------------------')
+        console.log('O gráfico será plotado com os respectivos valores:')
+        console.log('Labels:')
+        //console.log(labels)
+        console.log('Dados:')
+        console.log(dados.datasets)
+        console.log('----------------------------------------------')
+        
+        // Criando estrutura para plotar gráfico - config
+        const config = {
+        type: 'pie',
+        data: dados,
+        };
 
-    data = {
-        datasets: [{
-            data: [10, 20]
-        }],
-        labels: [
-            'Red',
-            'Green'
-        ]
-    };
+        // Adicionando gráfico criado em div na tela
+        let myChart = new Chart(
+            document.getElementById('myChart'),
+            config
+        );
+
+        setTimeout(() => atualizarGrafico(idAquario, dados, myChart), 2000);
+    }
 
 </script>
