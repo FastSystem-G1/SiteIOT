@@ -26,22 +26,22 @@ function listar(req, res) {
 
 function cadastrar(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
-    var nome = req.body.nomeServer; 
+    /* var nome = req.body.nomeServer; 
     var funcao = req.body.funcaoServer;
-    var prioridade = req.body.prioridadeServer;
+    var prioridade = req.body.prioridadeServer; */
+    var id_empresa = req.body.empresaServer;
+    var id_app = re.body.aplicativoServer;
     
 
     // Faça as validações dos valores
-    if (nome == undefined) {
-        res.status(400).send("O nome do aplicativo está undefined!");
-    } else if (funcao == undefined) {
-        res.status(400).send("A função do aplicativo está undefined!");
-    } else if (prioridade == undefined) {
-        res.status(400).send("A prioridade do aplicativo está undefined!");
+    if (id_empresa == undefined) {
+        res.status(400).send("A Empresa está undefined!");
+    }else if (id_app == undefined) {
+        res.status(400).send("O aplicativo está undefined!");
     } else {
         
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        aplicativoModel.cadastrar(nome, funcao, prioridade)
+        aplicativoModel.cadastrar(id_empresa, id_app)
             .then(
                 function (resultado) {
                     res.json(resultado);
