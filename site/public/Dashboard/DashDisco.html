@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="DashDisco_style.css">
     <link rel="stylesheet" href="dashCPUMemoria.css">
     <script src="../js/funcoes.js"></script>
-    <script src="DashDisco.js"></script>
 </head>
 
 <body>
@@ -77,26 +76,10 @@
                 
                                     <div class="div_info_all_discos">
                 
-                                        <div class="div_disco_info">
-                                            <span>Nome disco 1</span>
-                                            <span>Modelo disco 1</span>
-                                            <span>Tamanho disco 1</span>
-                                        </div>
-                                        <div class="div_disco_info">
-                                            <span>Nome disco 2</span>
-                                            <span>Modelo disco 2</span>
-                                            <span>Tamanho disco 2</span>
-                                        </div>
-                                        <div class="div_disco_info">
-                                            <span>Nome disco 3</span>
-                                            <span>Modelo disco 3</span>
-                                            <span>Tamanho disco 3</span>
-                                        </div>
+                                        <div class="div_disco_info" id="div_disco_info" onclick="disco1()"></div>
+                                        
                                     </div>
                                 </div>
-                            </div>
-                            <div class="div_botao_discos">
-                                <img src="img/seta_discos.png" style="height:45px;margin-top: 2%;" alt="">
                             </div>
                         </div>
                 
@@ -109,12 +92,12 @@
                         <div class="container_uso_disco">
                             <div class="container_uso">
                                 <span id="titulo_em_uso">Em uso</span>
-                                <span>90.24%</span>
+                                <span id="valor_emUso"></span>
                             </div>
                 
                             <div class="container_disponivel">
                                 <span id="titulo_disponivel">Disponível</span>
-                                <span>9.76%</span>
+                                <span id="valor_disponivel"></span>
                             </div>
                         </div>
                 
@@ -147,38 +130,123 @@ function sair(){
     sessionStorage.clear();
 }
 
-    const labels = [
-        'Em uso',
-        'Disponível',
-
-    ];
-
-    const data = {
-        labels: labels,
-        datasets: [{
-            label: 'My First dataset',
-            backgroundColor: [
-                'rgb(1, 110, 159)',
-                'gray',
-            ],
-            borderColor: 'white',
-            data: [90.24, 9.76],
-
-        }]
-    };
-
-    const config = {
-        type: 'pie',
-        data: data,
-        options: {}
-    };
-
 </script>
 
 <script>
+    window.onload = obterDadosGrafico(1);
+    let proximaAtualizacao;
+    var nome_disco;
+    var emUso;
+    var disponivel;
+    var capacidade_total;
 
-    const myChart = new Chart(
-        document.getElementById('myChart'),
-        config
-    );
+    function disco(idDisco) {
+
+    }
+
+    function obterDadosGrafico(empresa) {
+        /*if (proximaAtualizacao != undefined) {
+            clearTimeout(proximaAtualizacao);
+        }*/
+
+        fetch(`/medidas/ultimasDisco/${empresa}`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+
+                    plotarGrafico(resposta);
+
+                    //alert(resposta[0].modelo_componente)
+                    for (i = 0; i < resposta.length; i++) {
+                        var registro = resposta[i];
+                    }
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+    }
+
+    function plotarGrafico(resposta) {
+        console.log('iniciando plotagem do gráfico...');
+
+        // Criando estrutura para plotar gráfico - labels
+
+        const dados = {
+            labels: [
+                'Livre',
+                'Em uso',
+            ],
+            datasets: [{
+                label: 'My First Dataset',
+                data: [],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(75, 192, 192, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(75, 192, 192, 1)'
+                ],
+                borderWidth: 3
+            }]
+        };
+
+        console.log('----------------------------------------------')
+        console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
+        console.log(resposta)
+
+        // Inserindo valores recebidos em estrutura para plotar o gráfico
+        for (i = 0; i < resposta.length; i++) {
+            var registro = resposta[i];
+
+            emUso = registro.medida
+            disponivel = registro.livre;
+
+            capacidade_total = registro.capacidade_componente;
+            var emUsoPorcentagem = (emUso * 100) / capacidade_total;
+            var disponivelPorcentagem = (disponivel * 100) / capacidade_total;
+
+            valor_emUso.innerHTML = `<span>${emUsoPorcentagem.toFixed(2)}%</span>`;
+            valor_disponivel.innerHTML = `<span>${disponivelPorcentagem.toFixed(2)}%</span>`;
+
+            dados.datasets[i].data.push(emUsoPorcentagem);
+            dados.datasets[i].data.push(disponivelPorcentagem);
+            
+            div_disco_info.innerHTML = `
+            <div class="div_disco" onclick="disco()">
+                <span class="span_modelo_disco"> ${registro.nome_componente}</span>
+                <span class="span_modelo_disco"> ${registro.modelo_componente}</span>
+                <span class="span_modelo_disco"> ${capacidade_total}</span>
+            <div>
+            `
+        }
+
+
+
+        console.log('----------------------------------------------')
+        console.log('O gráfico será plotado com os respectivos valores:')
+        console.log('Labels:')
+        //console.log(labels)
+        console.log('Dados:')
+        console.log(dados.datasets)
+        console.log('----------------------------------------------')
+
+        // Criando estrutura para plotar gráfico - config
+        const config = {
+            type: 'pie',
+            data: dados,
+        };
+
+        // Adicionando gráfico criado em div na tela
+        let myChart = new Chart(
+            document.getElementById('myChart'),
+            config
+        );
+
+        //setTimeout(() => atualizarGrafico(idAquario, dados, myChart), 2000);
+    }
 </script>

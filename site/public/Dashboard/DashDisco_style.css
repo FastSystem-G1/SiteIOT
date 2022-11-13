@@ -349,7 +349,7 @@ nav.sticky{
 
 
 .div_disco_info {
-    height: 33%;
+    height: 50%;
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -414,4 +414,16 @@ nav.sticky{
     justify-content: center;
     align-items: center;
 
+}
+
+.div_disco {
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.span_modelo_disco {
+    width: 33%;
+    overflow: hidden;
 }

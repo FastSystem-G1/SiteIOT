@@ -5,8 +5,9 @@ function validarSessao() {
     var email = sessionStorage.EMAIL_USUARIO;
     var nome = sessionStorage.NOME_USUARIO;
     var cargo = sessionStorage.CARGO;
-
-    if (email =! null && nome != null && cargo == "true")  {
+    //LOCAL cargo == TRUE
+    // NUVEM cargo =="true"
+    if (email =! null && nome != null && cargo == TRUE)  {
         document.getElementById('nav-content').innerHTML = 
         `<div style="display: flex; justify-content: center; align-items: center; flex-direction: column; justify-content: space-around; align-items: center;
         letter-spacing: 3px;
@@ -26,7 +27,7 @@ function validarSessao() {
         `;
       
 
-    }else if(email =! null && nome != null && cargo == "false"){
+    }else if(email =! null && nome != null && cargo == false){
 
         document.getElementById('nav-content').innerHTML = 
         `<div style="display: flex; justify-content: center; align-items: center; flex-direction: column; justify-content: space-around; align-items: center;
@@ -57,7 +58,7 @@ function validarSessao2() {
     var nome = sessionStorage.NOME_USUARIO;
     var cargo = sessionStorage.CARGO;
 
-    if (email =! null && nome != null && cargo == "true")  {
+    if (email =! null && nome != null && cargo == TRUE)  {
         document.getElementById('nav-content').innerHTML = 
         `<div style="display: flex; justify-content: center; align-items: center; flex-direction: column; justify-content: space-around; align-items: center;
         letter-spacing: 3px;
@@ -77,7 +78,7 @@ function validarSessao2() {
         `;
       
 
-    }else if(email =! null && nome != null && cargo == "false"){
+    }else if(email =! null && nome != null && cargo == false){
 
         document.getElementById('nav-content').innerHTML = 
         `<div style="display: flex; justify-content: center; align-items: center; flex-direction: column; justify-content: space-around; align-items: center;

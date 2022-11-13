@@ -8,131 +8,58 @@
 
   <title>Funcionário | Fast System</title>
 
-  <link rel="stylesheet" href="NovoFuncionario_style.css">
+  <link rel="stylesheet" href="funcionariosRead.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap" rel="stylesheet">
   <script src="../js/funcoes.js"></script>
   <link rel="icon" href="img/logo.png">
-  <style>
-    .containerFunc{
-        display:  flex;
-        flex-direction: column;
-        align-items: center;
-        
-        width: 90%;
-        margin: 0 auto;
-    }
-    .usuariosRegistros{
-        display: flex;
-        flex-direction: column;
-        
-        background-color: white;
-        width:100%;
-    }
-    .titulos, .informacoes{
-        display: flex;
-        flex-direction: row;
-        width: 100%;
-    }
-    .titulos div{
-        
-        width:215px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-left:1px solid black;
-        height: 10vh;
-    }
-    .titulos{
-        border:1px solid black;
-    }
-
-    .informacoes div{
-        
-        width:100%;
-        display: flex;
-        border-left:1px solid black;
-        justify-content: center;
-    }
-    .titulos div{
-      flex-direction: column;
-    }
-    .titulos div{
-    margin-bottom: 1%;
-    }
-    .informacoes{
-      flex-direction: column;
-    }
-
-    
-    .botoes{
-      width: 100%;
-      display: flex;
-      justify-content: space-around;
-    }
-    .colunaFuncionario{
-      width: 100%;
-      border:1px solid black;
-    }
-    .colunaFuncionario div{
-      display: flex;
-        flex-direction: row;
-        justify-content: center;
-      height: 40px;
-      align-items: center;
-      color: black;
-      margin-bottom: 1px;
-    }
-
-  </style>
-  
 </head>
 
 <body onload="atualizarFeed()">
-  <div class="fundo"></div>
-  <header>
-    <nav>
-        <a class="logo" href="../Dashboard/dashInicial.html"><img src="img/logo.png" alt=""></a>
-        <div class="mobile-menu">
-            <div class="line1"></div>
-            <div class="line2"></div>
-            <div class="line3"></div>
-        </div>
-        <ul class="nav-list" id="nav-content"  tabindex="0">
-          <div id="texto_func" style="width: 100%; display: flex; align-items: center; justify-content: center; color: #00C2CB; font-size: 25px; font-weight: bold; margin-top: 30px;"></div>
-          <li class="cad1"><a href="../Dashboard/dashInicial.html">Início</a></li>
-          <li class="cad1" id="cad1"><a href="../Telas de Cadastro/cadastroMaquina.html">Cadastrar máquina</a></li>                
-          <li class="cad1" id="cad1"><a href="../Telas de Cadastro/cadastroAplicativo.html">Cadastrar aplicativo</a></li>
-          <li class="cad1" id="cad1"><a href="../Telas de Cadastro/NovoFuncionario.html">Cadastrar funcionário</a></li>
-          <li class="agora" id="cad1"><a href="../Telas de Cadastro/funcionariosRead.html">Editar funcionário</a></li>  
-          <li onclick="sair()"><a href="../login.html">Sair</a></li>
-          <li></li>
-      </ul>
-    </nav>
-</header>
-<div class="containerFunc">
-    <div class="tituloFuncionarios">
-        <h1>Funcionários</h1>
-    </div>
-
-    <div class="usuariosRegistros">
-        <div class="titulos">
-            <div><h3>Nome</h3></div>
-        <div><h3>Cargo</h3></div>
-        <div><h3>email</h3></div>
-        <div><h3>cpf</h3></div>
-        <div><h3>telefone</h3></div>
-        <div><h3>botoes</h3></div>
-        </div>
-
-        <div class="informacoes" id="idInformacoes">
+    <header>
+        <nav>
+            <a class="logo" href="../Dashboard/dashInicial.html"><img src="img/logo.png" alt=""></a>
+            <div class="mobile-menu">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+            <ul class="nav-list" id="nav-content"  tabindex="0">
+                <div id="texto_func" style="width: 100%; display: flex; align-items: center; justify-content: center; color: #00C2CB; font-size: 25px; font-weight: bold; margin-top: 30px;"></div>
+                <li class="cad1"><a href="../Dashboard/dashInicial.html">Início</a></li>
+                <li class="cad1" id="cad1"><a href="../Telas de Cadastro/cadastroMaquina.html">Cadastrar máquina</a></li>                
+                <li class="cad1" id="cad1"><a href="../Telas de Cadastro/cadastroAplicativo.html">Cadastrar aplicativo</a></li>
+                <li class="cad1" id="cad1"><a href="../Telas de Cadastro/NovoFuncionario.html">Cadastrar funcionário</a></li>
+                <li class="agora" id="cad1"><a href="../Telas de Cadastro/funcionariosRead.html">Editar funcionário</a></li>  
+                <li onclick="sair()"><a href="../login.html">Sair</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="main">
+        <div class="containerMain">
+            <div class="fundoVidro">
+                <div class="tituloFuncionarios">
+                    <h1>Funcionários</h1>
+                </div>
         
-            
-        </div>
+                <div class="usuariosRegistros">
+                    <div class="titulos">
+                        <div><h3>Nome</h3></div>
+                        <div><h3>Cargo</h3></div>
+                        <div><h3>email</h3></div>
+                        <div><h3>cpf</h3></div>
+                        <div><h3>telefone</h3></div>
+                        <div><h3>botoes</h3></div>
+                    </div>
         
+                    <div class="informacoes" id="idInformacoes"></div>
+                
+                </div>
+            </div>
+        </div>
     </div>
-</div>
+    
 <!-- nome
 cargo
 email
@@ -176,7 +103,7 @@ function atualizarFeed() {
                 for (let i = 0; i < resposta.length; i++) {
                     var funcionario = resposta[i];
                     var cargo = 'Suporte de TI';
-                    if(funcionario.is_admin == 1){
+                    if(funcionario.isAdmin == '1'){
                         cargo = 'ADM'
                     }
                     idInformacoes.innerHTML +=
@@ -229,7 +156,7 @@ function deletar(idFuncionario) {
             } else if (resposta.status == 404) {
                 window.alert("Deu 404!");
             } else {
-                throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
+                throw ("Houve um erro ao tentar deletar o funcionario! Código da resposta: " + resposta.status);
             }
         }).catch(function (resposta) {
             console.log(`#ERRO: ${resposta}`);
