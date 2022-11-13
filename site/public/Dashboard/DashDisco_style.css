@@ -347,21 +347,6 @@ nav.sticky{
     margin-left: 5%;
 }
 
-
-.div_disco_info {
-    height: 50%;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.div_info_all_discos {
-    height: 85%;
-    width: 96%;
-    margin-left: 2%;
-}
-
 .container_grafico_disco {
     float: left;
     height: 100%;
@@ -416,8 +401,27 @@ nav.sticky{
 
 }
 
+.div_disco_info {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    overflow-y: scroll;
+}
+
+.div_info_all_discos {
+    height: 85%;
+    width: 96%;
+    margin-left: 2%;
+}
+
 .div_disco {
     width: 100%;
+    height: auto;
+    margin: 10px 0 10px 0;
 
     display: flex;
     justify-content: space-between;
@@ -425,5 +429,27 @@ nav.sticky{
 
 .span_modelo_disco {
     width: 33%;
-    overflow: hidden;
+    height: auto;
+    height: 100%;
+
+    font-size: 16px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+
+.div_disco_info::-webkit-scrollbar {
+    width: 12px;             /* width of the entire scrollbar */
+  }
+  
+  .div_disco_info::-webkit-scrollbar-track {
+    background: #010E3C;        /* color of the tracking area */
+    border-radius: 20px;
+  }
+  
+  .div_disco_info::-webkit-scrollbar-thumb {
+    background-color: #00C2CB;    /* color of the scroll thumb */
+    border-radius: 20px;       /* roundness of the scroll thumb */
+    border: none;  
+  }

@@ -11,8 +11,12 @@ router.get(`/ultimasMemoria/:id_empresa`, function (req, res) {
     medidaController.buscarUltimasMedidasMemoria(req, res);
 });
 
-router.get(`/ultimasDisco/:id_empresa`, function (req, res) {
+router.get(`/ultimasDisco/:id_empresa/:id_disco`, function (req, res) {
     medidaController.buscarUltimasMedidasDisco(req, res);
+});
+
+router.get(`/listaDisco/:id_empresa`, function (req, res) {
+    medidaController.buscarListaDisco(req, res);
 });
 
 router.get("/tempo-real/:id_empresa", function (req, res) {

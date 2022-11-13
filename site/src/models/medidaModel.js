@@ -52,7 +52,7 @@ function buscarUltimasMedidasMemoria(empresa) {
     return database.executar(instrucaoSql);
 }
 
-function buscarUltimasMedidasDisco (empresa) {
+function buscarUltimasMedidasDisco (empresa, disco) {
     instrucaoSql = ''
 
     if (process.env.AMBIENTE_PROCESSO == "producao") {
@@ -66,7 +66,7 @@ function buscarUltimasMedidasDisco (empresa) {
         INNER JOIN Maquina ON Empresa.id_empresa = Maquina.fk_empresa
         INNER JOIN Componente ON Maquina.id_maquina = Componente.fk_maquina
         INNER JOIN Registro ON Componente.id_componente = Registro.fk_componente
-        WHERE nome_componente = 'disco 1' AND id_empresa = ${empresa}
+        WHERE id_componente = ${disco} AND id_empresa = ${empresa}
         ORDER BY data_hora ASC LIMIT 1`;
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
@@ -77,13 +77,29 @@ function buscarUltimasMedidasDisco (empresa) {
     return database.executar(instrucaoSql);
 }
 
-function buscarListaDisco () {
-    
+function buscarListaDisco (empresa) {
+    instrucaoSql = ''
+
+    if (process.env.AMBIENTE_PROCESSO == "producao") {
+        instrucaoSql = ``;
+    } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
+        instrucaoSql = `SELECT id_componente, nome_componente, modelo_componente, capacidade_componente FROM Empresa
+        INNER JOIN Maquina ON Empresa.id_empresa = Maquina.fk_empresa
+        INNER JOIN Componente ON Maquina.id_maquina = Componente.fk_maquina
+        WHERE id_empresa = ${empresa} AND nome_componente LIKE 'Disco%';`;
+    } else {
+        console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
+        return
+    }
+
+    console.log("Executando a instrução SQL1: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
 }
 
 module.exports = {
     buscarUltimasMedidas,
     buscarUltimasMedidasMemoria,
-    buscarUltimasMedidasDisco
+    buscarUltimasMedidasDisco,
+    buscarListaDisco
     //buscarMedidasEmTempoReal
 }
