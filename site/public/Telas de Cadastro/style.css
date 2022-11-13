@@ -299,29 +299,18 @@ option {
 
 .div_inputs {
   width: 90%;
-
+  height: 60%;
   display: flex;
+  justify-content: center;
   flex-direction: column;
+  justify-content: space-around;
 }
 
 .div_inputs_menores {
   width: 100%;
   margin-top: 10px;
-
   display: flex;
   justify-content: space-between;
-}
-
-.div_inputs input {
-  border: 0;
-  border-bottom: 1px solid rgb(255, 255, 255, 0.4);
-  outline: none;
-  background-color: transparent;
-  color: rgba(255, 255, 255);
-}
-
-.div_inputs_menores input {
-  width: 45%;
 }
 
 input::-webkit-input-placeholder {
@@ -330,12 +319,19 @@ input::-webkit-input-placeholder {
 
 .div_inputs select {
   width: 45%;
-
+  height: 50px;
   border: 0;
+  text-align: center;
   border-bottom: 1px solid rgb(255, 255, 255, 0.4);
   outline: none;
   background-color: transparent;
   color: rgba(255, 255, 255, 0.6);
+  appearance: none;
+}
+
+.div_inputs select:hover{
+  cursor: pointer;
+
 }
 
 .boxCampoCadastro div{

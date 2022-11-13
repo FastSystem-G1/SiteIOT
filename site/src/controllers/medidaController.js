@@ -1,10 +1,7 @@
 var medidaModel = require("../models/medidaModel");
 
 function buscarUltimasMedidas(req, res) {
-
     const limite_linhas = 7;
-
-    
 
     console.log(`Recuperando as ultimas ${limite_linhas} medidas`);
     var empresa = req.params.id_empresa;
@@ -23,10 +20,7 @@ function buscarUltimasMedidas(req, res) {
 
 
 function buscarUltimasMedidasMemoria(req, res) {
-
     const limite_linhas = 7;
-
-    
 
     console.log(`Recuperando as ultimas ${limite_linhas} medidas`);
     var empresa = req.params.id_empresa;
@@ -43,6 +37,42 @@ function buscarUltimasMedidasMemoria(req, res) {
     });
 }
 
+function buscarUltimasMedidasDisco(req, res) {
+    const limite_linhas = 7;
+
+    console.log(`Recuperando as ultimas ${limite_linhas} medidas`);
+    var empresa = req.params.id_empresa;
+    var disco = req.params.id_disco;
+    medidaModel.buscarUltimasMedidasDisco(empresa, disco).then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar as ultimas medidas.", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+
+function buscarListaDisco(req, res) {
+    const limite_linhas = 7;
+
+    console.log(`Recuperando as ultimas ${limite_linhas} medidas`);
+    var empresa = req.params.id_empresa;
+    medidaModel.buscarListaDisco(empresa).then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar as ultimas medidas.", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
 
 function buscarMedidasEmTempoReal(req, res) {
 
@@ -66,6 +96,7 @@ function buscarMedidasEmTempoReal(req, res) {
 module.exports = {
     buscarUltimasMedidas,
     buscarMedidasEmTempoReal,
-    buscarUltimasMedidasMemoria
-
+    buscarUltimasMedidasMemoria,
+    buscarUltimasMedidasDisco,
+    buscarListaDisco
 }

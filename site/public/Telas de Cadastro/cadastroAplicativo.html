@@ -44,7 +44,7 @@
         <div class="containerMain">
             <div class="caixa">
                 <div class="box1">
-                    <img src="../../../img/logo3.png" style="height: 100%; width: 100%;">
+                    <img src="img/logo3.png" style="height: 100%; width: 100%;">
                 </div>
                 <div class="box2">
                     <h2>
@@ -52,25 +52,32 @@
                     </h2>
 
                     <div class="div_inputs">
-                        <input type="text" id="nome_aplicativo" placeholder="NOME APLICATIVOS">
-                        <div class="div_inputs_menores">
+                        <div style="display:flex; justify-content:center;">
+                            <select id="nome_aplicativo" placeholder="NOME APLICATIVOS">
+                                <option value="">SELECIONE O NOME DO APLICATIVOS</option>
+                            </select>
+                        </div>
+
+                        <div style="display:flex; justify-content:center;">
                             <select id="funcao_aplicativo">
                                 <option value="">SELECIONE FUNÇÃO</option>
                                 <option value="nativo">NATIVO</option>
                                 <option value="web">WEB</option>
                                 <option value="hibrido">HÍBRIDO</option>
                             </select>
-                            <input type="number" max="3" min="1" id="prioridade_aplicativo" placeholder="PRIORIDADE">
-                            
+                        </div>
+
+                        <div style="display:flex; justify-content:center;">
+
+                            <select id="prioridade_aplicativo">
+                                <option value="">SELECIONE A PRIORIDADE</option>
+                                <option value="1">PRIORIDADE 1</option>
+                                <option value="2">PRIORIDADE 2</option>
+                                <option value="3">PRIORIDADE 3</option>
+                            </select>
                         </div>
                     </div>
 
-                    <div class="titulo">
-                        <div>Nome</div>
-                        <div>Função</div>
-                        <div>Prioridade</div>
-                    </div>
-                    <div class="bordaCadastro" id="tabela_aplicativos"></div>
                     <div id="divErroLogin"></div>
                     <div class="boxButton">
                         <button onclick="cadastrarMaquina()" id="botao_cadastro">Cadastrar</button>
@@ -90,33 +97,42 @@ function sair(){
     sessionStorage.clear();
 }
     
-
     window.onload = obterDados();
 
+    var dados = {
+            idApp: [],
+            nomeApp: [],
+            funcao: [],
+            prioridade: []
+        };
+
     function cadastrarMaquina() {
-        var nomeVar = nome_aplicativo.value
+        var aplicativoVar = nome_aplicativo.value
         var funcaoVar = funcao_aplicativo.value
         var prioridadeVar = prioridade_aplicativo.value
 
-        if (prioridadeVar > 3 || prioridadeVar <= 0) {
-            console.log("Número de prioridade inválido");
-            divErroLogin.innerHTML = "Insira uma prioridade válida! (1 à 3)"
-        } else {
-            fetchcadastro();
-        }
+        if(aplicativoVar == "" || funcaoVar == "" || prioridadeVar == ""){
+            alert("Algum campo ta vazio")
+        }else{
 
-        function fetchcadastro() {
+            console.log("ID: " + aplicativoVar)
+            console.log("Função: " + funcaoVar)
+            console.log("Prioridade: " + prioridadeVar)
+            console.log("Empresa: " + sessionStorage.EMPRESA)
+
+            fetchcadastro()
+        }
+            function fetchcadastro() {
             fetch("/aplicativos/cadastrar", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify({
-                    // crie um atributo que recebe o valor recuperado aqui
-                    // Agora vá para o arquivo routes/usuario.js
-                    nomeServer: nomeVar,
+                    aplicativoServer: aplicativoVar,
                     funcaoServer: funcaoVar,
-                    prioridadeServer: prioridadeVar
+                    prioridadeServer: prioridadeVar,
+                    empresaServer: sessionStorage.EMPRESA,
                 }),
             })
                 .then(function (resposta) {
@@ -126,14 +142,14 @@ function sair(){
                         console.log("Cadastro realizado com sucesso!")
                         alert("Cadastro realizado com sucesso !!!");
                         obterDados();
-                        /*  finalizarAguardar(); */
+
                     } else {
                         throw "Houve um erro ao tentar realizar o cadastro!";
                     }
                 })
                 .catch(function (resposta) {
                     console.log(`#ERRO: ${resposta}`);
-                    /*  finalizarAguardar(); */
+
                 });
 
             return false;
@@ -147,7 +163,6 @@ function sair(){
                     response.json().then(function (resposta) {
                         // console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
                         resposta.reverse();
-
                         plotarDados(resposta);
                     });
                 } else {
@@ -162,31 +177,22 @@ function sair(){
     }
 
     function plotarDados(resposta) {
-        console.log("iniciando plotagem dos livros...");
-        tabela_aplicativos.innerHTML = ""
-        var dados = {
-            id_app: [],
-            nome_app: [],
-            funcao: [],
-            prioridade: []
-        };
+        console.log("iniciando plotagem dos aplicativos...");
+        
 
         for (i = 0; i < resposta.length; i++) {
             var registro = resposta[i];
-            dados.id_app.push(registro.id_app);
-            dados.nome_app.push(registro.nome_app);
+            dados.idApp.push(registro.id_app);
+            dados.nomeApp.push(registro.nome_app);
             dados.funcao.push(registro.funcao)
             dados.prioridade.push(registro.prioridade);
         }
 
-        for (var i = 0; i < dados.id_app.length; i++) {
-            tabela_aplicativos.innerHTML += `
-                <div class="boxCampoCadastro">
-                    <div id="nome">${dados.nome_app[i]}</div>
-                    <div id="funcao">${dados.funcao[i]}</div>
-                    <div id="prioridade">${dados.prioridade[i]}</div>
-                </div>
-            `
+        for(var i = 0; i < dados.idApp.length; i++){
+            nome_aplicativo.innerHTML += `
+        <option value = "${dados.idApp[i]}"> ${dados.nomeApp[i]} </option>
+        `
         }
+
     }
 </script>

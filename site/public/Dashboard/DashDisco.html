@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="DashDisco_style.css">
     <link rel="stylesheet" href="dashCPUMemoria.css">
     <script src="../js/funcoes.js"></script>
-    <script src="DashDisco.js"></script>
 </head>
 
 <body>
@@ -24,13 +23,19 @@
                 <div class="line2"></div>
                 <div class="line3"></div>
             </div>
-            <ul class="nav-list" id="nav-content"  tabindex="0">
-                <div id="texto_func" style="width: 100%; display: flex; align-items: center; justify-content: center; color: #00C2CB; font-size: 25px; font-weight: bold; margin-top: 30px;"></div>
+            <ul class="nav-list" id="nav-content" tabindex="0">
+                <div id="texto_func"
+                    style="width: 100%; display: flex; align-items: center; justify-content: center; color: #00C2CB; font-size: 25px; font-weight: bold; margin-top: 30px;">
+                </div>
                 <li class="agora"><a href="../Dashboard/dashInicial.html">Início</a></li>
-                <li class="cad1" id="cad1"><a href="../Telas de Cadastro/cadastroMaquina.html">Cadastrar máquina</a></li>                
-                <li class="cad1" id="cad1"><a href="../Telas de Cadastro/cadastroAplicativo.html">Cadastrar aplicativo</a></li>
-                <li class="cad1" id="cad1"><a href="../Telas de Cadastro/NovoFuncionario.html">Cadastrar funcionário</a></li>
-                <li class="cad1" id="cad1"><a href="../Telas de Cadastro/funcionariosRead.html">Editar funcionário</a></li>  
+                <li class="cad1" id="cad1"><a href="../Telas de Cadastro/cadastroMaquina.html">Cadastrar máquina</a>
+                </li>
+                <li class="cad1" id="cad1"><a href="../Telas de Cadastro/cadastroAplicativo.html">Cadastrar
+                        aplicativo</a></li>
+                <li class="cad1" id="cad1"><a href="../Telas de Cadastro/NovoFuncionario.html">Cadastrar funcionário</a>
+                </li>
+                <li class="cad1" id="cad1"><a href="../Telas de Cadastro/funcionariosRead.html">Editar funcionário</a>
+                </li>
                 <li onclick="sair()"><a href="../login.html">Sair</a></li>
                 <li></li>
             </ul>
@@ -40,32 +45,40 @@
     <div class="main">
         <div class="containerDash">
             <div class="boxDashMenu">
-                
-                    <h1>Caixa 1</h1>
-                
+
+                <h1>Caixa 1</h1>
+
                 <ul class="navbarMenu">
-                    <li><a href="dashCPU.html"><h3><img src="img/bi_cpu.png" alt=""> CPU</h3></a></li>
-                    <li><a href="dashMemoria.html"><h3><img src="img/bi_memory.png" alt=""> MEMÓRIA </h3></a></li>
-                    <li class="agora"><a href="DashDisco.html"><h3><img src="img/bi_disc.png" alt=""> DISCO </h3></a></li>
-                    <li><a href="dashProcessos.html"><h3><img src="img/arcticons_application-inspector.png" alt=""> PROCESSOS </h3></a></li>
-                </ul>                 
+                    <li><a href="dashCPU.html">
+                            <h3><img src="img/bi_cpu.png" alt=""> CPU</h3>
+                        </a></li>
+                    <li><a href="dashMemoria.html">
+                            <h3><img src="img/bi_memory.png" alt=""> MEMÓRIA </h3>
+                        </a></li>
+                    <li class="agora"><a href="DashDisco.html">
+                            <h3><img src="img/bi_disc.png" alt=""> DISCO </h3>
+                        </a></li>
+                    <li><a href="dashProcessos.html">
+                            <h3><img src="img/arcticons_application-inspector.png" alt=""> PROCESSOS </h3>
+                        </a></li>
+                </ul>
             </div>
             <div class="containerDashCPU">
                 <div class="corte_titulo_qtd_disco">
                     <span>Quantidade de discos</span>
                     <span>2</span>
                 </div><!-- Titulo -->
-                
+
                 <div class="container_parte_dash">
-                
+
                     <div class="container_lista_discos">
-                
+
                         <div class="titulo_lista_discos">
                             Lista de discos
                         </div>
-                
+
                         <div class="div_lista_discos">
-                
+
                             <div class="caixa_discos">
                                 <div class="caixa2_discos">
                                     <div class="titulos_discos">
@@ -74,65 +87,45 @@
                                         <span>Tamanho disco</span>
                                     </div>
                                     <div class="divisao_titulo"></div>
-                
+
                                     <div class="div_info_all_discos">
-                
-                                        <div class="div_disco_info">
-                                            <span>Nome disco 1</span>
-                                            <span>Modelo disco 1</span>
-                                            <span>Tamanho disco 1</span>
-                                        </div>
-                                        <div class="div_disco_info">
-                                            <span>Nome disco 2</span>
-                                            <span>Modelo disco 2</span>
-                                            <span>Tamanho disco 2</span>
-                                        </div>
-                                        <div class="div_disco_info">
-                                            <span>Nome disco 3</span>
-                                            <span>Modelo disco 3</span>
-                                            <span>Tamanho disco 3</span>
-                                        </div>
+                                        <div class="div_disco_info" id="div_disco_info"></div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="div_botao_discos">
-                                <img src="img/seta_discos.png" style="height:45px;margin-top: 2%;" alt="">
-                            </div>
                         </div>
-                
-                
-                
+
+
+
                     </div> <!-- Fim da parte das info dos discos -->
-                
+
                     <div class="container_grafico_disco">
                         <!-- Parte direita da caixa -->
                         <div class="container_uso_disco">
                             <div class="container_uso">
                                 <span id="titulo_em_uso">Em uso</span>
-                                <span>90.24%</span>
+                                <span id="valor_emUso"></span>
                             </div>
-                
+
                             <div class="container_disponivel">
                                 <span id="titulo_disponivel">Disponível</span>
-                                <span>9.76%</span>
+                                <span id="valor_disponivel"></span>
                             </div>
                         </div>
-                
+
                         <div class="borda_uso">
-                
+
                         </div>
-                
+
                         <div class="container_dash">
                             <!-- Parte da DASH  -->
                             <div>
-                                <canvas id="myChart" style="position: relative; height:10vh; width:20vw">
-                
-                                </canvas>
+                                <canvas id="myChart" style="position: relative; height:10vh; width:20vw"></canvas>
                             </div>
                         </div>
-                
+
                     </div>
-                
+
                 </div>
             </div>
         </div>
@@ -140,45 +133,143 @@
     </div>
     <script src="../headers/mobile-navbar.js"></script>
 </body>
+
 </html>
 <script>
-//window.onload = validarSessao();
-function sair(){
-    sessionStorage.clear();
-}
-
-    const labels = [
-        'Em uso',
-        'Disponível',
-
-    ];
-
-    const data = {
-        labels: labels,
-        datasets: [{
-            label: 'My First dataset',
-            backgroundColor: [
-                'rgb(1, 110, 159)',
-                'gray',
-            ],
-            borderColor: 'white',
-            data: [90.24, 9.76],
-
-        }]
-    };
-
-    const config = {
-        type: 'pie',
-        data: data,
-        options: {}
-    };
+    //window.onload = validarSessao();
+    function sair() {
+        sessionStorage.clear();
+    }
 
 </script>
 
 <script>
+    var id_disco;
+    window.onload = obterListaDiscos(sessionStorage.EMPRESA);
+    window.onload = obterDadosGrafico(sessionStorage.EMPRESA, 3);
+    let proximaAtualizacao;
+    var nome_disco;
+    var emUso;
+    var disponivel;
+    var capacidade_total;
+    var myChart;
 
-    const myChart = new Chart(
-        document.getElementById('myChart'),
-        config
-    );
+    function disco(disco) {
+        myChart.destroy();
+        obterDadosGrafico(sessionStorage.EMPRESA, disco);
+    }
+
+    function obterDadosGrafico(empresa, disco) {
+        /*if (proximaAtualizacao != undefined) {
+            clearTimeout(proximaAtualizacao);
+        }*/
+        fetch(`/medidas/ultimasDisco/${empresa}/${disco}`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+
+                    plotarGrafico(resposta);
+
+                    //alert(resposta[0].modelo_componente)
+                    for (i = 0; i < resposta.length; i++) {
+                        var registro = resposta[i];
+                    }
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+    }
+
+    function plotarGrafico(resposta) {
+        console.log('iniciando plotagem do gráfico...');
+        
+        // Criando estrutura para plotar gráfico - labels
+        const dados = {
+            labels: ['Em uso', 'Livre'],
+            datasets: [{
+                label: 'My First Dataset',
+                data: [],
+                backgroundColor: ['rgba(255, 99, 132, 0.2)','rgba(75, 192, 192, 0.2)'],
+                borderColor: ['rgba(255, 99, 132, 1)', 'rgba(75, 192, 192, 1)'],
+                borderWidth: 3
+            }]
+        };
+        console.log('----------------------------------------------')
+        console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
+        console.log(resposta)
+        
+        // Inserindo valores recebidos em estrutura para plotar o gráfico
+        for (i = 0; i < resposta.length; i++) {
+            var registro = resposta[i];
+
+            disponivel = registro.medida
+            emUso = (registro.capacidade_componente - disponivel);
+
+            capacidade_total = registro.capacidade_componente;
+            var emUsoPorcentagem = (emUso * 100) / capacidade_total;
+            var disponivelPorcentagem = (disponivel * 100) / capacidade_total;
+
+            valor_emUso.innerHTML = `<span>${emUsoPorcentagem.toFixed(2)}%</span>`;
+            valor_disponivel.innerHTML = `<span>${disponivelPorcentagem.toFixed(2)}%</span>`;
+
+            dados.datasets[i].data.push(emUsoPorcentagem);
+            dados.datasets[i].data.push(disponivelPorcentagem);
+        }
+
+        // Criando estrutura para plotar gráfico - config
+        const config = {
+            type: 'pie',
+            data: dados,
+        };
+        // Adicionando gráfico criado em div na tela
+        myChart = new Chart(
+            document.getElementById('myChart'),
+            config
+        );
+        //myChart.destroy();
+        //setTimeout(() => atualizarGrafico(idAquario, dados, myChart), 2000);
+    }
+
+    function obterListaDiscos(empresa) {
+        fetch(`/medidas/listaDisco/${empresa}`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+
+                    plotarListaDiscos(resposta);
+
+                    for (i = 0; i < resposta.length; i++) {
+                        var registro = resposta[i];
+                    }
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+    }
+
+    function plotarListaDiscos(resposta) {
+        console.log('iniciando plotagem da lista...');
+
+        for (i = 0; i < resposta.length; i++) {
+            var registro = resposta[i];
+
+            id_disco = registro.id_componente;
+
+            div_disco_info.innerHTML += `
+            <div class="div_disco" onclick="disco(${id_disco})">
+                <span class="span_modelo_disco"> ${registro.nome_componente}</span>
+                <span class="span_modelo_disco"> ${registro.modelo_componente}</span>
+                <span class="span_modelo_disco"> ${registro.capacidade_componente} GB</span>
+            <div>
+            `
+        }
+    }
 </script>
