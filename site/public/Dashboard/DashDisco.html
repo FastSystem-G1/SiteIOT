@@ -46,7 +46,7 @@
         <div class="containerDash">
             <div class="boxDashMenu">
 
-                <h1>Caixa 1</h1>
+                <h1 id="id_nome_maquina">Nome máquina</h1>
 
                 <ul class="navbarMenu">
                     <li><a href="dashCPU.html">
@@ -66,7 +66,7 @@
             <div class="containerDashCPU">
                 <div class="corte_titulo_qtd_disco">
                     <span>Quantidade de discos</span>
-                    <span>2</span>
+                    <span id="qntd_disco">0</span>
                 </div><!-- Titulo -->
 
                 <div class="container_parte_dash">
@@ -144,9 +144,10 @@
 </script>
 
 <script>
+    id_nome_maquina.innerHTML = sessionStorage.NOME_MAQUINA;
     var id_disco;
-    window.onload = obterListaDiscos(sessionStorage.EMPRESA);
-    window.onload = obterDadosGrafico(sessionStorage.EMPRESA, 3);
+    var vezesMetodoInvocado = 0;
+    window.onload = obterListaDiscos(sessionStorage.EMPRESA, sessionStorage.ID_MAQUINA);
     let proximaAtualizacao;
     var nome_disco;
     var emUso;
@@ -155,8 +156,11 @@
     var myChart;
 
     function disco(disco) {
-        myChart.destroy();
+        if (vezesMetodoInvocado > 0) {
+            myChart.destroy();
+        }
         obterDadosGrafico(sessionStorage.EMPRESA, disco);
+        vezesMetodoInvocado++;
     }
 
     function obterDadosGrafico(empresa, disco) {
@@ -234,8 +238,8 @@
         //setTimeout(() => atualizarGrafico(idAquario, dados, myChart), 2000);
     }
 
-    function obterListaDiscos(empresa) {
-        fetch(`/medidas/listaDisco/${empresa}`, { cache: 'no-store' }).then(function (response) {
+    function obterListaDiscos(empresa, maquina) {
+        fetch(`/medidas/listaDisco/${empresa}/${maquina}`, { cache: 'no-store' }).then(function (response) {
             if (response.ok) {
                 response.json().then(function (resposta) {
                     console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
@@ -262,6 +266,7 @@
             var registro = resposta[i];
 
             id_disco = registro.id_componente;
+            qntd_disco.innerHTML = i + 1;
 
             div_disco_info.innerHTML += `
             <div class="div_disco" onclick="disco(${id_disco})">

@@ -40,7 +40,7 @@
         <div class="containerDash">
             <div class="boxDashMenu">
                 
-                    <h1>Caixa 1</h1>
+                    <h1 id="id_nome_maquina">Nome da Máquina</h1>
                 
                 <ul class="navbarMenu">
                     <li class="agora"><a href="dashCPU.html"><h3><img src="img/bi_cpu.png" alt=""> CPU</h3></a></li>
@@ -94,6 +94,7 @@
     }
 </script>
 <script>
+    id_nome_maquina.innerHTML = sessionStorage.NOME_MAQUINA;
     
     //b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
     var empresa = sessionStorage.EMPRESA;

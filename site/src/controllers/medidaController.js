@@ -61,7 +61,8 @@ function buscarListaDisco(req, res) {
 
     console.log(`Recuperando as ultimas ${limite_linhas} medidas`);
     var empresa = req.params.id_empresa;
-    medidaModel.buscarListaDisco(empresa).then(function (resultado) {
+    var maquina = req.params.id_maquina;
+    medidaModel.buscarListaDisco(empresa, maquina).then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {

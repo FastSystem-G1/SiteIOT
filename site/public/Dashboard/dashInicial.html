@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
     <title>Dashboard</title>
     <script src="../js/funcoes.js"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="dashInicial.css">
-  <link rel="icon" href="img/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="dashInicial.css">
+    <link rel="icon" href="img/logo.png">
 
 </head>
+
 <body window.onload="validarSessao()">
     <div class="fundo">
         <header class="header">
@@ -23,13 +25,19 @@
                     <div class="line2"></div>
                     <div class="line3"></div>
                 </div>
-                <ul class="nav-list" id="nav-content"  tabindex="0">
-                    <div id="texto_func" style="width: 100%; display: flex; align-items: center; justify-content: center; color: #00C2CB; font-size: 25px; font-weight: bold; margin-top: 30px;"></div>
+                <ul class="nav-list" id="nav-content" tabindex="0">
+                    <div id="texto_func"
+                        style="width: 100%; display: flex; align-items: center; justify-content: center; color: #00C2CB; font-size: 25px; font-weight: bold; margin-top: 30px;">
+                    </div>
                     <li class="agora"><a href="../Dashboard/dashInicial.html">Início</a></li>
-                    <li class="cad1" id="cad1"><a href="../Telas de Cadastro/cadastroMaquina.html">Cadastrar máquina</a></li>                
-                    <li class="cad1" id="cad1"><a href="../Telas de Cadastro/cadastroAplicativo.html">Cadastrar aplicativo</a></li>
-                    <li class="cad1" id="cad1"><a href="../Telas de Cadastro/NovoFuncionario.html">Cadastrar funcionário</a></li>
-                    <li class="cad1" id="cad1"><a href="../Telas de Cadastro/funcionariosRead.html">Editar funcionário</a></li>  
+                    <li class="cad1" id="cad1"><a href="../Telas de Cadastro/cadastroMaquina.html">Cadastrar máquina</a>
+                    </li>
+                    <li class="cad1" id="cad1"><a href="../Telas de Cadastro/cadastroAplicativo.html">Cadastrar
+                            aplicativo</a></li>
+                    <li class="cad1" id="cad1"><a href="../Telas de Cadastro/NovoFuncionario.html">Cadastrar
+                            funcionário</a></li>
+                    <li class="cad1" id="cad1"><a href="../Telas de Cadastro/funcionariosRead.html">Editar
+                            funcionário</a></li>
                     <li onclick="sair()"><a href="../login.html">Sair</a></li>
                     <li></li>
                 </ul>
@@ -38,209 +46,38 @@
         <div class="banner">
             <div class="container">
                 <div class="divCards">
-                            <div class="cardExtremo">
-                                <div class="cardCima"><b>CPU</b></div>
-                                <div class="cardBaixo"><b>5</b></div>
-                            </div>
-                            <div class="cardExtremo">
-                                <div class="cardCima"><b>Memoria</b></div>
-                                <div class="cardBaixo"><b>5</b></div>
-                            </div>
-                            <div class="cardExtremo">
-                                <div class="cardCima"><b>Disco</b></div>
-                                <div class="cardBaixo"><b>5</b></div>
-                            </div>
-                            <div class="cardAlert">
-                                <div class="cardCima"><b>CPU</b></div>
-                                <div class="cardBaixo"><b>5</b></div>
-                            </div>
-                            <div class="cardAlert">
-                                <div class="cardCima"><b>Memoria</b></div>
-                                <div class="cardBaixo"><b>5</b></div>
-                            </div>
-                            <div class="cardAlert">
-                                <div class="cardCima"><b>Disco</b></div>
-                                <div class="cardBaixo"><b>5</b></div>
-                            </div>
-                            <div class="cardTotal">
-                                <div class="cardCima"><b>Total de Maquinas</b></div>
-                                <div class="cardBaixo"><b>20</b></div>
-                            </div>
+                    <div class="cardExtremo">
+                        <div class="cardCima"><b>CPU</b></div>
+                        <div class="cardBaixo"><b>5</b></div>
+                    </div>
+                    <div class="cardExtremo">
+                        <div class="cardCima"><b>Memoria</b></div>
+                        <div class="cardBaixo"><b>5</b></div>
+                    </div>
+                    <div class="cardExtremo">
+                        <div class="cardCima"><b>Disco</b></div>
+                        <div class="cardBaixo"><b>5</b></div>
+                    </div>
+                    <div class="cardAlert">
+                        <div class="cardCima"><b>CPU</b></div>
+                        <div class="cardBaixo"><b>5</b></div>
+                    </div>
+                    <div class="cardAlert">
+                        <div class="cardCima"><b>Memoria</b></div>
+                        <div class="cardBaixo"><b>5</b></div>
+                    </div>
+                    <div class="cardAlert">
+                        <div class="cardCima"><b>Disco</b></div>
+                        <div class="cardBaixo"><b>5</b></div>
+                    </div>
+                    <div class="cardTotal">
+                        <div class="cardCima"><b>Total de Maquinas</b></div>
+                        <div class="cardBaixo"><b>20</b></div>
+                    </div>
                 </div>
                 <div class="fundoVidro">
-                    <div class="vidroCima">
-                        <div class="box">
-                            <div class="boxCima">
-                                <div class="divIconBox">
-                                    <div class="icons1"><a><img src="img/cpu-removebg-preview.png" id="imagem_cpu" alt=""></a></div>
-                                    <div class="icons2"><a><img src="img/memoria-removebg-preview.png" id="imagem_memoria" alt=""></a></div>
-                                    <div class="icons3"><a><img src="img/disco-removebg-preview.png" id="imagem_disco" alt=""></a></div>
-                                </div>
-                                <div class="divImagemNot">
-                                    <div class="imagemNot">
-                                        <a href="dashCPU.html"><img src="img/Icon_Computador.png" alt=""></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="boxBaixo">
-                                <div class="boxBaixoEsquerda">
-                                    <div class="boxBaixoEsquerdaCima">Caixa 1</div>
-
-                                </div>
-                                <div class="boxBaixoDireita">
-                                    <div><img src="img/Sistema_Operacional.png" style="height:50%;width:80%"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="box">
-                            <div class="boxCima">
-                                <div class="divIconBox">
-                                    <div class="icons1"><a><img src="img/cpu-removebg-preview.png" id="imagem_cpu" alt=""></a></div>
-                                    <div class="icons2"><a><img src="img/memoria-removebg-preview.png" id="imagem_memoria" alt=""></a></div>
-                                    <div class="icons3"><a><img src="img/disco-removebg-preview.png" id="imagem_disco" alt=""></a></div>
-                                </div>
-                                <div class="divImagemNot">
-                                    <div class="imagemNot"><img src="img/Icon_Computador.png" alt=""></div>
-                                </div>
-                            </div>
-                            <div class="boxBaixo">
-                                <div class="boxBaixoEsquerda">
-                                    <div class="boxBaixoEsquerdaCima">Caixa 2</div>
-                                    
-                                </div>
-                                <div class="boxBaixoDireita">
-                                    <div><img src="img/Sistema_OperacionalUbuntu.png" style="height:50%;width:80%"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="box">
-                            <div class="boxCima">
-                                <div class="divIconBox">
-                                    <div class="icons1"><a><img src="img/cpu-removebg-preview.png" id="imagem_cpu" alt=""></a></div>
-                                    <div class="icons2"><a><img src="img/memoria-removebg-preview.png" id="imagem_memoria" alt=""></a></div>
-                                    <div class="icons3"><a><img src="img/disco-removebg-preview.png" id="imagem_disco" alt=""></a></div>
-                                </div>
-                                <div class="divImagemNot">
-                                    <div class="imagemNot"><img src="img/Icon_Computador.png" alt=""></div>
-                                </div>
-                            </div>
-                            <div class="boxBaixo">
-                                <div class="boxBaixoEsquerda">
-                                    <div class="boxBaixoEsquerdaCima">Caixa 3</div>
-                                    
-                                </div>
-                                <div class="boxBaixoDireita">
-                                    <div><img src="img/Sistema_OperacionalUbuntu.png" style="height:50%;width:80%"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="box">
-                            <div class="boxCima">
-                                <div class="divIconBox">
-                                    <div class="icons1"><a><img src="img/cpu-removebg-preview.png" id="imagem_cpu" alt=""></a></div>
-                                    <div class="icons2"><a><img src="img/memoria-removebg-preview.png" id="imagem_memoria" alt=""></a></div>
-                                    <div class="icons3"><a><img src="img/disco-removebg-preview.png" id="imagem_disco" alt=""></a></div>
-                                </div>
-                                <div class="divImagemNot">
-                                    <div class="imagemNot"><img src="img/Icon_Computador.png" alt=""></div>
-                                </div>
-                            </div>
-                            <div class="boxBaixo">
-                                <div class="boxBaixoEsquerda">
-                                    <div class="boxBaixoEsquerdaCima">Caixa 4</div>
-                                    
-                                </div>
-                                <div class="boxBaixoDireita">
-                                    <div><img src="img/Sistema_Operacional.png" style="height:50%;width:80%"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="vidroBaixo">
-                        <div class="box">
-                            <div class="boxCima">
-                                <div class="divIconBox">
-                                    <div class="icons1"><a><img src="img/cpu-removebg-preview.png" id="imagem_cpu" alt=""></a></div>
-                                    <div class="icons2"><a><img src="img/memoria-removebg-preview.png" id="imagem_memoria" alt=""></a></div>
-                                    <div class="icons3"><a><img src="img/disco-removebg-preview.png" id="imagem_disco" alt=""></a></div>
-                                </div>
-                                <div class="divImagemNot">
-                                    <div class="imagemNot"><img src="img/Icon_Computador.png" alt=""></div>
-                                </div>
-                            </div>
-                            <div class="boxBaixo">
-                                <div class="boxBaixoEsquerda">
-                                    <div class="boxBaixoEsquerdaCima">Caixa 1</div>
-                                    
-                                </div>
-                                <div class="boxBaixoDireita">
-                                    <div><img src="img/Sistema_OperacionalUbuntu.png" style="height:50%;width:80%"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="box">
-                            <div class="boxCima">
-                                <div class="divIconBox">
-                                    <div class="icons1"><a><img src="img/cpu-removebg-preview.png" id="imagem_cpu" alt=""></a></div>
-                                    <div class="icons2"><a><img src="img/memoria-removebg-preview.png" id="imagem_memoria" alt=""></a></div>
-                                    <div class="icons3"><a><img src="img/disco-removebg-preview.png" id="imagem_disco" alt=""></a></div>
-                                </div>
-                                <div class="divImagemNot">
-                                    <div class="imagemNot"><img src="img/Icon_Computador.png" alt=""></div>
-                                </div>
-                            </div>
-                            <div class="boxBaixo">
-                                <div class="boxBaixoEsquerda">
-                                    <div class="boxBaixoEsquerdaCima">Caixa 2</div>
-                                    
-                                </div>
-                                <div class="boxBaixoDireita">
-                                    <div><img src="img/Sistema_OperacionalUbuntu.png" style="height:50%;width:80%"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="box">
-                            <div class="boxCima">
-                                <div class="divIconBox">
-                                    <div class="icons1"><a><img src="img/cpu-removebg-preview.png" id="imagem_cpu" alt=""></a></div>
-                                    <div class="icons2"><a><img src="img/memoria-removebg-preview.png" id="imagem_memoria" alt=""></a></div>
-                                    <div class="icons3"><a><img src="img/disco-removebg-preview.png" id="imagem_disco" alt=""></a></div>
-                                </div>
-                                <div class="divImagemNot">
-                                    <div class="imagemNot"><img src="img/Icon_Computador.png" alt=""></div>
-                                </div>
-                            </div>
-                            <div class="boxBaixo">
-                                <div class="boxBaixoEsquerda">
-                                    <div class="boxBaixoEsquerdaCima">Caixa 1</div>
-                                    
-                                </div>
-                                <div class="boxBaixoDireita">
-                                    <div><img src="img/Sistema_Operacional.png" style="height:50%;width:80%"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="box">
-                            <div class="boxCima">
-                                <div class="divIconBox">
-                                    <div class="icons1"><a><img src="img/cpu-removebg-preview.png" id="imagem_cpu" alt=""></a></div>
-                                    <div class="icons2"><a><img src="img/memoria-removebg-preview.png" id="imagem_memoria" alt=""></a></div>
-                                    <div class="icons3"><a><img src="img/disco-removebg-preview.png" id="imagem_disco" alt=""></a></div>
-                                </div>
-                                <div class="divImagemNot">
-                                    <div class="imagemNot"><img src="img/Icon_Computador.png" alt=""></div>
-                                </div>
-                            </div>
-                            <div class="boxBaixo">
-                                <div class="boxBaixoEsquerda">
-                                    <div class="boxBaixoEsquerdaCima">Caixa 2</div>
-                                    
-                                </div>
-                                <div class="boxBaixoDireita">
-                                    <div><img src="img/Sistema_OperacionalUbuntu.png" style="height:50%;width:80%"></div>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="vidroCima" id="vidroCima">
+                        
                     </div>
                 </div>
             </div>
@@ -248,11 +85,103 @@
     </div>
     <script src="../headers/mobile-navbar.js"></script>
 </body>
+
 </html>
 <script>
-   // window.onload = validarSessao();
+    // window.onload = validarSessao();
+    window.onload = obterListaMaquina();
 
-    function sair(){
+    function sair() {
         sessionStorage.clear();
+    }
+
+    function irParaDashEspecifica(id_maquina, nome_maquina) {
+        window.location.href = "dashCPU.html";
+        sessionStorage.ID_MAQUINA = id_maquina;
+        sessionStorage.NOME_MAQUINA = nome_maquina;
+    }
+
+    function obterListaMaquina(empresa) {
+        /*if (proximaAtualizacao != undefined) {
+            clearTimeout(proximaAtualizacao);
+        }*/
+
+        var empresa = sessionStorage.EMPRESA;
+        fetch(`/maquinas/listarMaquinas/${empresa}`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+
+                    plotarListaMaquina(resposta);
+
+                    for (i = 0; i < resposta.length; i++) {
+                        var registro = resposta[i];
+                    }
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        }).catch(function (error) {
+            console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+        });
+    }
+
+    function plotarListaMaquina(resposta) {
+        console.log('iniciando plotagem do gráfico...');
+        console.log(resposta)
+
+        // Inserindo valores recebidos em estrutura para plotar o gráfico
+        for (i = 0; i < resposta.length; i++) {
+            var registro = resposta[i];
+
+            var SO = registro.sistema_operacional_maquina;
+            var imgSO;
+            var tipo = registro.tipo_maquina;
+            var imgTipo;
+
+            if (SO == "Windows") {
+                imgSO = "img/Sistema_Operacional.png"
+            } else if (SO == "Ubuntu") {
+                imgSO = "img/Sistema_OperacionalUbuntu.png"
+            } else {
+                imgSO = "img/Sistema_Operacional_erro.png"
+            }
+
+            if (tipo == "TOTEM") {
+                imgTipo = "img/Icon_Toten.png"
+            } else if (tipo == "DESKTOP") {
+                imgTipo = "img/Icon_Computador.png"
+            } else {
+                imgTipo = "img/Icon_Erro.png"
+            }
+
+            vidroCima.innerHTML += `
+                        <div class="box" id="box">
+                            <div class="boxCima">
+                                <div class="divIconBox">
+                                    <div class="icons1"><a><img src="img/cpu-removebg-preview.png" id="imagem_cpu"
+                                                alt=""></a></div>
+                                    <div class="icons2"><a><img src="img/memoria-removebg-preview.png"
+                                                id="imagem_memoria" alt=""></a></div>
+                                    <div class="icons3"><a><img src="img/disco-removebg-preview.png" id="imagem_disco"
+                                                alt=""></a></div>
+                                </div>
+                                <div class="divImagemNot">
+                                    <div class="imagemNot">
+                                        <a onclick="irParaDashEspecifica(${registro.id_maquina}, '${registro.nome_maquina}')"><img src="${imgTipo}" alt=""></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="boxBaixo">
+                                <div class="boxBaixoEsquerda">
+                                    <div class="boxBaixoEsquerdaCima">${registro.nome_maquina}</div>
+                                </div>
+                                <div class="boxBaixoDireita">
+                                    <div><img src="${imgSO}" style="height:50%;width:80%"></div>
+                                </div>
+                            </div>
+                        </div>
+            `
+        }
     }
 </script>

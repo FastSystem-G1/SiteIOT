@@ -77,7 +77,7 @@ function buscarUltimasMedidasDisco (empresa, disco) {
     return database.executar(instrucaoSql);
 }
 
-function buscarListaDisco (empresa) {
+function buscarListaDisco (empresa, maquina) {
     instrucaoSql = ''
 
     if (process.env.AMBIENTE_PROCESSO == "producao") {
@@ -86,7 +86,7 @@ function buscarListaDisco (empresa) {
         instrucaoSql = `SELECT id_componente, nome_componente, modelo_componente, capacidade_componente FROM Empresa
         INNER JOIN Maquina ON Empresa.id_empresa = Maquina.fk_empresa
         INNER JOIN Componente ON Maquina.id_maquina = Componente.fk_maquina
-        WHERE id_empresa = ${empresa} AND nome_componente LIKE 'Disco%';`;
+        WHERE id_empresa = ${empresa} AND nome_componente LIKE 'Disco%' AND id_maquina = ${maquina};`;
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
         return
