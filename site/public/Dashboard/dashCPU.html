@@ -86,63 +86,21 @@
 </body>
 
 </html>
-
 <script>
-//window.onload = validarSessao();
-    function sair(){
-        sessionStorage.clear();
-    }
-</script>
-<script>
+    //window.onload = validarSessao();
     id_nome_maquina.innerHTML = sessionStorage.NOME_MAQUINA;
-    
-    //b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
-    var empresa = sessionStorage.EMPRESA;
     let proximaAtualizacao;
-    var nome_processador;
-    var emUso;
-    var memoriaLivre;
-        // alert(empresa)
-    window.onload = obterDadosGrafico(empresa);
+    var maquina = sessionStorage.ID_MAQUINA;
+    var componente = 'Processador';
 
-    //verificar_autenticacao();
+    window.onload = obterIdComponente(maquina, componente);
 
-    
-
-    // O gráfico é construído com três funções:
-    // 1. obterDadosGrafico -> Traz dados do Banco de Dados para montar o gráfico da primeira vez
-    // 2. plotarGrafico -> Monta o gráfico com os dados trazidos e exibe em tela
-    // 3. atualizarGrafico -> Atualiza o gráfico, trazendo novamente dados do Banco
-
-    // Esta função *obterDadosGrafico* busca os últimos dados inseridos em tabela de medidas.
-    // para, quando carregar o gráfico da primeira vez, já trazer com vários dados.
-    // A função *obterDadosGrafico* também invoca a função *plotarGrafico*
-
-    //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
-    //     Para ajustar o "select", ajuste o comando sql em src/models
-    function obterDadosGrafico(empresa) {
-        
-
-        if (proximaAtualizacao != undefined) {
-            clearTimeout(proximaAtualizacao);
-        }
-        var empresa = sessionStorage.EMPRESA;
-        fetch(`/medidas/ultimas/${empresa}`, { cache: 'no-store' }).then(function (response) {
+    function obterIdComponente(maquina, componente) {
+        fetch(`/medidas/idComponente/${maquina}/${componente}`, { cache: 'no-store' }).then(function (response) {
             if (response.ok) {
                 response.json().then(function (resposta) {
                     console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-                    
-                    //alert("oi")
-                    plotarGrafico(resposta );
-
-                    //alert(resposta[0].modelo_componente)
-                    for (i = 0; i < resposta.length; i++) {
-                    var registro = resposta[i];
-                        //nome_processador = resposta[0].modelo_componente;
-                    //dados.datasets[i].data.push(resposta[i].re);
-            
-
-        }
+                    obterDadosGrafico(resposta[0].id_componente);
                 });
             } else {
                 console.error('Nenhum dado encontrado ou erro na API');
@@ -153,24 +111,39 @@
             });
     }
 
-    // Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
-    // Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
-    // A função *plotarGrafico* também invoca a função *atualizarGrafico*
+    function obterDadosGrafico(componente) {
+        /*if (proximaAtualizacao != undefined) {
+            clearTimeout(proximaAtualizacao);
+        }*/
+        fetch(`/medidas/ultimas/${componente}`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    plotarGrafico(resposta);
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+    }
+
     function plotarGrafico(resposta) {
         console.log('iniciando plotagem do gráfico...');
 
         // Criando estrutura para plotar gráfico - labels
-
         const dados = {
-  labels: [
-    'Livre',
-    'Em uso',
-    
-  ],
-  datasets: [{
-    label: 'My First Dataset',
-    data: [],
-    backgroundColor: [
+            labels: [
+                'Livre',
+                'Em uso',
+                
+            ],
+            datasets: [{
+                label: 'My First Dataset',
+                data: [],
+                backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
                     'rgba(75, 192, 192, 0.2)'
                 ],
@@ -179,8 +152,8 @@
                     'rgba(75, 192, 192, 1)'
                 ],
                 borderWidth: 3
-  }]
-};
+            }]
+        };
         
         console.log('----------------------------------------------')
         console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
@@ -189,27 +162,16 @@
         // Inserindo valores recebidos em estrutura para plotar o gráfico
         for (i = 0; i < resposta.length; i++) {
             var registro = resposta[i];
-            //labels.push(registro.momento_grafico);
-            dados.datasets[i].data.push(registro.livre);
-            memoriaLivre = registro.livre;
-            id_disponivel.innerHTML = `<span>${memoriaLivre}%</span>`;
-            dados.datasets[i].data.push(registro.medida);
-            emUso = registro.medida;
-            id_em_uso.innerHTML = `<span>${emUso}%</span>`;
+
+            dados.datasets[i].data.push(registro.livre.toFixed(3));
+            id_disponivel.innerHTML = `<span>${registro.livre.toFixed(2)}%</span>`;
+
+            dados.datasets[i].data.push(registro.medida.toFixed(3));
+            id_em_uso.innerHTML = `<span>${registro.medida.toFixed(2)}%</span>`;
+
             id_nome_fabricante.innerHTML = `<span> ${registro.fabricante_componente}</span>`
             id_nome_processador.innerHTML = `<span> ${registro.modelo_componente}</span>`
-            //dados.datasets[1].data.push(registro.livre);
         }
-
-        
-        
-        console.log('----------------------------------------------')
-        console.log('O gráfico será plotado com os respectivos valores:')
-        console.log('Labels:')
-        //console.log(labels)
-        console.log('Dados:')
-        console.log(dados.datasets)
-        console.log('----------------------------------------------')
         
         // Criando estrutura para plotar gráfico - config
         const config = {
@@ -223,9 +185,12 @@
             config
         );
 
-        setTimeout(() => atualizarGrafico(idAquario, dados, myChart), 2000);
+        //setTimeout(() => atualizarGrafico(idAquario, dados, myChart), 2000);
     }
 
+    function sair(){
+        sessionStorage.clear();
+    }
 
     // Esta função *atualizarGrafico* atualiza o gráfico que foi renderizado na página,
     // buscando a última medida inserida em tabela contendo as capturas, 

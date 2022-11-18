@@ -144,30 +144,32 @@
 </script>
 
 <script>
+    //window.onload = validarSessao();
     id_nome_maquina.innerHTML = sessionStorage.NOME_MAQUINA;
+    let proximaAtualizacao;
     var id_disco;
     var vezesMetodoInvocado = 0;
-    window.onload = obterListaDiscos(sessionStorage.EMPRESA, sessionStorage.ID_MAQUINA);
-    let proximaAtualizacao;
     var nome_disco;
     var emUso;
     var disponivel;
     var capacidade_total;
     var myChart;
 
+    window.onload = obterListaDiscos(sessionStorage.EMPRESA, sessionStorage.ID_MAQUINA);
+
     function disco(disco) {
         if (vezesMetodoInvocado > 0) {
             myChart.destroy();
         }
-        obterDadosGrafico(sessionStorage.EMPRESA, disco);
+        obterDadosGrafico(disco);
         vezesMetodoInvocado++;
     }
 
-    function obterDadosGrafico(empresa, disco) {
+    function obterDadosGrafico(disco) {
         /*if (proximaAtualizacao != undefined) {
             clearTimeout(proximaAtualizacao);
         }*/
-        fetch(`/medidas/ultimasDisco/${empresa}/${disco}`, { cache: 'no-store' }).then(function (response) {
+        fetch(`/medidas/ultimas/${disco}`, { cache: 'no-store' }).then(function (response) {
             if (response.ok) {
                 response.json().then(function (resposta) {
                     console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
