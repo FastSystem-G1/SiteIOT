@@ -26,17 +26,19 @@ function buscarUltimasMedidas (componente) {
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
         instrucaoSql = `
         SELECT 
-        data_hora, 
+        data_hora,
+        DATE_FORMAT(data_hora, '%d/%m/%Y %H:%i:%s') as data, 
         medida, 
         capacidade_componente, 
-        fabricante_componente, 
+        fabricante_componente,
+        id_componente, 
         nome_componente, 
         modelo_componente, 
         (capacidade_componente - medida) AS livre
         FROM Registro
         JOIN Componente ON Componente.id_Componente = Registro.fk_componente
-        WHERE id_componente = ${componente}
-        ORDER BY data_hora ASC LIMIT 1;
+        WHERE id_componente = '${componente}'
+        ORDER BY data_hora DESC LIMIT 1;
         `;
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");

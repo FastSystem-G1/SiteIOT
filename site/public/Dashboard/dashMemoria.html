@@ -76,7 +76,10 @@
                         <h4 id="id_disponivel"></h4>
                     </div>
                 </div>
-                <h3>MEMÓRIA</h3>
+                <div class="tituloEdata">
+                    <h3>MEMÓRIA</h3>
+                    <h3 id="data">__/__/__</h3>
+                </div>
                 <div class="boxGraph">
                     <canvas id="myChart" class="graph"></canvas>
 
@@ -97,6 +100,7 @@
     let proximaAtualizacao;
     var maquina = sessionStorage.ID_MAQUINA;
     var componente = 'Memória';
+    var idComponentePlotar;
 
     window.onload = obterIdComponente(maquina, componente);
 
@@ -170,11 +174,15 @@
         for (i = 0; i < resposta.length; i++) {
             var registro = resposta[i];
 
+            data.innerHTML = registro.data;
+
             dados.datasets[i].data.push(registro.livre);
             id_disponivel.innerHTML = `<span>${registro.livre}GB</span>`;
 
             dados.datasets[i].data.push(registro.medida);
             id_em_uso.innerHTML = `<span>${registro.medida}GB</span>`;
+
+            idComponentePlotar = registro.id_componente;
         }
 
         // Criando estrutura para plotar gráfico - config
@@ -189,7 +197,7 @@
             config
         );
 
-        //setTimeout(() => atualizarGrafico(idAquario, dados, myChart), 2000);
+        setTimeout(() => obterDadosGrafico(idComponentePlotar), 10000);
     }
 
     function sair() {

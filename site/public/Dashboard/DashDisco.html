@@ -116,6 +116,9 @@
                         <div class="borda_uso">
 
                         </div>
+                        <div class="tituloEdata">
+                            <h3 id="data">__/__/__</h3>
+                        </div>
 
                         <div class="container_dash">
                             <!-- Parte da DASH  -->
@@ -154,6 +157,7 @@
     var disponivel;
     var capacidade_total;
     var myChart;
+    var idComponentePlotar;
 
     window.onload = obterListaDiscos(sessionStorage.EMPRESA, sessionStorage.ID_MAQUINA);
 
@@ -212,6 +216,8 @@
         for (i = 0; i < resposta.length; i++) {
             var registro = resposta[i];
 
+            data.innerHTML = registro.data;
+
             disponivel = registro.medida
             emUso = (registro.capacidade_componente - disponivel);
 
@@ -224,6 +230,8 @@
 
             dados.datasets[i].data.push(emUsoPorcentagem);
             dados.datasets[i].data.push(disponivelPorcentagem);
+
+            idComponentePlotar = registro.id_componente;
         }
 
         // Criando estrutura para plotar gráfico - config
@@ -237,7 +245,7 @@
             config
         );
         //myChart.destroy();
-        //setTimeout(() => atualizarGrafico(idAquario, dados, myChart), 2000);
+        setTimeout(() => disco(idComponentePlotar), 10000);
     }
 
     function obterListaDiscos(empresa, maquina) {
