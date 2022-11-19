@@ -223,8 +223,8 @@ function sair(){
 
         for (i = 0; i < resposta.length; i++) {
             var registro = resposta[i];
-            dados.idApp.push(registro.id_app);
-            dados.nomeApp.push(registro.nome_app);
+            dados.idApp.push(registro.id_registro_processo);
+            dados.nomeApp.push(registro.nome_processo);
             dados.funcao.push(registro.funcao)
             dados.prioridade.push(registro.prioridade);
         }

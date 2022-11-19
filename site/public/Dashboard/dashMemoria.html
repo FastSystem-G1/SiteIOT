@@ -76,7 +76,10 @@
                         <h4 id="id_disponivel"></h4>
                     </div>
                 </div>
-                <h3>MEMÓRIA</h3>
+                <div class="tituloEdata">
+                    <h3>MEMÓRIA</h3>
+                    <h3 id="data">__/__/__</h3>
+                </div>
                 <div class="boxGraph">
                     <canvas id="myChart" class="graph"></canvas>
 
@@ -92,39 +95,43 @@
 </html>
 
 <script>
-    id_nome_maquina.innerHTML = sessionStorage.NOME_MAQUINA;
     //window.onload = validarSessao();
-    var empresa = sessionStorage.EMPRESA;
+    id_nome_maquina.innerHTML = sessionStorage.NOME_MAQUINA;
     let proximaAtualizacao;
-    var nome_processador;
-    var emUso;
-    var memoriaLivre;
-    
-    function sair() {
-        sessionStorage.clear();
-    }
+    var maquina = sessionStorage.ID_MAQUINA;
+    var componente = 'Memória';
+    var idComponentePlotar;
 
-    window.onload = obterDadosGrafico(empresa);
+    window.onload = obterIdComponente(maquina, componente);
 
-    function obterDadosGrafico(empresa) {
-        if (proximaAtualizacao != undefined) {
-            clearTimeout(proximaAtualizacao);
-        }
-        fetch(`/medidas/ultimasMemoria/${empresa}`, { cache: 'no-store' }).then(function (response) {
+    function obterIdComponente(maquina, componente) {
+        fetch(`/medidas/idComponente/${maquina}/${componente}`, { cache: 'no-store' }).then(function (response) {
             if (response.ok) {
                 response.json().then(function (resposta) {
                     console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    obterDadosGrafico(resposta[0].id_componente);
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+    }
 
-                    //alert("oi")
+    function obterDadosGrafico(componente) {
+        /*if (proximaAtualizacao != undefined) {
+            clearTimeout(proximaAtualizacao);
+        }*/
+        fetch(`/medidas/ultimas/${componente}`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
                     plotarGrafico(resposta);
 
-                    //alert(resposta[0].modelo_componente)
                     for (i = 0; i < resposta.length; i++) {
                         var registro = resposta[i];
-                        //nome_processador = resposta[0].modelo_componente;
-                        //dados.datasets[i].data.push(resposta[i].re);
-
-
                     }
                 });
             } else {
@@ -136,17 +143,13 @@
             });
     }
 
-
     function plotarGrafico(resposta) {
         console.log('iniciando plotagem do gráfico...');
-
         // Criando estrutura para plotar gráfico - labels
-
         const dados = {
             labels: [
                 'Livre',
                 'Em uso',
-
             ],
             datasets: [{
                 label: 'My First Dataset',
@@ -170,25 +173,17 @@
         // Inserindo valores recebidos em estrutura para plotar o gráfico
         for (i = 0; i < resposta.length; i++) {
             var registro = resposta[i];
-            //labels.push(registro.momento_grafico);
+
+            data.innerHTML = registro.data;
+
             dados.datasets[i].data.push(registro.livre);
-            memoriaLivre = registro.livre;
-            id_disponivel.innerHTML = `<span>${memoriaLivre}%</span>`;
+            id_disponivel.innerHTML = `<span>${registro.livre}GB</span>`;
+
             dados.datasets[i].data.push(registro.medida);
-            emUso = registro.medida;
-            id_em_uso.innerHTML = `<span>${emUso}%</span>`;
-            //dados.datasets[1].data.push(registro.livre);
+            id_em_uso.innerHTML = `<span>${registro.medida}GB</span>`;
+
+            idComponentePlotar = registro.id_componente;
         }
-
-
-
-        console.log('----------------------------------------------')
-        console.log('O gráfico será plotado com os respectivos valores:')
-        console.log('Labels:')
-        //console.log(labels)
-        console.log('Dados:')
-        console.log(dados.datasets)
-        console.log('----------------------------------------------')
 
         // Criando estrutura para plotar gráfico - config
         const config = {
@@ -202,7 +197,10 @@
             config
         );
 
-        setTimeout(() => atualizarGrafico(idAquario, dados, myChart), 2000);
+        setTimeout(() => obterDadosGrafico(idComponentePlotar), 10000);
     }
 
+    function sair() {
+        sessionStorage.clear();
+    }
 </script>
