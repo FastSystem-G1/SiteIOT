@@ -161,22 +161,43 @@ nav.sticky{
     display: flex;
     flex-direction: column;
     width:80%;
+    border-radius: 30px;
 }
 .titulos, .informacoes{
     display: flex;
     flex-direction: row;
     width: 100%;
 }
+.titulosMaquina, .informacoes{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
 .titulos div{
-    width:16.7%;
-    height: 100px;
+    width: 16.7%;
     display: flex;
     align-items: center;
     justify-content: center;
     border-left:1px solid black;
     height: 10vh;
 }
+.titulosMaquina div{
+    width: 15.7%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-left:1px solid black;
+    height: 10vh;
+    flex-direction: column;
+}
+.titulosMaquina .email{
+    width: 21%;
+}
 .titulos{
+    border:1px solid black;
+
+}
+.titulosMaquina{
     border:1px solid black;
 
 }

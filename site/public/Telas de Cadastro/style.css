@@ -203,6 +203,11 @@ nav.sticky{
   align-items: center;
 }
 
+.box2 h2{
+  margin-bottom: 10%;
+  border-bottom: white 1px solid;
+}
+
 .boxAplicativo {
   width: 50%;
   display: flex;
@@ -212,10 +217,8 @@ nav.sticky{
 .borda01 {
   width: 80%;
   color: white;
-
   text-align: center;
-  border-top: solid 1px white;
-  margin-bottom: 20%;
+  margin-bottom: 10%;
 }
 
 .titulo {
@@ -349,7 +352,6 @@ input::-webkit-input-placeholder {
   background-color: transparent;
   color: white;
   font-size: large;
-
   border: 2px solid rgba(255, 255, 255, 0.4);
   border-radius: 20px;
   transition: 1.5s;

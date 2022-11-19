@@ -62,7 +62,7 @@
                 <li class="agora" id="cad1"><a href="../Telas de Cadastro/funcionariosRead.html">Editar máquina</a></li>                  
                 <li class="cad1" id="cad1"><a href="../Telas de Cadastro/cadastroAplicativo.html">Cadastrar aplicativo</a></li>
                 <li class="cad1" id="cad1"><a href="../Telas de Cadastro/NovoFuncionario.html">Cadastrar funcionário</a></li>
-                <li class="agora" id="cad1"><a href="../Telas de Cadastro/funcionariosRead.html">Editar funcionário</a></li>  
+                <li class="card1" id="cad1"><a href="../Telas de Cadastro/funcionariosRead.html">Editar funcionário</a></li>  
                 <li onclick="sair()"><a href="../login.html">Sair</a></li>
             </ul>
         </nav>
@@ -75,12 +75,12 @@
                 </div>
         
                 <div class="usuariosRegistros">
-                    <div class="titulos">
+                    <div class="titulosMaquina">
                         <div><h3>Nome</h3></div>
                         <div><h3>Tipo</h3></div>
                         <div><h3>Sistema Operacional</h3></div>
-                        <div><h3>Email</h3></div>
-                        <div><h3>Senha</h3></div>
+                        <div class="email"><h3>Email</h3></div>
+                        <div class="senha"><h3>Senha</h3></div>
                         <div><h3>botoes</h3></div>
                     </div>
         
@@ -147,8 +147,8 @@ function atualizarFeed() {
                     <div><span>${maquina.email_maquina}</span></div>
                     <div><span>${maquina.senha_maquina}</span></div>
                     <div class="botoes">
-                      <button onclick="editarMaquina(${maquina.id_maquina})">Editar</button>
-                      <button onclick="deletarMaquina(${maquina.id_maquina})">Deletar</button>
+                      <button style="background-color: #021545; color: aliceblue; border: 0.5px solid aliceblue" onclick="editarMaquina(${maquina.id_maquina})">Editar</button>
+                      <button style="background-color: #021545; color: aliceblue; border: 0.5px solid aliceblue" onclick="deletarMaquina(${maquina.id_maquina})">Deletar</button>
                       </div>
                     </div>
                     
