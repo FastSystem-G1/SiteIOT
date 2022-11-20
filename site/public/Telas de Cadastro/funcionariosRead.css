@@ -182,7 +182,7 @@ nav.sticky{
     height: 10vh;
 }
 .titulosMaquina div{
-    width: 15.7%;
+    width: 10.7%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -190,8 +190,20 @@ nav.sticky{
     height: 10vh;
     flex-direction: column;
 }
+.titulosMaquina .tipo{
+    width: 12.5%;
+}
+.titulosMaquina .nome{
+    width: 12.3%;
+}
+.titulosMaquina .so{
+    width: 16%;
+}
 .titulosMaquina .email{
-    width: 21%;
+    width: 26.6%;
+}
+.titulosMaquina .senha{
+    width: 14.2%;
 }
 .titulos{
     border:1px solid black;

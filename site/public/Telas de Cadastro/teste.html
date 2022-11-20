@@ -99,23 +99,22 @@
                     teste.innerHTML +=
                     `
                     
-                    nome: <input class="inputs_cadastro" id="nome_input" type="text" value="${funcionario.nome_funcionario}">
+                    <input class="inputs_cadastro" id="nome_input" type="text" value="${funcionario.nome_funcionario}">
                     
-                    adm:
                     <select id="cargo_select" class="inputs_cadastro" style="width: 300px; cursor: pointer;">
                     <option value="${funcionario.isAdmin}">Selecione o cargo:</option>
                     <option value="1">Administrador</option>
                     <option value="0">Suporte de TI</option>
                   </select>
-                    email
+                    
                   <input id="email_input" class="inputs_cadastro" value="${funcionario.email_funcionario}"
                     type="email">
-                    cpf
+                    
                     <input id="cpf_input" class="inputs_cadastro" value="${funcionario.cpf_funcionario}" type="number"
                   min="0">
-                    telefone
+                    
                   <input id="telefone_input" class="inputs_cadastro" value="${funcionario.telefone_funcionario}"
-                    type="number" min="0">
+                    type="number" min="0"><br>
                     <button onclick="editar()" id="botao_cadastro">Editar</button>
                     
                     

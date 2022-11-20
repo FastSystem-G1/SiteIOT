@@ -57,9 +57,9 @@
             </div>
             <ul class="nav-list" id="nav-content"  tabindex="0">
                 <div id="texto_func" style="width: 100%; display: flex; align-items: center; justify-content: center; color: #00C2CB; font-size: 25px; font-weight: bold; margin-top: 30px;"></div>
-                <li class="cad1"><a href="../Dashboard/dashInicial.html">Início</a></li>
+                <li class="card1"><a href="../Dashboard/dashInicial.html">Início</a></li>
                 <li class="cad1" id="cad1"><a href="../Telas de Cadastro/cadastroMaquina.html">Cadastrar máquina</a></li>
-                <li class="agora" id="cad1"><a href="../Telas de Cadastro/funcionariosRead.html">Editar máquina</a></li>                  
+                <li class="agora" id="cad1"><a href="../Telas de Cadastro/maquinaRead.html">Editar máquina</a></li>                  
                 <li class="cad1" id="cad1"><a href="../Telas de Cadastro/cadastroAplicativo.html">Cadastrar aplicativo</a></li>
                 <li class="cad1" id="cad1"><a href="../Telas de Cadastro/NovoFuncionario.html">Cadastrar funcionário</a></li>
                 <li class="card1" id="cad1"><a href="../Telas de Cadastro/funcionariosRead.html">Editar funcionário</a></li>  
@@ -76,19 +76,16 @@
         
                 <div class="usuariosRegistros">
                     <div class="titulosMaquina">
-                        <div><h3>Nome</h3></div>
-                    <div class="titulos">
-                        <div><h3>Tipo</h3></div>
-                        <div><h3>Nome</h3></div>
-                        <div><h3>Sistema Operacional</h3></div>
+                        <div class="tipo"><h3>Tipo</h3></div>
+                        <div class="nome"><h3>Nome</h3></div>
+                        <div class="so"><h3>Sistema Operacional</h3></div>
                         <div class="email"><h3>Email</h3></div>
                         <div class="senha"><h3>Senha</h3></div>
                         <div><h3>botoes</h3></div>
-                </div>
+                    </div>
         
                     <div class="informacoes" id="idInformacoes"></div>
                 
-                </div>
             </div>
         </div>
     </div>
@@ -143,11 +140,11 @@ function atualizarFeed() {
                     `
                     <div class="colunaFuncionario">
                     <div style="display:none"><span id="spanMaquina">${maquina.id_maquina}</span></div>
-                    <div><span>${maquina.tipo_maquina}</span></div>
-                    <div><span>${maquina.nome_maquina}</span></div>
-                    <div><span>${maquina.sistema_operacional_maquina}</span></div>
-                    <div><span>${maquina.email_maquina}</span></div>
-                    <div><span>${maquina.senha_maquina}</span></div>
+                    <div style="width: 70%;"><span>${maquina.tipo_maquina}</span></div>
+                    <div style="width: 70%;"><span>${maquina.nome_maquina}</span></div>
+                    <div style="width: 90%;"><span>${maquina.sistema_operacional_maquina}</span></div>
+                    <div style="width: 150%;"><span>${maquina.email_maquina}</span></div>
+                    <div style="width: 80%;"><span>${maquina.senha_maquina}</span></div>
                     <div class="botoes">
                       <button style="background-color: #021545; color: aliceblue; border: 0.5px solid aliceblue" onclick="editarMaquina(${maquina.id_maquina})">Editar</button>
                       <button style="background-color: #021545; color: aliceblue; border: 0.5px solid aliceblue" onclick="deletarMaquina(${maquina.id_maquina})">Deletar</button>

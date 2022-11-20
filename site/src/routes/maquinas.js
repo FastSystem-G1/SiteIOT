@@ -11,4 +11,8 @@ router.get(`/pegarMaquinas/:nome_componente/:medida`, function (req, res) {
     maquinaController.pegarMaquinas(req, res);
 });
 
+router.get(`/pegarMaquinas2/:nome_componente/:medida`, function (req, res) {
+    maquinaController.pegarMaquinas2(req, res);
+});
+
 module.exports = router;

@@ -89,7 +89,7 @@
                 <div class="box2">
 
                     <div class="titulo_novo_integrante">
-                        <h2 id="h2_novo_integrante">
+                        <h2 style="margin-bottom: 10%;" id="h2_novo_integrante">
                             Editar informações
                         </h2>
                     </div>
@@ -104,11 +104,6 @@
         </div>
     </div>
     <script src="../headers/mobile-navbar.js"></script>
-
-
-
-
-
 
 </body>
 
@@ -145,14 +140,14 @@
                         teste.innerHTML +=
                             `
                     
-                    nome: <input class="inputs_cadastro" id="nome_input" type="text" value="${maquina.nome_maquina}">
-                    email
+                    <input class="inputs_cadastro" id="nome_input" type="text" value="${maquina.nome_maquina}">
+                    
                   <input id="email_input" class="inputs_cadastro" value="${maquina.email_maquina}"
                     type="email">
-                    senha
+                    
                     <input id="senha_input" class="inputs_cadastro" value="${maquina.senha_maquina}" type="text">
-                    telefone
-                    <button onclick="btnEdicao()" id="botao_cadastro">Editar</button>                   
+                    <br>
+                    <button style="margin-top: 10%" onclick="btnEdicao()" id="botao_cadastro">Editar</button>                   
                     `
                     }
 
