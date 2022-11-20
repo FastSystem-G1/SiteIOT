@@ -46,27 +46,27 @@
                     </div>
                     <div class="cardExtremo">
                         <div class="cardCima"><b>Memoria</b></div>
-                        <div class="cardBaixo"><b>5</b></div>
+                        <div class="cardBaixo" id="cardMemoriaExtremo"><b></b></div>
                     </div>
                     <div class="cardExtremo">
                         <div class="cardCima"><b>Disco</b></div>
-                        <div class="cardBaixo"><b>5</b></div>
+                        <div class="cardBaixo" id="cardDiscoExtremo"><b></b></div>
                     </div>
                     <div class="cardAlert">
                         <div class="cardCima"><b>CPU</b></div>
-                        <div class="cardBaixo"><b>5</b></div>
+                        <div class="cardBaixo" id="cardCPUAlert"><b></b></div>
                     </div>
                     <div class="cardAlert">
                         <div class="cardCima"><b>Memoria</b></div>
-                        <div class="cardBaixo"><b>5</b></div>
+                        <div class="cardBaixo" id="cardMemoriaAlert"><b></b></div>
                     </div>
                     <div class="cardAlert">
                         <div class="cardCima"><b>Disco</b></div>
-                        <div class="cardBaixo"><b>5</b></div>
+                        <div class="cardBaixo" id="cardDiscoAlert"><b></b></div>
                     </div>
                     <div class="cardTotal">
                         <div class="cardCima"><b>Total de Maquinas</b></div>
-                        <div class="cardBaixo"><b>20</b></div>
+                        <div class="cardBaixo" id="cardQuantidadeTotalMaquinas"><b></b></div>
                     </div>
                 </div>
                 <div class="fundoVidro">
@@ -82,6 +82,10 @@
 
 </html>
 <script>
+    window.onload = pegarMaquinas('Processador', 8);
+    window.onload = pegarMaquinas('Memória', 8);
+    window.onload = pegarMaquinas('Disco', 8);
+
     // window.onload = validarSessao();
     window.onload = obterListaMaquina();
 
@@ -179,24 +183,32 @@
         }
     }
 
-    function pegarMaquinasCPUExtremo(empresa) {
+    function pegarMaquinas(componente, medida) {
         /*if (proximaAtualizacao != undefined) {
             clearTimeout(proximaAtualizacao);
         }*/
 
         var empresa = sessionStorage.EMPRESA;
-        fetch(`/maquinas/listarMaquinas/${empresa}`, { cache: 'no-store' }).then(function (response) {
+        fetch(`/maquinas/pegarMaquinas/${componente}/${medida}`, { cache: 'no-store' }).then(function (response) {
             if (response.ok) {
                 response.json().then(function (resposta) {
                     console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
 
-                    
-
+                    var contador = 0;
                     for (i = 0; i < resposta.length; i++) {
                         var registro = resposta[i];
 
-                        cardCPUExtremo.innerHTML = "resposta";
+                        contador = i + 1;
                     }
+
+                    if(componente == 'Processador'){
+                        plotarQuantidadeProcessadorExtremo(contador);
+                    }else if(componente == 'Memória'){
+                        plotarQuantidadeMemoriaExtremo(contador);
+                    }else if(componente == 'Disco'){
+                        plotarQuantidadeDiscoExtremo(contador);
+                    }
+                    
 
                 });
             } else {
@@ -205,5 +217,30 @@
         }).catch(function (error) {
             console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
         });
+    }
+
+
+    function plotarQuantidadeProcessadorExtremo(quantidadeMaquinas){
+        cardCPUExtremo.innerHTML = quantidadeMaquinas;
+    }
+
+    function plotarQuantidadeMemoriaExtremo(quantidadeMaquinas){
+        cardMemoriaExtremo.innerHTML = quantidadeMaquinas;
+    }
+
+    function plotarQuantidadeDiscoExtremo(quantidadeMaquinas){
+        cardDiscoExtremo.innerHTML = quantidadeMaquinas;
+    }
+
+    function plotarQuantidadeProcessadorAlert(quantidadeMaquinas){
+        cardCPUAlert.innerHTML = quantidadeMaquinas;
+    }
+
+    function plotarQuantidadeMemoriaAlert(quantidadeMaquinas){
+        cardMemoriaAlert.innerHTML = quantidadeMaquinas;
+    }
+
+    function plotarQuantidadeDiscoAlert(quantidadeMaquinas){
+        cardDiscoAlert.innerHTML = quantidadeMaquinas;
     }
 </script>

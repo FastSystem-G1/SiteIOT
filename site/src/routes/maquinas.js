@@ -7,8 +7,8 @@ router.get(`/listarMaquinas/:id_empresa`, function (req, res) {
     maquinaController.listarMaquina(req, res);
 });
 
-router.get(`/pegarMaquinasCPUExtremo/:nome_componente`, function (req, res) {
-    maquinaController.pegarMaquinasCPUExtremo(req, res);
+router.get(`/pegarMaquinas/:nome_componente/:medida`, function (req, res) {
+    maquinaController.pegarMaquinas(req, res);
 });
 
 module.exports = router;

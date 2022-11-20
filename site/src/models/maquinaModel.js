@@ -20,7 +20,7 @@ function listarMaquina(empresa) {
     return database.executar(instrucaoSql);
 }
 
-function pegarMaquinasCPUExtremo(componente) {
+function pegarMaquinas(componente, medida) {
     instrucaoSql = ''
 
     if (process.env.AMBIENTE_PROCESSO == "producao") {
@@ -30,7 +30,7 @@ function pegarMaquinasCPUExtremo(componente) {
         select id_componente from Maquina
         inner join Componente on Maquina.id_maquina = Componente.fk_maquina
         inner join Registro on Componente.id_componente = Registro.fk_componente
-        where nome_componente LIKE '${componente}%' and medida > 4 group by fk_componente;
+        where nome_componente LIKE '${componente}%' and medida > ${medida} group by fk_componente;
         `;
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
@@ -43,5 +43,5 @@ function pegarMaquinasCPUExtremo(componente) {
 
 module.exports = {
     listarMaquina,
-    pegarMaquinasCPUExtremo,
+    pegarMaquinas,
 }

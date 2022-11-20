@@ -16,10 +16,11 @@ function listarMaquina(req, res) {
     });
 }
 
-function pegarMaquinasCPUExtremo(req, res) {
+function pegarMaquinas(req, res) {
     console.log(`Recuperando Máquinas.`);
     var componente = req.params.nome_componente;
-    maquinaModel.pegarMaquinasCPUExtremo(componente).then(function (resultado) {
+    var medida = req.params.medida;
+    maquinaModel.pegarMaquinas(componente, medida).then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {
@@ -34,5 +35,5 @@ function pegarMaquinasCPUExtremo(req, res) {
 
 module.exports = {
     listarMaquina,
-    pegarMaquinasCPUExtremo,
+    pegarMaquinas,
 }
