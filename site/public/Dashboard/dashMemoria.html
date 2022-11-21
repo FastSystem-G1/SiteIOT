@@ -142,11 +142,11 @@
         // Criando estrutura para plotar gráfico - labels
         const dados = {
             labels: [
-                'Livre',
                 'Em uso',
+                'Livre'
             ],
             datasets: [{
-                label: 'My First Dataset',
+                label: 'GigaBytes',
                 data: [],
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
@@ -169,12 +169,12 @@
             var registro = resposta[i];
 
             data.innerHTML = registro.data;
+            
+            dados.datasets[i].data.push(registro.medida);
+            id_em_uso.innerHTML = `<span>${registro.medida}GB</span>`;
 
             dados.datasets[i].data.push(registro.livre);
             id_disponivel.innerHTML = `<span>${registro.livre}GB</span>`;
-
-            dados.datasets[i].data.push(registro.medida);
-            id_em_uso.innerHTML = `<span>${registro.medida}GB</span>`;
 
             idComponentePlotar = registro.id_componente;
         }

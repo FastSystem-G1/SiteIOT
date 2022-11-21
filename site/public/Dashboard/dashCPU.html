@@ -140,9 +140,8 @@
         // Criando estrutura para plotar gráfico - labels
         const dados = {
             labels: [
-                'Livre',
                 'Em uso',
-                
+                'Livre',
             ],
             datasets: [{
                 label: 'My First Dataset',
@@ -169,11 +168,11 @@
 
             data.innerHTML = registro.data;
 
-            dados.datasets[i].data.push(registro.livre.toFixed(3));
-            id_disponivel.innerHTML = `<span>${registro.livre.toFixed(2)}%</span>`;
-
             dados.datasets[i].data.push(registro.medida.toFixed(3));
             id_em_uso.innerHTML = `<span>${registro.medida.toFixed(2)}%</span>`;
+            
+            dados.datasets[i].data.push(registro.livre.toFixed(3));
+            id_disponivel.innerHTML = `<span>${registro.livre.toFixed(2)}%</span>`;
 
             id_nome_fabricante.innerHTML = `<span> ${registro.fabricante_componente}</span>`
             id_nome_processador.innerHTML = `<span> ${registro.modelo_componente}</span>`
