@@ -302,11 +302,57 @@ option {
 
 .div_inputs {
   width: 90%;
-  height: 60%;
+  height: 20%;
   display: flex;
   justify-content: center;
   flex-direction: column;
   justify-content: space-around;
+}
+
+.lista_aplicativos {
+  width: 50%;
+  height: 500px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+  overflow-y: scroll;
+  border: #010E3C solid;
+  border-radius: 20px 6px 6px 20px;
+}
+
+.item_lista_aplicativos {
+  width: 80%;
+  margin: 20px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  font-weight: bold;
+}
+
+.imagem_lixeira {
+  width: 20px;
+  height: 20px;
+
+  cursor: pointer;
+}
+
+.lista_aplicativos::-webkit-scrollbar {
+  width: 12px;             /* width of the entire scrollbar */
+}
+
+.lista_aplicativos::-webkit-scrollbar-track {
+  background: #010E3C;        /* color of the tracking area */
+  border-radius: 3px;
+}
+
+.lista_aplicativos::-webkit-scrollbar-thumb {
+  background-color: #00C2CB;    /* color of the scroll thumb */
+  border-radius: 5px;       /* roundness of the scroll thumb */
+  border: none;  
 }
 
 .div_inputs_menores {

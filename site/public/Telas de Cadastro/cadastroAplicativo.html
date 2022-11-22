@@ -27,14 +27,20 @@
                 <div class="line2"></div>
                 <div class="line3"></div>
             </div>
-            <ul class="nav-list" id="nav-content"  tabindex="0">
-                <div id="texto_func" style="width: 100%; display: flex; align-items: center; justify-content: center; color: #00C2CB; font-size: 25px; font-weight: bold; margin-top: 30px;"></div>
+            <ul class="nav-list" id="nav-content" tabindex="0">
+                <div id="texto_func"
+                    style="width: 100%; display: flex; align-items: center; justify-content: center; color: #00C2CB; font-size: 25px; font-weight: bold; margin-top: 30px;">
+                </div>
                 <li class="cad1"><a href="../Dashboard/dashInicial.html">Início</a></li>
-                <li class="cad1" id="cad1"><a href="../Telas de Cadastro/cadastroMaquina.html">Cadastrar máquina</a></li>     
-                <li class="cad1" id="cad1"><a href="../Telas de Cadastro/maquinaRead.html">Editar máquina</a></li>             
-                <li class="agora" id="cad1"><a href="../Telas de Cadastro/cadastroAplicativo.html">Cadastrar aplicativo</a></li>
-                <li class="cad1" id="cad1"><a href="../Telas de Cadastro/NovoFuncionario.html">Cadastrar funcionário</a></li>
-                <li class="cad1" id="cad1"><a href="../Telas de Cadastro/funcionariosRead.html">Editar funcionário</a></li>  
+                <li class="cad1" id="cad1"><a href="../Telas de Cadastro/cadastroMaquina.html">Cadastrar máquina</a>
+                </li>
+                <li class="cad1" id="cad1"><a href="../Telas de Cadastro/maquinaRead.html">Editar máquina</a></li>
+                <li class="agora" id="cad1"><a href="../Telas de Cadastro/cadastroAplicativo.html">Cadastrar
+                        aplicativo</a></li>
+                <li class="cad1" id="cad1"><a href="../Telas de Cadastro/NovoFuncionario.html">Cadastrar funcionário</a>
+                </li>
+                <li class="cad1" id="cad1"><a href="../Telas de Cadastro/funcionariosRead.html">Editar funcionário</a>
+                </li>
                 <li onclick="sair()"><a href="../login.html">Sair</a></li>
                 <li></li>
             </ul>
@@ -49,39 +55,22 @@
                 </div>
                 <div class="box2">
                     <h2>
-                        APLICATIVOS QUE PODEM SER ACESSADOS
+                        CADASTRO DE APLICATIVOS QUE NÃO PODEM SER ACESSADOS
                     </h2>
 
                     <div class="div_inputs">
                         <div style="display:flex; justify-content:center;">
                             <select id="nome_aplicativo" placeholder="NOME APLICATIVOS">
-                                <option value="">SELECIONE O NOME DO APLICATIVOS</option>
-                            </select>
-                        </div>
-
-                        <div style="display:flex; justify-content:center;">
-                            <select id="funcao_aplicativo">
-                                <option value="">SELECIONE FUNÇÃO</option>
-                                <option value="nativo">NATIVO</option>
-                                <option value="web">WEB</option>
-                                <option value="hibrido">HÍBRIDO</option>
-                            </select>
-                        </div>
-
-                        <div style="display:flex; justify-content:center;">
-
-                            <select id="prioridade_aplicativo">
-                                <option value="">SELECIONE A PRIORIDADE</option>
-                                <option value="1">PRIORIDADE 1</option>
-                                <option value="2">PRIORIDADE 2</option>
-                                <option value="3">PRIORIDADE 3</option>
+                                <option value="">Selectione o nome de um dos aplicativos</option>
                             </select>
                         </div>
                     </div>
-
+                    <div class="lista_aplicativos" id="lista_aplicativos">
+                        
+                    </div>
                     <div id="divErroLogin"></div>
                     <div class="boxButton">
-                        <button onclick="cadastrarMaquina()" id="botao_cadastro">Cadastrar</button>
+                        <button onclick="cadastrarAplicativo()" id="botao_cadastro">Cadastrar</button>
                     </div>
                 </div>
             </div>
@@ -93,117 +82,19 @@
 </html>
 
 <script>
-//window.onload = validarSessao2();
-function sair(){
-    sessionStorage.clear();
-}
-    
-    window.onload = obterDados();
-
-    var dados = {
-            idApp: [],
-            nomeApp: [],
-            funcao: [],
-            prioridade: []
-        };
-
-    function cadastrarMaquina() {
-        var aplicativoVar = nome_aplicativo.value
-        var funcaoVar = funcao_aplicativo.value
-        var prioridadeVar = prioridade_aplicativo.value
-
-        if(aplicativoVar == "" || funcaoVar == "" || prioridadeVar == ""){
-            alert("Algum campo ta vazio")
-        }else{
-
-            console.log("ID: " + aplicativoVar)
-            console.log("Função: " + funcaoVar)
-            console.log("Prioridade: " + prioridadeVar)
-            console.log("Empresa: " + sessionStorage.EMPRESA)
-
-            fetchcadastro()
-        }
-            function fetchcadastro() {
-            fetch("/aplicativos/cadastrar", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    aplicativoServer: aplicativoVar,
-                    funcaoServer: funcaoVar,
-                    prioridadeServer: prioridadeVar,
-                    empresaServer: sessionStorage.EMPRESA,
-                }),
-            })
-                .then(function (resposta) {
-                    console.log("resposta: ", resposta);
-
-                    if (resposta.ok) {
-                        console.log("Cadastro realizado com sucesso!")
-                        alert("Cadastro realizado com sucesso !!!");
-                        obterDados();
-
-                    } else {
-                        throw "Houve um erro ao tentar realizar o cadastro!";
-                    }
-                })
-                .catch(function (resposta) {
-                    console.log(`#ERRO: ${resposta}`);
-
-                });
-
-            return false;
-        } 
-
-        function fetchcadastro() {
-        fetch("/aplicativos/cadastrar", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                // crie um atributo que recebe o valor recuperado aqui
-                // Agora vá para o arquivo routes/usuario.js
-                    aplicativoServer: aplicativoVar,
-                    funcaoServer: funcaoVar,
-                    prioridadeServer: prioridadeVar,
-                    empresaServer: sessionStorage.EMPRESA
-            }),
-        })
-            .then(function (resposta) {
-                console.log("resposta: ", resposta);
-
-                if (resposta.ok) {
-                    console.log("Cadastro realizado com sucesso!")
-                    alert("Cadastro realizado com sucesso !!!");
-                    obterDados();
-                    /*  finalizarAguardar(); */
-                } else {
-                    throw "Houve um erro ao tentar realizar o cadastro!";
-                }
-            })
-            .catch(function (resposta) {
-                console.log(`#ERRO: ${resposta}`);
-                /*  finalizarAguardar(); */
-            });
-
-        return false;
+    //window.onload = validarSessao2();
+    function sair() {
+        sessionStorage.clear();
     }
 
-
-
-        }
-        
-    // }
+    window.onload = obterDados();
+    window.onload = obterDadosAplicativos();
 
     function obterDados() {
         fetch(`/aplicativos/listar`, { cache: "no-store" })
             .then(function (response) {
                 if (response.ok) {
                     response.json().then(function (resposta) {
-                        // console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-                        resposta.reverse();
                         plotarDados(resposta);
                     });
                 } else {
@@ -212,28 +103,118 @@ function sair(){
             })
             .catch(function (error) {
                 console.error(
-                    `Erro na obtenção dos dados p/ gráfico: ${error.message}`
+                    `Erro na obtenção dos dados: ${error.message}`
                 );
             });
     }
 
     function plotarDados(resposta) {
         console.log("iniciando plotagem dos aplicativos...");
-        
 
         for (i = 0; i < resposta.length; i++) {
             var registro = resposta[i];
-            dados.idApp.push(registro.id_registro_processo);
-            dados.nomeApp.push(registro.nome_processo);
-            dados.funcao.push(registro.funcao)
-            dados.prioridade.push(registro.prioridade);
-        }
-
-        for(var i = 0; i < dados.idApp.length; i++){
             nome_aplicativo.innerHTML += `
-        <option value = "${dados.idApp[i]}"> ${dados.nomeApp[i]} </option>
-        `
+            <option value = "${registro.id_app}"> ${registro.nome_app} </option>
+            `
         }
 
+    }
+
+    function cadastrarAplicativo() {
+        var idAplicativoVar = nome_aplicativo.value;
+        var idEmpresaVar = sessionStorage.EMPRESA;
+
+        if (idAplicativoVar == "") {
+            alert("Selecione um aplicativo.")
+        } else {
+            console.log("ID do aplicativo: " + idAplicativoVar)
+            console.log("ID da Empresa: " + idEmpresaVar)
+            fetchCadastro()
+        }
+
+        function fetchCadastro() {
+            fetch("/aplicativos/cadastrar", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    aplicativoServer: idAplicativoVar,
+                    empresaServer: sessionStorage.EMPRESA
+                }),
+            })
+                .then(function (resposta) {
+                    console.log("resposta: ", resposta);
+
+                    if (resposta.ok) {
+                        obterDadosAplicativos();
+                        /*  finalizarAguardar(); */
+                    } else if (resposta.status == 500) {
+                        throw "Aplicativo já está cadastrado!"
+                    } else {
+                        throw "Houve um erro ao tentar realizar o cadastro!";
+                    }
+                })
+                .catch(function (resposta) {
+                    console.log(`#ERRO: ${resposta}`);
+                    alert(resposta)
+                    /*  finalizarAguardar(); */
+                });
+            return false;
+        }
+    }
+
+    function obterDadosAplicativos() {
+        fetch(`/aplicativos/listarCadastrados/${sessionStorage.EMPRESA}`, { cache: "no-store" })
+            .then(function (response) {
+                if (response.ok) {
+                    response.json().then(function (resposta) {
+                        plotarDadosAplicativos(resposta);
+                    });
+                } else {
+                    console.error("Nenhum dado encontrado ou erro na API");
+                }
+            })
+            .catch(function (error) {
+                console.error(
+                    `Erro na obtenção dos dados: ${error.message}`
+                );
+            });
+    }
+
+    function plotarDadosAplicativos(resposta) {
+        console.log("iniciando plotagem dos aplicativos...");
+        lista_aplicativos.innerHTML = '';
+        for (i = 0; i < resposta.length; i++) {
+            var registro = resposta[i];
+            lista_aplicativos.innerHTML += `
+                <div class="item_lista_aplicativos">
+                    <div class="nome_aplicativos">${registro.nome_app}</div>
+                    <img class="imagem_lixeira" src="./img/lixeira.png" alt="" 
+                    onclick="deletar(${registro.fk_empresa}, ${registro.fk_app})">
+                </div>
+            `
+        }
+
+    }
+
+    function deletar(idEmpresa, idApp) {
+        fetch(`/aplicativos/deletar/${idEmpresa}/${idApp}`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(function (resposta) {
+
+            if (resposta.ok) {
+                obterDadosAplicativos();
+            } else if (resposta.status == 404) {
+                window.alert("Deu 404!");
+            } else {
+                throw ("Houve um erro ao tentar deletar o aplicativo! Código da resposta: " + resposta.status);
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
     }
 </script>
