@@ -205,9 +205,8 @@
                 "Content-Type": "application/json"
             }
         }).then(function (resposta) {
-
             if (resposta.ok) {
-                obterDadosAplicativos();
+                window.location = 'cadastroAplicativo.html'
             } else if (resposta.status == 404) {
                 window.alert("Deu 404!");
             } else {
