@@ -52,9 +52,6 @@
                     <li><a href="DashDisco.html">
                             <h3><img src="img/bi_disc.png" alt=""> DISCO </h3>
                         </a></li>
-                    <li><a href="dashProcessos.html">
-                            <h3><img src="img/arcticons_application-inspector.png" alt=""> PROCESSOS </h3>
-                        </a></li>
                 </ul>
             </div>
 
@@ -171,10 +168,10 @@
             data.innerHTML = registro.data;
             
             dados.datasets[i].data.push(registro.medida);
-            id_em_uso.innerHTML = `<span>${registro.medida}GB</span>`;
+            id_em_uso.innerHTML = `<span>${((registro.medida * 100) / registro.capacidade_componente).toFixed(2)}%</span>`;
 
             dados.datasets[i].data.push(registro.livre);
-            id_disponivel.innerHTML = `<span>${registro.livre}GB</span>`;
+            id_disponivel.innerHTML = `<span>${((registro.livre * 100) / registro.capacidade_componente).toFixed(2)}%</span>`;
 
             idComponentePlotar = registro.id_componente;
         }

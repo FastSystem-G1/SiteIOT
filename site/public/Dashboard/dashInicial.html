@@ -85,8 +85,12 @@
     // window.onload = validarSessao();
     window.onload = obterListaMaquina();
     window.onload = pegarMaquinas('Processador', 80);
-    //window.onload = pegarMaquinas('Memória', 8);
-    window.onload = pegarMaquinas('Disco', 8);
+    window.onload = pegarMaquinas('Memória', 80);
+    window.onload = pegarMaquinas('Disco', 80);
+
+    window.onload = pegarMaquinas('Processador', 60);
+    window.onload = pegarMaquinas('Memória', 60);
+    window.onload = pegarMaquinas('Disco', 60);
 
     function sair() {
         sessionStorage.clear();
@@ -181,6 +185,7 @@
 
         var empresa = sessionStorage.EMPRESA;
         fetch(`/maquinas/pegarMaquinas/${componente}/${medida}`, { cache: 'no-store' }).then(function (response) {
+            console.log(response)
             if (response.ok) {
                 response.json().then(function (resposta) {
                     console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
@@ -193,6 +198,7 @@
                     }
 
                     plotarQuantidadeMaquinaCritico(contador, componente);
+                    plotarQuantidadeMaquinaAlert(contador, componente);
                 });
             } else {
                 console.error('Nenhum dado encontrado ou erro na API');
@@ -209,6 +215,16 @@
             cardMemoriaExtremo.innerHTML = quantidadeMaquinas;
         } else {
             cardDiscoExtremo.innerHTML = quantidadeMaquinas;
+        }
+    }
+
+    function plotarQuantidadeMaquinaAlert(quantidadeMaquinas, componente) {
+        if (componente == "Processador") {
+            cardCPUAlert.innerHTML = quantidadeMaquinas;
+        } else if (componente == "Memória") {
+            cardMemoriaAlert.innerHTML = quantidadeMaquinas;
+        } else {
+            cardDiscoAlert.innerHTML = quantidadeMaquinas;
         }
     }
 </script>

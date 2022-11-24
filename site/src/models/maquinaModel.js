@@ -27,10 +27,12 @@ function pegarMaquinas(componente, medida) {
         instrucaoSql = ``;
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
         instrucaoSql = `
-        select id_componente from Maquina
-        inner join Componente on Maquina.id_maquina = Componente.fk_maquina
-        inner join Registro on Componente.id_componente = Registro.fk_componente
-        where nome_componente LIKE '${componente}%' and medida > ${medida} group by fk_componente;
+            SELECT DISTINCT(COUNT(medida)), fk_maquina FROM Registro
+            INNER JOIN Componente ON Componente.id_componente = Registro.fk_componente
+            WHERE nome_componente LIKE '${componente}%' AND 
+            data_hora BETWEEN (SELECT SEC_TO_TIME(TIME_TO_SEC(CURRENT_TIMESTAMP()) - 300)) AND CURRENT_TIMESTAMP() 
+            AND medida > ${medida}
+            GROUP BY fk_componente;
         `;
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
