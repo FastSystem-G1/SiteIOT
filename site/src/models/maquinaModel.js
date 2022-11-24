@@ -26,13 +26,45 @@ function pegarMaquinas(componente, medida) {
     if (process.env.AMBIENTE_PROCESSO == "producao") {
         instrucaoSql = ``;
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
+        if (componente == "Processador") {
+            instrucaoSql = `
+                SELECT DISTINCT(COUNT(medida)), fk_maquina FROM Registro
+                INNER JOIN Componente ON Componente.id_componente = Registro.fk_componente
+                WHERE nome_componente LIKE '${componente}%' AND 
+                data_hora BETWEEN (SELECT SEC_TO_TIME(TIME_TO_SEC(CURRENT_TIMESTAMP()) - 30)) AND CURRENT_TIMESTAMP() 
+                AND medida > ${medida}
+                GROUP BY fk_componente;
+            `;
+        } else {
+            instrucaoSql = `
+                SELECT DISTINCT(COUNT(medida)), fk_maquina FROM Registro
+                INNER JOIN Componente ON Componente.id_componente = Registro.fk_componente
+                WHERE nome_componente LIKE '${componente}%' AND 
+                data_hora BETWEEN (SELECT SEC_TO_TIME(TIME_TO_SEC(CURRENT_TIMESTAMP()) - 30)) AND CURRENT_TIMESTAMP() 
+                AND ((medida * 100) / capacidade_componente) > ${medida}
+                GROUP BY fk_componente;
+            `;
+        }
+    } else {
+        console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
+        return
+    }
+
+    console.log("Executando a instrução SQL1: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+function verificarProcessos(empresa) {
+    instrucaoSql = ''
+
+    if (process.env.AMBIENTE_PROCESSO == "producao") {
+        instrucaoSql = ``;
+    } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
         instrucaoSql = `
-            SELECT DISTINCT(COUNT(medida)), fk_maquina FROM Registro
-            INNER JOIN Componente ON Componente.id_componente = Registro.fk_componente
-            WHERE nome_componente LIKE '${componente}%' AND 
-            data_hora BETWEEN (SELECT SEC_TO_TIME(TIME_TO_SEC(CURRENT_TIMESTAMP()) - 300)) AND CURRENT_TIMESTAMP() 
-            AND medida > ${medida}
-            GROUP BY fk_componente;
+            SELECT nome_processo, is_autorizado, nome_maquina FROM Registro_Processo 
+            JOIN Maquina ON id_maquina = fk_maquina
+            WHERE is_autorizado = 0 AND fk_empresa = ${empresa}
+            GROUP BY fk_maquina;
         `;
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
@@ -46,4 +78,5 @@ function pegarMaquinas(componente, medida) {
 module.exports = {
     listarMaquina,
     pegarMaquinas,
+    verificarProcessos
 }

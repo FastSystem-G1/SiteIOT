@@ -84,13 +84,22 @@
 <script>
     // window.onload = validarSessao();
     window.onload = obterListaMaquina();
-    window.onload = pegarMaquinas('Processador', 80);
-    window.onload = pegarMaquinas('Memória', 80);
-    window.onload = pegarMaquinas('Disco', 80);
+    window.onload = atualizarDados();
 
-    window.onload = pegarMaquinas('Processador', 60);
-    window.onload = pegarMaquinas('Memória', 60);
-    window.onload = pegarMaquinas('Disco', 60);
+    function atualizarDados() {
+        console.log("Atualizando...")
+        pegarMaquinas('Processador', 90);
+        pegarMaquinas('Memória', 90);
+        pegarMaquinas('Disco', 90);
+
+        pegarMaquinas('Processador', 80);
+        pegarMaquinas('Memória', 80);
+        pegarMaquinas('Disco', 80);
+
+        verificarProcesso();
+
+        setTimeout(() => atualizarDados(), 15000);
+    }
 
     function sair() {
         sessionStorage.clear();
@@ -103,21 +112,11 @@
     }
 
     function obterListaMaquina(empresa) {
-        /*if (proximaAtualizacao != undefined) {
-            clearTimeout(proximaAtualizacao);
-        }*/
-
         var empresa = sessionStorage.EMPRESA;
         fetch(`/maquinas/listarMaquinas/${empresa}`, { cache: 'no-store' }).then(function (response) {
             if (response.ok) {
                 response.json().then(function (resposta) {
-                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-
                     plotarListaMaquina(resposta);
-
-                    for (i = 0; i < resposta.length; i++) {
-                        var registro = resposta[i];
-                    }
                 });
             } else {
                 console.error('Nenhum dado encontrado ou erro na API');
@@ -128,12 +127,9 @@
     }
 
     function plotarListaMaquina(resposta) {
-        console.log('iniciando plotagem do gráfico...');
-        console.log(resposta)
-
-        // Inserindo valores recebidos em estrutura para plotar o gráfico
         for (i = 0; i < resposta.length; i++) {
             var registro = resposta[i];
+            cardQuantidadeTotalMaquinas.innerHTML = resposta.length;
 
             var SO = registro.sistema_operacional_maquina;
             var imgSO;
@@ -179,22 +175,21 @@
     }
 
     function pegarMaquinas(componente, medida) {
-        var empresa = sessionStorage.EMPRESA;
         fetch(`/maquinas/pegarMaquinas/${componente}/${medida}`, { cache: 'no-store' }).then(function (response) {
             var contador = 0;
-            console.log(response)
             if (response.status == 204) {
                 contador = 0
             } else if (response.ok) {
                 response.json().then(function (resposta) {
-                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
                     for (i = 0; i < resposta.length; i++) {
                         var registro = resposta[i];
-
                         contador = i + 1;
                     }
-                    plotarQuantidadeMaquinaCritico(contador, componente);
-                    plotarQuantidadeMaquinaAlert(contador, componente);
+                    if (medida == 90) {
+                        plotarQuantidadeMaquinaCritico(contador, componente);
+                    } else {
+                        plotarQuantidadeMaquinaAlert(contador, componente);
+                    }
                 });
             } else {
                 console.error('Nenhum dado encontrado ou erro na API');
@@ -223,6 +218,29 @@
             cardMemoriaAlert.innerHTML = quantidadeMaquinas;
         } else {
             cardDiscoAlert.innerHTML = quantidadeMaquinas;
+        }
+    }
+
+    function verificarProcesso() {
+        var empresa = sessionStorage.EMPRESA;
+        fetch(`/maquinas/verificarProcessos/${empresa}`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    plotarAlert(resposta);
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        }).catch(function (error) {
+            console.error(`Erro na obtenção dos dados: ${error.message}`);
+        });
+    }
+
+    function plotarAlert(resposta) {
+        for (i = 0; i < resposta.length; i++) {
+            var registro = resposta[i];
+
+            console.log("A máquina "+registro.nome_maquina+" está com um ou mais processos indevidos aberto.");
         }
     }
 </script>
