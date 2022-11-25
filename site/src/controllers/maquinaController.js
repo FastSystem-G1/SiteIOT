@@ -33,6 +33,23 @@ function pegarMaquinas(req, res) {
     });
 }
 
+function filtrarMaquinas(req, res) {
+    console.log(`Recuperando Máquinas.`);
+    var componente = req.params.nome_componente;
+    var medida = req.params.medida;
+    maquinaModel.filtrarMaquinas(componente, medida).then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar as ultimas medidas.", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+
 function verificarProcessos(req, res) {
     var empresa = req.params.id_empresa;
     maquinaModel.verificarProcessos(empresa).then(function (resultado) {
@@ -51,5 +68,6 @@ function verificarProcessos(req, res) {
 module.exports = {
     listarMaquina,
     pegarMaquinas,
+    filtrarMaquinas,
     verificarProcessos
 }

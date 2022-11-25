@@ -11,6 +11,10 @@ router.get(`/pegarMaquinas/:nome_componente/:medida`, function (req, res) {
     maquinaController.pegarMaquinas(req, res);
 });
 
+router.get(`/filtrarMaquinas/:nome_componente/:medida`, function (req, res) {
+    maquinaController.filtrarMaquinas(req, res);
+});
+
 router.get(`/verificarProcessos/:id_empresa`, function (req, res) {
     maquinaController.verificarProcessos(req, res);
 });

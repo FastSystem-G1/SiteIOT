@@ -42,31 +42,31 @@
                 <div class="divCards">
                     <div class="cardExtremo">
                         <div class="cardCima"><b>CPU</b></div>
-                        <div class="cardBaixo" id="cardCPUExtremo"></div>
+                        <div class="cardBaixo" id="cardCPUExtremo" onclick="filtrarMaquinas('Processador', 90)"></div>
                     </div>
                     <div class="cardExtremo">
                         <div class="cardCima"><b>Memoria</b></div>
-                        <div class="cardBaixo" id="cardMemoriaExtremo"><b></b></div>
+                        <div class="cardBaixo" id="cardMemoriaExtremo" onclick="filtrarMaquinas('Memória', 90)"><b></b></div>
                     </div>
                     <div class="cardExtremo">
                         <div class="cardCima"><b>Disco</b></div>
-                        <div class="cardBaixo" id="cardDiscoExtremo"><b></b></div>
+                        <div class="cardBaixo" id="cardDiscoExtremo" onclick="filtrarMaquinas('Disco', 90)"><b></b></div>
                     </div>
                     <div class="cardAlert">
                         <div class="cardCima"><b>CPU</b></div>
-                        <div class="cardBaixo" id="cardCPUAlert"><b></b></div>
+                        <div class="cardBaixo" id="cardCPUAlert" onclick="filtrarMaquinas('Processador', 80)"><b></b></div>
                     </div>
                     <div class="cardAlert">
                         <div class="cardCima"><b>Memoria</b></div>
-                        <div class="cardBaixo" id="cardMemoriaAlert"><b></b></div>
+                        <div class="cardBaixo" id="cardMemoriaAlert" onclick="filtrarMaquinas('Memória', 80)"><b></b></div>
                     </div>
                     <div class="cardAlert">
                         <div class="cardCima"><b>Disco</b></div>
-                        <div class="cardBaixo" id="cardDiscoAlert"><b></b></div>
+                        <div class="cardBaixo" id="cardDiscoAlert" onclick="filtrarMaquinas('Disco', 80)"><b></b></div>
                     </div>
                     <div class="cardTotal">
                         <div class="cardCima"><b>Total de Maquinas</b></div>
-                        <div class="cardBaixo" id="cardQuantidadeTotalMaquinas"><b></b></div>
+                        <div class="cardBaixo" id="cardQuantidadeTotalMaquinas" onclick="obterListaMaquina()"><b></b></div>
                     </div>
                 </div>
                 <div class="fundoVidro">
@@ -127,6 +127,7 @@
     }
 
     function plotarListaMaquina(resposta) {
+        vidroCima.innerHTML = ''
         for (i = 0; i < resposta.length; i++) {
             var registro = resposta[i];
             cardQuantidadeTotalMaquinas.innerHTML = resposta.length;
@@ -172,6 +173,67 @@
                         </div>
             `
         }
+    }
+
+    function filtrarMaquinas(componente, medida) {
+        fetch(`/maquinas/filtrarMaquinas/${componente}/${medida}`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    
+                vidroCima.innerHTML = ''
+                for (i = 0; i < resposta.length; i++) {
+                var registro = resposta[i];
+                cardQuantidadeTotalMaquinas.innerHTML = resposta.length;
+
+                var SO = registro.sistema_operacional_maquina;
+                var imgSO;
+                var tipo = registro.tipo_maquina;
+                var imgTipo;
+
+                if (SO == "Windows") {
+                    imgSO = "img/Sistema_Operacional.png"
+                } else if (SO == "Ubuntu") {
+                    imgSO = "img/Sistema_OperacionalUbuntu.png"
+                } else {
+                    imgSO = "img/Sistema_Operacional_erro.png"
+                }
+
+                if (tipo == "TOTEM") {
+                    imgTipo = "img/Icon_Toten.png"
+                } else if (tipo == "DESKTOP") {
+                    imgTipo = "img/Icon_Computador.png"
+                } else {
+                    imgTipo = "img/Icon_Erro.png"
+                }
+
+                
+                vidroCima.innerHTML += `
+                            <div class="box" id="box" onclick="irParaDashEspecifica(${registro.id_maquina}, '${registro.nome_maquina}')">
+                                <div class="boxCima">
+                                    <div class="divImagemNot">
+                                        <div class="imagemNot">
+                                            <a><img src="${imgTipo}" alt=""></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="boxBaixo">
+                                    <div class="boxBaixoEsquerda">
+                                        <div class="nomeMaquina">${registro.nome_maquina}</div>
+                                    </div>
+                                    <div class="boxBaixoDireita">
+                                        <div><img src="${imgSO}" style="height:50%;width:80%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                `
+                }
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+                }
+            }).catch(function (error) {
+            console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
     }
 
     function pegarMaquinas(componente, medida) {

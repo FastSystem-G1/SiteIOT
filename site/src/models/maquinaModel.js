@@ -54,6 +54,42 @@ function pegarMaquinas(componente, medida) {
     return database.executar(instrucaoSql);
 }
 
+function filtrarMaquinas(componente, medida) {
+    instrucaoSql = ''
+
+    if (process.env.AMBIENTE_PROCESSO == "producao") {
+        instrucaoSql = ``;
+    } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
+        if (componente == "Processador") {
+            instrucaoSql = `
+            SELECT id_maquina, nome_maquina, sistema_operacional_maquina, tipo_maquina FROM Maquina
+            INNER JOIN Componente ON id_maquina = fk_maquina
+            INNER JOIN Registro ON id_componente = fk_componente
+            WHERE nome_componente LIKE '${componente}%' AND 
+            data_hora BETWEEN (SELECT SEC_TO_TIME(TIME_TO_SEC(CURRENT_TIMESTAMP()) - 30)) AND CURRENT_TIMESTAMP() 
+            AND medida > ${medida}
+            GROUP BY fk_componente;
+            `;
+        } else {
+            instrucaoSql = `
+            SELECT id_maquina, nome_maquina, sistema_operacional_maquina, tipo_maquina FROM Maquina
+            INNER JOIN Componente ON id_maquina = fk_maquina
+            INNER JOIN Registro ON id_componente = fk_componente
+            WHERE nome_componente LIKE '${componente}%' AND 
+            data_hora BETWEEN (SELECT SEC_TO_TIME(TIME_TO_SEC(CURRENT_TIMESTAMP()) - 30)) AND CURRENT_TIMESTAMP() 
+            AND ((medida * 100) / capacidade_componente) > ${medida}
+            GROUP BY fk_componente;
+            `;
+        }
+    } else {
+        console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
+        return
+    }
+
+    console.log("Executando a instrução SQL1: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
 function verificarProcessos(empresa) {
     instrucaoSql = ''
 
@@ -78,5 +114,6 @@ function verificarProcessos(empresa) {
 module.exports = {
     listarMaquina,
     pegarMaquinas,
+    filtrarMaquinas,
     verificarProcessos
 }
