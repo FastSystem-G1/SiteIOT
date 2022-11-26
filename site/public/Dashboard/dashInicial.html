@@ -74,6 +74,11 @@
                         
                     </div>
                 </div>
+                <div class="tituloProcessos">Maquinas com apps indevidos em uso</div>
+                <div class="fundoVidroProcessos">
+                    <div id="resultadoProcessos" class="resultadoProcessos">
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -303,6 +308,12 @@
             var registro = resposta[i];
 
             console.log("A máquina "+registro.nome_maquina+" está com um ou mais processos indevidos aberto.");
+            resultadoProcessos.innerHTML = `
+            <div class="exemploProcesso">
+                <div class="maquinaProcesso">${registro.nome_maquina}</div>
+                <div class="processoAberto">${registro.nome_processo}</div>
+            </div>
+            `
         }
     }
 </script>
