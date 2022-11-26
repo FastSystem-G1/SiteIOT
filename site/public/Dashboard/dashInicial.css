@@ -204,15 +204,17 @@ nav.sticky {
 .cardTotal {
   width: 14%;
   height: 20vh;
-  display: flex;
-  float: left;
-  background-color: #00c2cb;
   margin-top: 0.5%;
   margin-left: 1%;
+
   display: flex;
+  float: left;
   flex-direction: column;
   justify-content: center;
+
   border-radius: 20px;
+  background-color: #00c2cb;
+  cursor: pointer;
 }
 .fundoVidro {
   width: 95%;

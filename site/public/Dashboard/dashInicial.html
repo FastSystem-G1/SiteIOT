@@ -188,7 +188,6 @@
                 vidroCima.innerHTML = ''
                 for (i = 0; i < resposta.length; i++) {
                 var registro = resposta[i];
-                cardQuantidadeTotalMaquinas.innerHTML = resposta.length;
 
                 var SO = registro.sistema_operacional_maquina;
                 var imgSO;
@@ -304,11 +303,12 @@
     }
 
     function plotarAlert(resposta) {
+        resultadoProcessos.innerHTML = "";
         for (i = 0; i < resposta.length; i++) {
             var registro = resposta[i];
 
             console.log("A máquina "+registro.nome_maquina+" está com um ou mais processos indevidos aberto.");
-            resultadoProcessos.innerHTML = `
+            resultadoProcessos.innerHTML += `
             <div class="exemploProcesso">
                 <div class="maquinaProcesso">${registro.nome_maquina}</div>
                 <div class="processoAberto">${registro.nome_processo}</div>

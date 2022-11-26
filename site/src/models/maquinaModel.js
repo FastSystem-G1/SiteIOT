@@ -97,9 +97,10 @@ function verificarProcessos(empresa) {
         instrucaoSql = ``;
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
         instrucaoSql = `
-            SELECT nome_processo, is_autorizado, nome_maquina FROM Registro_Processo 
-            JOIN Maquina ON id_maquina = fk_maquina
-            WHERE is_autorizado = 0 AND fk_empresa = ${empresa}
+            SELECT nome_processo, is_autorizado, nome_maquina, data_hora FROM Registro_Processo 
+            JOIN Maquina ON id_maquina = fk_maquina 
+            WHERE is_autorizado = 0 AND fk_empresa = ${empresa} AND 
+            DATE_FORMAT (data_hora,'%d/%m/%Y') = DATE_FORMAT (NOW(), '%d/%m/%Y') 
             GROUP BY fk_maquina;
         `;
     } else {
