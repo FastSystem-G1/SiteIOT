@@ -113,6 +113,8 @@ function cadastrarMaquina(req, res) {
     var empresa = req.body.empresaServer; 
     var nome = req.body.nomeServer;
     var hardware = req.body.hardwareServer;
+    var email = req.body.emailServer;
+    var senha = req.body.senhaServer;
 
     
 
@@ -123,11 +125,15 @@ function cadastrarMaquina(req, res) {
         res.status(400).send("Seu nome está undefined!");
     } else if (hardware == undefined) {
         res.status(400).send("Seu hardware está undefined!");
+    } else if (email == undefined) {
+        res.status(400).send("Seu email está undefined!");
+    } else if (senha == undefined) {
+        res.status(400).send("Seu senha está undefined!");
     }
      else {
         
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrarMaquina(empresa, nome, hardware)
+        usuarioModel.cadastrarMaquina(empresa, nome, hardware, email, senha)
             .then(
                 function (resultado) {
                     res.json(resultado);
