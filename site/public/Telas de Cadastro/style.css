@@ -1,0 +1,421 @@
+@import url("https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+@media only screen and (max-width: 600px) {
+  .caixa {
+    font-size: 10px;
+  }
+
+  .box1 {
+    height: 100%;
+    width: 80%;
+    border-radius: 70px 0px 0px 70px;
+  }
+  .box2 {
+    padding: 10%;
+  }
+}
+
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: "Quicksand", sans-serif;
+  background: linear-gradient(
+    289.13deg,
+    #03c8dc 0%,
+    #01558f 28.83%,
+    #003e73 59.87%,
+    #021545 93.23%
+  );
+  overflow-x: hidden;
+}
+
+h2 {
+  text-align: center;
+  color: white;
+}
+
+/*HEADER*/
+
+header a{
+  color: #00C2CB;
+  text-decoration: none;
+  transition: 0.3s;
+  font-family: 'Quicksand', sans-serif;
+}
+
+a{
+  color: #000000;
+  text-decoration: none;
+  transition: 0.3s;
+  font-family: 'Quicksand', sans-serif;
+}
+
+a:hover{
+  font-weight: bold;
+
+}
+
+.logo img{
+  width: 35%;
+}
+
+nav{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: #010E3C;
+  height: 15vh;
+  width: 100%;
+}
+
+/* .nav-list li{
+  letter-spacing: 3px;
+} */
+
+.mobile-menu{
+  display: none;
+  cursor: pointer;
+}
+
+.mobile-menu div{
+  width: 32px;
+  height: 2px;
+  background: #fff;
+  margin: 8px;
+  transition: 0.3s;
+}
+
+.agora{
+  font-weight: bolder;
+  font-size: 18px;
+}
+
+
+
+  .nav-list {
+      position: absolute;
+      top: 12.2vh;
+      right: 0;
+      width: 25vw;
+      height: 110vh;
+      background: #010e3c;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+      transform: translateX(100%);
+      transition: transform 0.3s ease-in;
+      z-index: 999;
+  }
+
+  .nav-list li{
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+      align-items: center;
+      letter-spacing: 3px;
+      margin: 60px 0;
+      opacity: 0;
+  }
+
+  .mobile-menu{
+      display: block;   
+  }
+
+
+.nav-list.active{
+  transform: translateX(0);
+}
+
+@keyframes navLinkFade {
+  from {
+      opacity: 0;
+      transform: translateX(50px);
+  }
+  to {
+      opacity: 1;
+      transform: translateX(0);
+  }
+}
+
+.mobile-menu.active .line1 {
+  transform: rotate(-45deg) translate(-8px, 8px);
+}
+
+.mobile-menu.active .line2 {
+  opacity: 0;
+}
+
+.mobile-menu.active .line3 {
+  transform: rotate(45deg) translate(-5px, -7px);
+} /* . */
+
+nav.sticky{
+  background: #010e3cc9;
+}
+
+/*MAIN*/
+
+.main {
+  height: fit-content;
+  width: 98vw;
+  display: flex;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.containerMain {
+  width: 90vw;
+  height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3.5% 0;
+}
+
+.caixa {
+  width: 80%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.box1 {
+  height: 100%;
+  width: 35%;
+  border-radius: 70px 0px 0px 70px;
+  background-color: #010e3c;
+}
+
+.box2 {
+  width: 60%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 0px 70px 70px 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.box2 h2{
+  border-bottom: white 1px solid;
+}
+
+.boxAplicativo {
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.borda01 {
+  width: 80%;
+  color: white;
+  text-align: center;
+  margin-bottom: 10%;
+}
+
+.titulo {
+    width: 90%;
+    margin-top: 10px;
+
+    border: 1px solid white;
+    border-radius: 10px 10px 0 0;
+
+    display: flex;
+    justify-content: center;
+}
+
+.titulo div {
+    width: 33%;
+
+    color: white;
+    text-align: center;
+}
+
+.bordaCadastro {
+  width: 90%;
+  height: 50%;
+  border: 1px solid white;
+  border-radius: 0 0 5px 5px;
+  overflow-y: scroll;
+}
+
+.bordaCadastro::-webkit-scrollbar {
+  width: 12px; /* width of the entire scrollbar */
+}
+
+.bordaCadastro::-webkit-scrollbar-track {
+  background: #010e3c; /* color of the tracking area */
+  border-radius: 10px;
+}
+
+.bordaCadastro::-webkit-scrollbar-thumb {
+  background-color: #00c2cb; /* color of the scroll thumb */
+  border-radius: 20px; /* roundness of the scroll thumb */
+  border: none;
+}
+
+.boxCampoCadastro {
+  border-bottom: 1px solid white;
+  color: white;
+  padding: 1%;
+  margin: 1%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.selectHardware {
+  padding: 7px;
+  padding: 4px;
+  width: 80%;
+  margin-top: 25px;
+  border: 0;
+  border-bottom: 1px solid rgb(255, 255, 255, 0.4);
+  outline: none;
+  background-color: transparent;
+  color: rgba(255, 255, 255);
+  cursor: pointer;
+}
+
+option {
+  font-size: 15px;
+  background-color: #010e3c;
+  color: white;
+  border-radius: 10px;
+}
+
+.boxButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+/*-------------------------------------------------------------------------------------------*/
+
+.div_inputs {
+  width: 90%;
+  height: 20%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.lista_aplicativos {
+  width: 50%;
+  height: 500px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+  overflow-y: scroll;
+  border: #010E3C solid;
+  border-radius: 20px 6px 6px 20px;
+}
+
+.item_lista_aplicativos {
+  width: 80%;
+  margin: 20px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  font-weight: bold;
+}
+
+.imagem_lixeira {
+  width: 20px;
+  height: 20px;
+
+  cursor: pointer;
+}
+
+.lista_aplicativos::-webkit-scrollbar {
+  width: 12px;             /* width of the entire scrollbar */
+}
+
+.lista_aplicativos::-webkit-scrollbar-track {
+  background: #010E3C;        /* color of the tracking area */
+  border-radius: 3px;
+}
+
+.lista_aplicativos::-webkit-scrollbar-thumb {
+  background-color: #00C2CB;    /* color of the scroll thumb */
+  border-radius: 5px;       /* roundness of the scroll thumb */
+  border: none;  
+}
+
+.div_inputs_menores {
+  width: 100%;
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+input::-webkit-input-placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.div_inputs select {
+  width: 45%;
+  height: 50px;
+  border: 0;
+  text-align: center;
+  border-bottom: 1px solid rgb(255, 255, 255, 0.4);
+  outline: none;
+  background-color: transparent;
+  color: rgba(255, 255, 255, 0.6);
+  appearance: none;
+}
+
+.div_inputs select:hover{
+  cursor: pointer;
+
+}
+
+.boxCampoCadastro div{
+    width: 33.33%;
+}
+
+#nome, #funcao, #prioridade {
+    display: flex;
+    justify-content: center;
+}
+
+#botao_cadastro {
+  padding: 5px 40px;
+  margin-top: 3vh;
+  background-color: transparent;
+  color: white;
+  font-size: large;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-radius: 20px;
+  transition: 1.5s;
+}
+
+#botao_cadastro:hover {
+  cursor: pointer;
+  background-color: white;
+  color: #010e3c;
+}
+
+/*-------------------------------------------------------------------------------------------*/
+
+.footer {
+  width: 100%;
+  height: 15vh;
+  color: #fff;
+  background-color: #021545;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Editar Funcionário | Fast System</title>
+
+  <link rel="stylesheet" href="NovoFuncionario_style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap" rel="stylesheet">
+  <script src="../js/funcoes.js"></script>
+  <link rel="icon" href="img/logo.png">
+</head>
+<body onload="listarEdicao()">
+    <div class="fundo"></div>
+  <header>
+    <nav>
+        <a class="logo" href="../Dashboard/dashInicial.html"><img src="img/logo.png" alt=""></a>
+        <div class="mobile-menu">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
+        <ul class="nav-list" id="nav-content"  tabindex="0">
+          <div id="texto_func" style="width: 100%; display: flex; align-items: center; justify-content: center; color: #00C2CB; font-size: 25px; font-weight: bold; margin-top: 30px;"></div>
+          <li class="cad1"><a href="../Dashboard/dashInicial.html">Início</a></li>
+          <li class="cad1" id="cad1"><a href="../Telas de Cadastro/cadastroMaquina.html">Cadastrar máquina</a></li>                
+          <li class="cad1" id="cad1"><a href="../Telas de Cadastro/cadastroAplicativo.html">Cadastrar aplicativo</a></li>
+          <li class="agora" id="cad1"><a href="../Telas de Cadastro/NovoFuncionario.html">Cadastrar funcionário</a></li>
+          <li class="cad1" id="cad1"><a href="../Telas de Cadastro/funcionariosRead.html">Editar funcionário</a></li>  
+          <li onclick="sair()"><a href="../login.html">Sair</a></li>
+          <li></li>
+      </ul>
+    </nav>
+  </header>
+
+    <div class="main">
+        <div class="containerMain">
+          <div class="caixa">
+            <div class="box1">
+              <img src="img/logo3.png" id="imagem_logo_cadastro">
+            </div>
+            <div class="box2">
+
+              <div class="titulo_novo_integrante">
+                <h2 id="h2_novo_integrante">
+                  Editar informações
+                </h2>
+              </div>
+
+              <div class="campos_cadastro">
+                <div id="teste">
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <script src="../headers/mobile-navbar.js"></script>
+    
+
+    
+
+    
+    
+</body>
+</html>
+
+<script>
+    function listarEdicao() {
+    
+    //erro();
+    var idFuncionario = sessionStorage.ID_FUNCIONARIO_EDITANDO;
+    //var idFuncionario = sessionStorage.ID_USUARIO;
+    //alert(idFuncionario)
+    fetch(`/listas/edicaoFuncionarios/${idFuncionario}`).then(function (resposta) {
+        if (resposta.ok) {
+            
+            // if (resposta.status == 204) {
+            //     var feed = document.getElementById("ultimo_artigo");
+            //     var mensagem = document.createElement("span");
+            //     mensagem.innerHTML = "Nenhum resultado encontrado."
+            //     feed.appendChild(mensagem);
+            //     throw "Nenhum resultado encontrado!!";
+            // }
+
+            resposta.json().then(function (resposta) {
+                console.log("Dados recebidos: ", JSON.stringify(resposta));
+
+                // var feed = document.getElementById("idInformacoes");
+                // feed.innerHTML = "";
+                for (let i = 0; i < resposta.length; i++) {
+                    var funcionario = resposta[i];
+
+                    teste.innerHTML +=
+                    `
+                    
+                    <input class="inputs_cadastro" id="nome_input" type="text" value="${funcionario.nome_funcionario}">
+                    
+                    <select id="cargo_select" class="inputs_cadastro" style="width: 300px; cursor: pointer;">
+                    <option value="${funcionario.isAdmin}">Selecione o cargo:</option>
+                    <option value="1">Administrador</option>
+                    <option value="0">Suporte de TI</option>
+                  </select>
+                    
+                  <input id="email_input" class="inputs_cadastro" value="${funcionario.email_funcionario}"
+                    type="email">
+                    
+                    <input id="cpf_input" class="inputs_cadastro" value="${funcionario.cpf_funcionario}" type="number"
+                  min="0">
+                    
+                  <input id="telefone_input" class="inputs_cadastro" value="${funcionario.telefone_funcionario}"
+                    type="number" min="0"><br>
+                    <button onclick="editar()" id="botao_cadastro">Editar</button>
+                    
+                    
+                    
+                    `
+                }
+
+                // finalizarAguardar();
+            });
+        } else {
+            throw ('Houve um erro na API!');
+        }
+    }).catch(function (resposta) {
+        console.error(resposta);
+        // finalizarAguardar();
+    });
+}
+
+
+function editar() { //`/post/listarPosts/${idUsuario}`)
+
+var nomeVar = nome_input.value;
+var cargovar = cargo_select.value;
+var emailVar = email_input.value;
+var cpfVar = cpf_input.value;
+var telefoneVar = telefone_input.value;
+
+var idFuncionario = sessionStorage.getItem("ID_FUNCIONARIO_EDITANDO");
+//alert(idFuncionario)
+console.log("Apertou botão editar");
+    fetch(`/listas/editar/${idFuncionario}`, {
+        
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        
+        body: JSON.stringify({
+            
+            nomeServer: nomeVar,
+            cargoServer: cargovar,
+            
+            cpfServer: cpfVar,
+            emailServer: emailVar,
+            telefoneServer: telefoneVar,
+            idServer: idFuncionario
+
+        })
+    }).then(function (resposta) {
+
+        if (resposta.ok) {
+            window.alert("Funcionário atualizado com sucesso pelo usuario de email: " + sessionStorage.getItem("EMAIL_USUARIO") + "!");
+            window.location = "funcionariosRead.html"
+        } else if (resposta.status == 404) {
+            window.alert("Deu 404!");
+        } else {
+            throw ("Houve um erro ao tentar realizar a atualização! Código da resposta: " + resposta.status);
+        }
+    }).catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+    });
+}
+</script>
