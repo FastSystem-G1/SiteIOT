@@ -14,7 +14,9 @@
     <script src="../js/funcoes.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap" rel="stylesheet">
     <link rel="icon" href="../../../img/logo.png">
-
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="sweetalert2.min.js"></script>
+    <link rel="stylesheet" href="sweetalert2.min.css">
 
 </head>
 
@@ -66,7 +68,7 @@
                         </div>
                     </div>
                     <div class="lista_aplicativos" id="lista_aplicativos">
-                        
+
                     </div>
                     <div id="divErroLogin"></div>
                     <div class="boxButton">
@@ -125,7 +127,13 @@
         var idEmpresaVar = sessionStorage.EMPRESA;
 
         if (idAplicativoVar == "") {
-            alert("Selecione um aplicativo.")
+            Swal.fire({
+                icon: 'error',
+                title: 'Erro ao cadastrar',
+                text: 'Selecione um aplicativo!',
+                color: "#010E3C",
+                confirmButtonColor: "#010E3C",
+            })
         } else {
             console.log("ID do aplicativo: " + idAplicativoVar)
             console.log("ID da Empresa: " + idEmpresaVar)
@@ -148,11 +156,34 @@
 
                     if (resposta.ok) {
                         obterDadosAplicativos();
+
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: `Aplicativo cadastrado com sucesso`,
+                            showConfirmButton: false,
+                            timer: 1200,
+                            color: "#010E3C",
+                        })
                         /*  finalizarAguardar(); */
                     } else if (resposta.status == 500) {
-                        throw "Aplicativo já está cadastrado!"
+                        //  throw "Aplicativo já está cadastrado!"
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Erro ao cadastrar',
+                            text: 'Este aplicativo já está cadastrado!',
+                            color: "#010E3C",
+                            confirmButtonColor: "#010E3C",
+                        })
                     } else {
-                        throw "Houve um erro ao tentar realizar o cadastro!";
+                        // throw "Houve um erro ao tentar realizar o cadastro!";
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Erro ao cadastrar',
+                            text: 'Houve um erro ao tentar realizar o cadastro!',
+                            color: "#010E3C",
+                            confirmButtonColor: "#010E3C",
+                        })
                     }
                 })
                 .catch(function (resposta) {
@@ -199,21 +230,46 @@
     }
 
     function deletar(idEmpresa, idApp) {
-        fetch(`/aplicativos/deletar/${idEmpresa}/${idApp}`, {
-            method: "DELETE",
-            headers: {
-                "Content-Type": "application/json"
-            }
-        }).then(function (resposta) {
-            if (resposta.ok) {
-                window.location = 'cadastroAplicativo.html'
-            } else if (resposta.status == 404) {
-                window.alert("Deu 404!");
+        Swal.fire({
+            title: 'Deletar aplicativo?',
+            text: "O aplicativo será deletado da lista!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Sim, deletar!',
+            cancelButtonText: 'Cancelar'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire(
+                    'Deletado com sucesso!',
+                    'O aplicativo foi excluído da lista',
+                    'success'
+                )
+                fetch(`/aplicativos/deletar/${idEmpresa}/${idApp}`, {
+                    method: "DELETE",
+                    headers: {
+                        "Content-Type": "application/json"
+                    }
+                }).then(function (resposta) {
+                    if (resposta.ok) {
+                        setTimeout(() => {
+                            window.location = 'cadastroAplicativo.html';
+                        }, "2200")
+                    } else if (resposta.status == 404) {
+                        window.alert("Deu 404!");
+                    } else {
+                        throw ("Houve um erro ao tentar deletar o aplicativo! Código da resposta: " + resposta.status);
+                    }
+                }).catch(function (resposta) {
+                    console.log(`#ERRO: ${resposta}`);
+                });
             } else {
-                throw ("Houve um erro ao tentar deletar o aplicativo! Código da resposta: " + resposta.status);
+                setTimeout(() => {
+                            window.location = 'cadastroAplicativo.html';
+                        }, "1500")
             }
-        }).catch(function (resposta) {
-            console.log(`#ERRO: ${resposta}`);
-        });
+        })
+
     }
 </script>
