@@ -73,7 +73,7 @@ nav{
         top: 12.2vh;
         right: 0;
         width: 25vw;
-        height: 86vh;
+        height: 110vh;
         background: #010e3c;
         flex-direction: column;
         align-items: center;
@@ -156,7 +156,24 @@ nav.sticky{
     justify-content: first baseline;
     align-items: center;
     margin-top: 3vh;
+    overflow-y: auto;
 }
+
+.fundoVidro::-webkit-scrollbar {
+    width: 12px; /* width of the entire scrollbar */
+  }
+  
+  .fundoVidro::-webkit-scrollbar-track {
+    background: #010e3c; /* color of the tracking area */
+    border-radius: 20px;
+  }
+  
+  .fundoVidro::-webkit-scrollbar-thumb {
+    background-color: #00c2cb; /* color of the scroll thumb */
+    border-radius: 20px; /* roundness of the scroll thumb */
+    border: none;
+  }
+
 .usuariosRegistros{
     display: flex;
     flex-direction: column;
