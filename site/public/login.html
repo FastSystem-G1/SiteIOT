@@ -57,13 +57,10 @@
                         <div class="tituloForm">
                             <h2>Login</h2>
                         </div>
-
-
                         <div class="containerInputsForm">
                             <input type="text" id="emailInput" placeholder="E-mail">
                             <input type="password" id="senhaInput" placeholder="Senha">
-
-                          <button onclick="entrar()" class="botaoForm">Entrar</button>
+                            <button onclick="entrar()" class="botaoForm">Entrar</button>
                         </div>
                     </div>
                 </div>
@@ -109,7 +106,7 @@
       })
     } else {
       Swal.fire({
-        position: 'top-end',
+        position: 'center',
         icon: 'success',
         title: 'Login efetuado com sucesso!',
         showConfirmButton: false,

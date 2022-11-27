@@ -75,17 +75,14 @@
                 </div>
         
                 <div class="usuariosRegistros">
-                    <div class="titulosMaquina">
-                        <div class="tipo"><h3>Tipo</h3></div>
-                        <div class="nome"><h3>Nome</h3></div>
-                        <div class="so"><h3>Sistema Operacional</h3></div>
-                        <div class="email"><h3>Email</h3></div>
-                        <div class="senha"><h3>Senha</h3></div>
-                        <div><h3>botoes</h3></div>
+                    <div class="titulos">
+                        <div>Tipo</div>
+                        <div>Nome</div>
+                        <div>SO</div>
+                        <div>Email</div>
+                        <div>Senha</div>
                     </div>
-        
                     <div class="informacoes" id="idInformacoes"></div>
-                
             </div>
         </div>
     </div>
@@ -118,15 +115,6 @@ function atualizarFeed() {
     
     fetch(`/listas/exibirMaquina/${idEmpresa}`).then(function (resposta) {
         if (resposta.ok) {
-            
-            // if (resposta.status == 204) {
-            //     var feed = document.getElementById("ultimo_artigo");
-            //     var mensagem = document.createElement("span");
-            //     mensagem.innerHTML = "Nenhum resultado encontrado."
-            //     feed.appendChild(mensagem);
-            //     throw "Nenhum resultado encontrado!!";
-            // }
-
             resposta.json().then(function (resposta) {
                 console.log("Dados recebidos: ", JSON.stringify(resposta));
 
@@ -138,31 +126,25 @@ function atualizarFeed() {
                 
                     idInformacoes.innerHTML +=
                     `
-                    <div class="colunaFuncionario">
-                    <div style="display:none"><span id="spanMaquina">${maquina.id_maquina}</span></div>
-                    <div style="width: 70%;"><span>${maquina.tipo_maquina}</span></div>
-                    <div style="width: 70%;"><span>${maquina.nome_maquina}</span></div>
-                    <div style="width: 90%;"><span>${maquina.sistema_operacional_maquina}</span></div>
-                    <div style="width: 150%;"><span>${maquina.email_maquina}</span></div>
-                    <div style="width: 80%;"><span>${maquina.senha_maquina}</span></div>
-                    <div class="botoes">
-                      <button style="background-color: #021545; color: aliceblue; border: 0.5px solid aliceblue" onclick="editarMaquina(${maquina.id_maquina})">Editar</button>
-                      <button style="background-color: #021545; color: aliceblue; border: 0.5px solid aliceblue" onclick="deletarMaquina(${maquina.id_maquina})">Deletar</button>
-                      </div>
+                    <div class="funcionario">
+                            <div class="campo" id="nome">${maquina.tipo_maquina}</div>
+                            <div class="campo" id="cargo">${maquina.nome_maquina}</div>
+                            <div class="campo" id="email">${maquina.sistema_operacional_maquina}</div>
+                            <div class="campo" id="cpf">${maquina.email_maquina}</div>
+                            <div class="campo" id="telefone">${maquina.senha_maquina}</div>
+                            <div class="campo" id="icones">
+                                <img src="./img/lixeira.png" alt="Excluir" onclick="deletarMaquina(${maquina.id_maquina})">
+                                <img src="./img/lapis.png" alt="Editar" onclick="editarMaquina(${maquina.id_maquina})">
+                            </div>
                     </div>
-                    
-                    
                     `
                 }
-
-                // finalizarAguardar();
             });
         } else {
             throw ('Houve um erro na API!');
         }
     }).catch(function (resposta) {
         console.error(resposta);
-        // finalizarAguardar();
     });
 }
 
