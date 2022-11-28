@@ -14,6 +14,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap" rel="stylesheet">
     <script src="../js/funcoes.js"></script>
     <link rel="icon" href="img/logo.png">
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="sweetalert2.min.js"></script>
+    <link rel="stylesheet" href="sweetalert2.min.css">
 </head>
 
 <body onload="atualizarFeed()">
@@ -118,36 +122,78 @@
         console.log("Criar função de apagar funcionario escolhido - ID" + idFuncionario);
 
         if (funcionarioAtual == idFuncionario) {
-            alert("Não pode se deletar")
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Você não pode se deletar!',
+                color: "#010E3C",
+                confirmButtonColor: "#010E3C",
+            })
         }
         else {
-            fetch(`/listas/deletar/${idFuncionario}`, {
-                method: "DELETE",
-                headers: {
-                    "Content-Type": "application/json"
-                }
-            }).then(function (resposta) {
+            Swal.fire({
+                title: 'Deletar funcionário?',
+                text: "O funcionário será deletado da lista!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: "#010E3C",
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Sim, deletar!',
+                cancelButtonText: 'Cancelar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire({
+                        title: 'Funcionário deletado com sucesso!',
+                        text: 'O funcionário deletado com sucesso por: '+ sessionStorage.getItem("NOME_USUARIO") + '!',
+                        icon: 'success',
+                        confirmButtonColor: "#010E3C",
+                    })
 
-                if (resposta.ok) {
-                    window.alert("Funcionario deletado com sucesso pelo usuario de email: " + sessionStorage.getItem("ID_USUARIO") + "!");
-                    window.location = "funcionariosRead.html"
-                } else if (resposta.status == 404) {
-                    window.alert("Deu 404!");
+                    fetch(`/listas/deletar/${idFuncionario}`, {
+                        method: "DELETE",
+                        headers: {
+                            "Content-Type": "application/json"
+                        }
+                    }).then(function (resposta) {
+                        if (resposta.ok) {
+                            setTimeout(() => {
+                                window.location = 'funcionariosRead.html';
+                            }, "2200")
+                        } else if (resposta.status == 404) {
+                            window.alert("Deu 404!");
+                        } else {
+                            throw ("Houve um erro ao tentar deletar o funcionario! Código da resposta: " + resposta.status);
+                        }
+                    }).catch(function (resposta) {
+                        console.log(`#ERRO: ${resposta}`);
+                    });
                 } else {
-                    throw ("Houve um erro ao tentar deletar o funcionario! Código da resposta: " + resposta.status);
+                    setTimeout(() => {
+                        window.location = 'funcionariosRead.html';
+                    }, "1500")
                 }
-            }).catch(function (resposta) {
-                console.log(`#ERRO: ${resposta}`);
-            });
+
+            })
         }
     }
 
     function editar(idFuncionario) {
         sessionStorage.ID_FUNCIONARIO_EDITANDO = idFuncionario;
         console.log("cliquei em editar - " + idFuncionario);
-        window.alert("Você será redirecionado à página de edição do Funcionario de id número: " + idFuncionario);
-        // window.location = "edicao_funcionario.html"
-        window.location = "edicaoFuncionario.html"
+        Swal.fire({
+            confirmButtonColor: "#010E3C",
+            title: 'Você será redirecionado à página de edição do Funcionario de id número: '  + idFuncionario,
+            showClass: {
+                popup: 'animate__animated animate__fadeInDown'
+            },
+            hideClass: {
+                popup: 'animate__animated animate__fadeOutUp'
+            }
+        })
+       
+        setTimeout(() => {
+            window.location = 'edicaoFuncionario.html';
+        }, "2200")
 
     }
 </script>
