@@ -2,18 +2,18 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
 
-  <title>Funcionário | Fast System</title>
+    <title>Funcionário | Fast System</title>
 
-  <link rel="stylesheet" href="funcionariosRead.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap" rel="stylesheet">
-  <script src="../js/funcoes.js"></script>
-  <link rel="icon" href="img/logo.png">
+    <link rel="stylesheet" href="funcionariosRead.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap" rel="stylesheet">
+    <script src="../js/funcoes.js"></script>
+    <link rel="icon" href="img/logo.png">
 </head>
 
 <body onload="atualizarFeed()">
@@ -25,35 +25,37 @@
                 <div class="line2"></div>
                 <div class="line3"></div>
             </div>
-            <ul class="nav-list" id="nav-content"  tabindex="0">
-                <div id="texto_func" style="width: 100%; display: flex; align-items: center; justify-content: center; color: #00C2CB; font-size: 25px; font-weight: bold; margin-top: 30px;"></div>
+            <ul class="nav-list" id="nav-content" tabindex="0">
+                <div id="texto_func"
+                    style="width: 100%; display: flex; align-items: center; justify-content: center; color: #00C2CB; font-size: 25px; font-weight: bold; margin-top: 30px;">
+                </div>
                 <li class="card1"><a href="../Dashboard/dashInicial.html">Início</a></li>
-                <li class="cad1" id="cad1"><a href="../Telas de Cadastro/cadastroMaquina.html">Cadastrar máquina</a></li>
-                <li class="card1" id="cad1"><a href="../Telas de Cadastro/maquinaRead.html">Editar máquina</a></li>                  
-                <li class="cad1" id="cad1"><a href="../Telas de Cadastro/cadastroAplicativo.html">Cadastrar aplicativo</a></li>
-                <li class="cad1" id="cad1"><a href="../Telas de Cadastro/NovoFuncionario.html">Cadastrar funcionário</a></li>
-                <li class="agora" id="cad1"><a href="../Telas de Cadastro/funcionariosRead.html">Editar funcionário</a></li>  
+                <li class="cad1" id="cad1"><a href="../Telas de Cadastro/cadastroMaquina.html">Cadastrar máquina</a>
+                </li>
+                <li class="card1" id="cad1"><a href="../Telas de Cadastro/maquinaRead.html">Editar máquina</a></li>
+                <li class="cad1" id="cad1"><a href="../Telas de Cadastro/cadastroAplicativo.html">Cadastrar
+                        aplicativo</a></li>
+                <li class="cad1" id="cad1"><a href="../Telas de Cadastro/NovoFuncionario.html">Cadastrar funcionário</a>
+                </li>
+                <li class="agora" id="cad1"><a href="../Telas de Cadastro/funcionariosRead.html">Editar funcionário</a>
+                </li>
                 <li onclick="sair()"><a href="../login.html">Sair</a></li>
             </ul>
         </nav>
     </header>
     <div class="main">
-        <div class="containerMain">
-            <div class="fundoVidro">
-                <div class="tituloFuncionarios">
-                    <h1>Funcionários</h1>
+        <div class="fundoVidro">
+            <h1>Funcionários</h1>
+
+            <div class="usuariosRegistros">
+                <div class="titulos">
+                    <div>Nome</div>
+                    <div>Cargo</div>
+                    <div>E-mail</div>
+                    <div>CPF</div>
+                    <div>Telefone</div>
                 </div>
-        
-                <div class="usuariosRegistros">
-                    <div class="titulos">
-                        <div>Nome</div>
-                        <div>Cargo</div>
-                        <div>E-mail</div>
-                        <div>CPF</div>
-                        <div>Telefone</div>
-                    </div>
-                    <div class="informacoes" id="idInformacoes"></div>
-                </div>
+                <div class="informacoes" id="idInformacoes"></div>
             </div>
         </div>
     </div>
@@ -63,30 +65,30 @@
 </html>
 
 <script>
-//window.onload = validarSessao2();
-var funcionarioAtual = sessionStorage.ID_USUARIO;
-function sair(){
-    sessionStorage.clear();
-}
+    //window.onload = validarSessao2();
+    var funcionarioAtual = sessionStorage.ID_USUARIO;
+    function sair() {
+        sessionStorage.clear();
+    }
 
-function atualizarFeed() {
-    var idEmpresa = sessionStorage.EMPRESA;
-    fetch(`/listas/exibirFuncionarios/${idEmpresa}`).then(function (resposta) {
-        if (resposta.ok) {
-            resposta.json().then(function (resposta) {
-                console.log("Dados recebidos: ", JSON.stringify(resposta));
+    function atualizarFeed() {
+        var idEmpresa = sessionStorage.EMPRESA;
+        fetch(`/listas/exibirFuncionarios/${idEmpresa}`).then(function (resposta) {
+            if (resposta.ok) {
+                resposta.json().then(function (resposta) {
+                    console.log("Dados recebidos: ", JSON.stringify(resposta));
 
-                var feed = document.getElementById("idInformacoes");
-                feed.innerHTML = "";
-                for (let i = 0; i < resposta.length; i++) {
-                    var funcionario = resposta[i];
-                    var cargo = 'Suporte de TI';
-                    if(funcionario.isAdmin == '1'){
-                        cargo = 'ADM'
-                    }
+                    var feed = document.getElementById("idInformacoes");
+                    feed.innerHTML = "";
+                    for (let i = 0; i < resposta.length; i++) {
+                        var funcionario = resposta[i];
+                        var cargo = 'Suporte de TI';
+                        if (funcionario.isAdmin == '1') {
+                            cargo = 'ADM'
+                        }
 
-                    idInformacoes.innerHTML +=
-                    `
+                        idInformacoes.innerHTML +=
+                            `
                     <div class="funcionario">
                             <div class="campo" id="nome">${funcionario.nome_funcionario}</div>
                             <div class="campo" id="cargo">${cargo}</div>
@@ -99,53 +101,53 @@ function atualizarFeed() {
                             </div>
                     </div>
                     `
-                }
+                    }
 
-                // finalizarAguardar();
-            });
-        } else {
-            throw ('Houve um erro na API!');
-        }
-    }).catch(function (resposta) {
-        console.error(resposta);
-        // finalizarAguardar();
-    });
-}
-
-function deletar(idFuncionario) {
-        console.log("Criar função de apagar funcionario escolhido - ID" + idFuncionario);
-
-        if(funcionarioAtual == idFuncionario){
-            alert("Não pode se deletar")
-        }
-        else{
-        fetch(`/listas/deletar/${idFuncionario}`, {
-            method: "DELETE",
-            headers: {
-                "Content-Type": "application/json"
-            }
-        }).then(function (resposta) {
-
-            if (resposta.ok) {
-                window.alert("Funcionario deletado com sucesso pelo usuario de email: " + sessionStorage.getItem("ID_USUARIO") + "!");
-                window.location = "funcionariosRead.html"
-            } else if (resposta.status == 404) {
-                window.alert("Deu 404!");
+                    // finalizarAguardar();
+                });
             } else {
-                throw ("Houve um erro ao tentar deletar o funcionario! Código da resposta: " + resposta.status);
+                throw ('Houve um erro na API!');
             }
         }).catch(function (resposta) {
-            console.log(`#ERRO: ${resposta}`);
+            console.error(resposta);
+            // finalizarAguardar();
         });
     }
-}
+
+    function deletar(idFuncionario) {
+        console.log("Criar função de apagar funcionario escolhido - ID" + idFuncionario);
+
+        if (funcionarioAtual == idFuncionario) {
+            alert("Não pode se deletar")
+        }
+        else {
+            fetch(`/listas/deletar/${idFuncionario}`, {
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            }).then(function (resposta) {
+
+                if (resposta.ok) {
+                    window.alert("Funcionario deletado com sucesso pelo usuario de email: " + sessionStorage.getItem("ID_USUARIO") + "!");
+                    window.location = "funcionariosRead.html"
+                } else if (resposta.status == 404) {
+                    window.alert("Deu 404!");
+                } else {
+                    throw ("Houve um erro ao tentar deletar o funcionario! Código da resposta: " + resposta.status);
+                }
+            }).catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+            });
+        }
+    }
 
     function editar(idFuncionario) {
         sessionStorage.ID_FUNCIONARIO_EDITANDO = idFuncionario;
         console.log("cliquei em editar - " + idFuncionario);
         window.alert("Você será redirecionado à página de edição do Funcionario de id número: " + idFuncionario);
         // window.location = "edicao_funcionario.html"
-        window.location = "teste.html"
+        window.location = "edicaoFuncionario.html"
 
     }
 </script>

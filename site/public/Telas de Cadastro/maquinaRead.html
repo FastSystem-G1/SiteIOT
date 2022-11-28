@@ -2,23 +2,24 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
 
-  <title>Funcionário | Fast System</title> 
+    <title>Funcionário | Fast System</title>
 
-  <link rel="stylesheet" href="funcionariosRead.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap" rel="stylesheet">
-  <script src="../js/funcoes.js"></script>
-  <link rel="icon" href="img/logo.png">
-  <style>
-    #mensagem{
-            display:none;
+    <link rel="stylesheet" href="funcionariosRead.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap" rel="stylesheet">
+    <script src="../js/funcoes.js"></script>
+    <link rel="icon" href="img/logo.png">
+    <style>
+        #mensagem {
+            display: none;
         }
-        .modal{
+
+        .modal {
             background-color: #dadada;
             width: 30%;
             height: 200px;
@@ -31,20 +32,17 @@
             flex-direction: column;
 
         }
-  </style>
+    </style>
 </head>
 
 <body onload="atualizarFeed()">
     <div id="mensagem">
         <div class="modal">
             <h3>Deseja confirmar a edição?</h3>
-    
             <div>
                 <button value="Confirmar" id="btnConfirmar" onclick="confirmar()">Confirmar</button>
-            <button value="Cancelar" id="btnCancelar" onclick="cancelar()">Cancelar</button>
+                <button value="Cancelar" id="btnCancelar" onclick="cancelar()">Cancelar</button>
             </div>
-            
-    
         </div>
     </div>
     <header>
@@ -55,78 +53,76 @@
                 <div class="line2"></div>
                 <div class="line3"></div>
             </div>
-            <ul class="nav-list" id="nav-content"  tabindex="0">
-                <div id="texto_func" style="width: 100%; display: flex; align-items: center; justify-content: center; color: #00C2CB; font-size: 25px; font-weight: bold; margin-top: 30px;"></div>
+            <ul class="nav-list" id="nav-content" tabindex="0">
+                <div id="texto_func"
+                    style="width: 100%; display: flex; align-items: center; justify-content: center; color: #00C2CB; font-size: 25px; font-weight: bold; margin-top: 30px;">
+                </div>
                 <li class="card1"><a href="../Dashboard/dashInicial.html">Início</a></li>
-                <li class="cad1" id="cad1"><a href="../Telas de Cadastro/cadastroMaquina.html">Cadastrar máquina</a></li>
-                <li class="agora" id="cad1"><a href="../Telas de Cadastro/maquinaRead.html">Editar máquina</a></li>                  
-                <li class="cad1" id="cad1"><a href="../Telas de Cadastro/cadastroAplicativo.html">Cadastrar aplicativo</a></li>
-                <li class="cad1" id="cad1"><a href="../Telas de Cadastro/NovoFuncionario.html">Cadastrar funcionário</a></li>
-                <li class="card1" id="cad1"><a href="../Telas de Cadastro/funcionariosRead.html">Editar funcionário</a></li>  
+                <li class="cad1" id="cad1"><a href="../Telas de Cadastro/cadastroMaquina.html">Cadastrar máquina</a>
+                </li>
+                <li class="agora" id="cad1"><a href="../Telas de Cadastro/maquinaRead.html">Editar máquina</a></li>
+                <li class="cad1" id="cad1"><a href="../Telas de Cadastro/cadastroAplicativo.html">Cadastrar
+                        aplicativo</a></li>
+                <li class="cad1" id="cad1"><a href="../Telas de Cadastro/NovoFuncionario.html">Cadastrar funcionário</a>
+                </li>
+                <li class="card1" id="cad1"><a href="../Telas de Cadastro/funcionariosRead.html">Editar funcionário</a>
+                </li>
                 <li onclick="sair()"><a href="../login.html">Sair</a></li>
             </ul>
         </nav>
     </header>
     <div class="main">
-        <div class="containerMain">
-            <div class="fundoVidro">
-                <div class="tituloFuncionarios">
-                    <h1>Máquinas</h1>
+        <div class="fundoVidro">
+            <h1>Máquinas</h1>
+
+            <div class="usuariosRegistros">
+                <div class="titulos">
+                    <div>Tipo</div>
+                    <div>Nome</div>
+                    <div>SO</div>
+                    <div>Email</div>
+                    <div>Senha</div>
                 </div>
-        
-                <div class="usuariosRegistros">
-                    <div class="titulos">
-                        <div>Tipo</div>
-                        <div>Nome</div>
-                        <div>SO</div>
-                        <div>Email</div>
-                        <div>Senha</div>
-                    </div>
-                    <div class="informacoes" id="idInformacoes"></div>
+                <div class="informacoes" id="idInformacoes"></div>
             </div>
         </div>
     </div>
-    
-<!-- nome
+
+    <!-- nome
 cargo
 email
 cpf
 telefone -->
-    
-      <script src="../headers/mobile-navbar.js"></script>
+
+    <script src="../headers/mobile-navbar.js"></script>
 </body>
 
 </html>
 
 <script>
-//window.onload = validarSessao2();
-var maquinaAtual = sessionStorage.id_maquina;
-function sair(){
-    sessionStorage.clear();
-}
+    var maquinaAtual = sessionStorage.id_maquina;
+    function sair() {
+        sessionStorage.clear();
+    }
 
-function atualizarFeed() {
-    
-    //erro();
-    var idEmpresa = sessionStorage.EMPRESA;
-    console.log(idEmpresa);
-    
-    // alert(idEmpresa)
-    
-    fetch(`/listas/exibirMaquina/${idEmpresa}`).then(function (resposta) {
-        if (resposta.ok) {
-            resposta.json().then(function (resposta) {
-                console.log("Dados recebidos: ", JSON.stringify(resposta));
+    function atualizarFeed() {
+        var idEmpresa = sessionStorage.EMPRESA;
+        console.log(idEmpresa);
 
-                var feed = document.getElementById("idInformacoes");
-                feed.innerHTML = "";
-                for (let i = 0; i < resposta.length; i++) {
-                    var maquina = resposta[i];
-                    console.log(maquina);
-                
-                    idInformacoes.innerHTML +=
-                    `
-                    <div class="funcionario">
+        fetch(`/listas/exibirMaquina/${idEmpresa}`).then(function (resposta) {
+            if (resposta.ok) {
+                resposta.json().then(function (resposta) {
+                    console.log("Dados recebidos: ", JSON.stringify(resposta));
+
+                    var feed = document.getElementById("idInformacoes");
+                    feed.innerHTML = "";
+                    for (let i = 0; i < resposta.length; i++) {
+                        var maquina = resposta[i];
+                        console.log(maquina);
+
+                        idInformacoes.innerHTML +=
+                            `
+                        <div class="funcionario">
                             <div class="campo" id="nome">${maquina.tipo_maquina}</div>
                             <div class="campo" id="cargo">${maquina.nome_maquina}</div>
                             <div class="campo" id="email">${maquina.sistema_operacional_maquina}</div>
@@ -136,45 +132,45 @@ function atualizarFeed() {
                                 <img src="./img/lixeira.png" alt="Excluir" onclick="deletarMaquina(${maquina.id_maquina})">
                                 <img src="./img/lapis.png" alt="Editar" onclick="editarMaquina(${maquina.id_maquina})">
                             </div>
-                    </div>
+                        </div>
                     `
-                }
-            });
-        } else {
-            throw ('Houve um erro na API!');
-        }
-    }).catch(function (resposta) {
-        console.error(resposta);
-    });
-}
-
-function deletarMaquina(idMaquina) {
-        console.log("Criar função de apagar funcionario escolhido - ID" + idMaquina);
-
-        if(maquinaAtual == idMaquina){
-            alert("Não pode se deletar")
-        }
-        else{
-        fetch(`/listas/deletarMaquina/${idMaquina}`, {
-            method: "DELETE",
-            headers: {
-                "Content-Type": "application/json"
-            }
-        }).then(function (resposta) {
-
-            if (resposta.ok) {
-                window.alert("Máquina deletada com sucesso pelo usuario de email: " + sessionStorage.getItem("ID_USUARIO") + "!");
-                window.location = "maquinaRead.html"
-            } else if (resposta.status == 404) {
-                window.alert("Deu 404!");
+                    }
+                });
             } else {
-                throw ("Houve um erro ao tentar deletar a Máquina! Código da resposta: " + resposta.status);
+                throw ('Houve um erro na API!');
             }
         }).catch(function (resposta) {
-            console.log(`#ERRO: ${resposta}`);
+            console.error(resposta);
         });
     }
-}
+
+    function deletarMaquina(idMaquina) {
+        console.log("Criar função de apagar funcionario escolhido - ID" + idMaquina);
+
+        if (maquinaAtual == idMaquina) {
+            alert("Não pode se deletar")
+        }
+        else {
+            fetch(`/listas/deletarMaquina/${idMaquina}`, {
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            }).then(function (resposta) {
+
+                if (resposta.ok) {
+                    window.alert("Máquina deletada com sucesso pelo usuario de email: " + sessionStorage.getItem("ID_USUARIO") + "!");
+                    window.location = "maquinaRead.html"
+                } else if (resposta.status == 404) {
+                    window.alert("Deu 404!");
+                } else {
+                    throw ("Houve um erro ao tentar deletar a Máquina! Código da resposta: " + resposta.status);
+                }
+            }).catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+            });
+        }
+    }
 
     function editarMaquina(idMaquina) {
         sessionStorage.ID_MAQUINA_EDITANDO = idMaquina;
