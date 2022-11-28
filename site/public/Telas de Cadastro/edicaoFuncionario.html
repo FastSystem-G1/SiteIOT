@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>Editar Funcionário | Fast System</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Editar Funcionário | Fast System</title>
 
   <link rel="stylesheet" href="NovoFuncionario_style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,67 +14,71 @@
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap" rel="stylesheet">
   <script src="../js/funcoes.js"></script>
   <link rel="icon" href="img/logo.png">
-  
+
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="sweetalert2.min.js"></script>
   <link rel="stylesheet" href="sweetalert2.min.css">
 
 </head>
+
 <body onload="listarEdicao()">
-    <div class="fundo"></div>
+  <div class="fundo"></div>
   <header>
     <nav>
-        <a class="logo" href="../Dashboard/dashInicial.html"><img src="img/logo.png" alt=""></a>
-        <div class="mobile-menu">
-            <div class="line1"></div>
-            <div class="line2"></div>
-            <div class="line3"></div>
+      <a class="logo" href="../Dashboard/dashInicial.html"><img src="img/logo.png" alt=""></a>
+      <div class="mobile-menu">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+      </div>
+      <ul class="nav-list" id="nav-content" tabindex="0">
+        <div id="texto_func"
+          style="width: 100%; display: flex; align-items: center; justify-content: center; color: #00C2CB; font-size: 25px; font-weight: bold; margin-top: 30px;">
         </div>
-        <ul class="nav-list" id="nav-content"  tabindex="0">
-          <div id="texto_func" style="width: 100%; display: flex; align-items: center; justify-content: center; color: #00C2CB; font-size: 25px; font-weight: bold; margin-top: 30px;"></div>
-          <li class="cad1"><a href="../Dashboard/dashInicial.html">Início</a></li>
-          <li class="cad1" id="cad1"><a href="../Telas de Cadastro/cadastroMaquina.html">Cadastrar máquina</a></li> 
-          <li class="cad1" id="cad1"><a href="../Telas de Cadastro/maquinaRead.html">Editar máquina</a></li>               
-          <li class="cad1" id="cad1"><a href="../Telas de Cadastro/cadastroAplicativo.html">Cadastrar aplicativo</a></li>
-          <li class="cad1" id="cad1"><a href="../Telas de Cadastro/NovoFuncionario.html">Cadastrar funcionário</a></li>
-          <li class="agora" id="cad1"><a href="../Telas de Cadastro/funcionariosRead.html">Editar funcionário</a></li>  
-          <li onclick="sair()"><a href="../login.html">Sair</a></li>
+        <li class="cad1"><a href="../Dashboard/dashInicial.html">Início</a></li>
+        <li class="cad1" id="cad1"><a href="../Telas de Cadastro/cadastroMaquina.html">Cadastrar máquina</a></li>
+        <li class="cad1" id="cad1"><a href="../Telas de Cadastro/maquinaRead.html">Editar máquina</a></li>
+        <li class="cad1" id="cad1"><a href="../Telas de Cadastro/cadastroAplicativo.html">Cadastrar aplicativo</a></li>
+        <li class="cad1" id="cad1"><a href="../Telas de Cadastro/NovoFuncionario.html">Cadastrar funcionário</a></li>
+        <li class="agora" id="cad1"><a href="../Telas de Cadastro/funcionariosRead.html">Editar funcionário</a></li>
+        <li onclick="sair()"><a href="../login.html">Sair</a></li>
       </ul>
     </nav>
   </header>
-    <div class="main">
-        <div class="containerMain">
-          <div class="caixa">
-            <div class="box1">
-              <img src="img/logo3.png" id="imagem_logo_cadastro">
-            </div>
-            <div class="box2">
-              <h2 id="h2_novo_integrante" style="margin-bottom: 20px;">
-                Editar informações do funcionário
-              </h2>
-              <div class="telaCadastro" id="tela"></div>
-            </div>
-          </div>
+  <div class="main">
+    <div class="containerMain">
+      <div class="caixa">
+        <div class="box1">
+          <img src="img/logo3.png" id="imagem_logo_cadastro">
+        </div>
+        <div class="box2">
+          <h2 id="h2_novo_integrante" style="margin-bottom: 20px;">
+            Editar informações do funcionário
+          </h2>
+          <div class="telaCadastro" id="tela"></div>
         </div>
       </div>
-      <script src="../headers/mobile-navbar.js"></script> 
+    </div>
+  </div>
+  <script src="../headers/mobile-navbar.js"></script>
 </body>
+
 </html>
 
 <script>
-    function listarEdicao() {
+  function listarEdicao() {
     var idFuncionario = sessionStorage.ID_FUNCIONARIO_EDITANDO;
     fetch(`/listas/edicaoFuncionarios/${idFuncionario}`).then(function (resposta) {
-        if (resposta.ok) {
-            resposta.json().then(function (resposta) {
-                console.log("Dados recebidos: ", JSON.stringify(resposta));
-                for (let i = 0; i < resposta.length; i++) {
-                    var funcionario = resposta[i];
-                    tela.innerHTML +=
-                    `
+      if (resposta.ok) {
+        resposta.json().then(function (resposta) {
+          console.log("Dados recebidos: ", JSON.stringify(resposta));
+          for (let i = 0; i < resposta.length; i++) {
+            var funcionario = resposta[i];
+            tela.innerHTML +=
+              `
                       <input class="inputs_cadastro" id="nome_input" type="text" value="${funcionario.nome_funcionario}">
                       <select id="cargo_select" class="inputs_cadastro" style="cursor: pointer;">
-                        <option value="${funcionario.isAdmin}">Selecione o cargo:</option>
+                        <option value="">Selecione o cargo:</option>
                         <option value="1">Administrador</option>
                         <option value="0">Suporte de TI</option>
                       </select>
@@ -81,53 +86,116 @@
                       
                       <input id="cpf_input" class="inputs_cadastro" value="${funcionario.cpf_funcionario}" type="number" min="0">
                       
-                      <input id="telefone_input" class="inputs_cadastro" value="${funcionario.telefone_funcionario}" type="number" min="0">
+                      <input id="telefone_input" class="inputs_cadastro" value="${funcionario.telefone_funcionario}">
 
                       <button onclick="editar()" id="botao_cadastro">Editar</button>
                     `
-                }
-            });
-        } else {
-            throw ('Houve um erro na API!');
-        }
+          }
+        });
+      } else {
+        throw ('Houve um erro na API!');
+      }
     }).catch(function (resposta) {
-        console.error(resposta);
+      console.error(resposta);
     });
-}
+  }
 
+  function editar() {
+    var nomeVar = nome_input.value;
+    var cargoVar = cargo_select.value;
+    var emailVar = email_input.value;
+    var cpfVar = cpf_input.value;
+    var telefoneVar = telefone_input.value;
+    var idFuncionario = sessionStorage.getItem("ID_FUNCIONARIO_EDITANDO");
 
-function editar() {
-  var nomeVar = nome_input.value;
-  var cargovar = cargo_select.value;
-  var emailVar = email_input.value;
-  var cpfVar = cpf_input.value;
-  var telefoneVar = telefone_input.value;
-  var idFuncionario = sessionStorage.getItem("ID_FUNCIONARIO_EDITANDO");
-  
-    fetch(`/listas/editar/${idFuncionario}`, {
+    cargoVar == "1" ? cargoVar == true : cargoVar == false;
+    //validações
+    if (nomeVar == "" || cargoVar == "" || emailVar == "" || cpfVar == "" || telefoneVar == "") {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Preencha todos os campos para continuar!',
+        color: "#010E3C",
+        confirmButtonColor: "#010E3C",
+      })
+    } else if (nomeVar.length < 3) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Nome inválido!',
+        text: 'Insira mais de 3 caracteres',
+        color: "#010E3C",
+        confirmButtonColor: "#010E3C",
+      })
+    } else if (nomeVar.length > 100) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Nome inválido!',
+        text: 'Nome grande demais',
+        color: "#010E3C",
+        confirmButtonColor: "#010E3C",
+      })
+    } else if (emailVar.length < 3 || emailVar.indexOf("@") == 0 || !emailVar.endsWith(".com") || emailVar.indexOf("@") == -1) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Email inválido!',
+        text: 'Verifique se o e-mail atende aos requisitos',
+        color: "#010E3C",
+        confirmButtonColor: "#010E3C",
+      })
+    } else if (cpfVar.length != 11) {
+      Swal.fire({
+        icon: 'error',
+        title: 'CPF inválido!',
+        text: 'Verifique se está digitado corretamente',
+        color: "#010E3C",
+        confirmButtonColor: "#010E3C",
+      })
+    } else if (telefoneVar.length != 14) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Telefone inválido!',
+        text: 'Insira conforme o exemplo: (11)91234-1234',
+        color: "#010E3C",
+        confirmButtonColor: "#010E3C",
+      })
+    } else {
+      fetchEditar();
+    }
+
+    function fetchEditar() {
+      fetch(`/listas/editar/${idFuncionario}`, {
         method: "PUT",
         headers: {
-            "Content-Type": "application/json"
+          "Content-Type": "application/json"
         },
         body: JSON.stringify({
-            nomeServer: nomeVar,
-            cargoServer: cargovar,
-            cpfServer: cpfVar,
-            emailServer: emailVar,
-            telefoneServer: telefoneVar,
-            idServer: idFuncionario
+          nomeServer: nomeVar,
+          cargoServer: cargoVar,
+          cpfServer: cpfVar,
+          emailServer: emailVar,
+          telefoneServer: telefoneVar,
+          idServer: idFuncionario
         })
-    }).then(function (resposta) {
+      }).then(function (resposta) {
         if (resposta.ok) {
-            window.alert("Funcionário atualizado com sucesso pelo usuario de email: " + sessionStorage.getItem("EMAIL_USUARIO") + "!");
-            window.location = "funcionariosRead.html"
+          Swal.fire({
+              position: 'center',
+              icon: 'success',
+              title: 'Funcionário atualizado com sucesso pelo usuario de email: ' + sessionStorage.getItem("EMAIL_USUARIO") + '!',
+              showConfirmButton: false,
+              timer: 2500,
+              color: "#010E3C",
+          })
+          setTimeout(() => {window.location = "funcionariosRead.html"}, "3000")
         } else if (resposta.status == 404) {
-            window.alert("Deu 404!");
+          window.alert("Deu 404!");
         } else {
-            throw ("Houve um erro ao tentar realizar a atualização! Código da resposta: " + resposta.status);
+          throw ("Houve um erro ao tentar realizar a atualização! Código da resposta: " + resposta.status);
         }
-    }).catch(function (resposta) {
+      }).catch(function (resposta) {
         console.log(`#ERRO: ${resposta}`);
-    });
-}
+      });
+      return false
+    }
+  }
 </script>
