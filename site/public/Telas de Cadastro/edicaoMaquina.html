@@ -16,11 +16,11 @@
     <link rel="icon" href="img/logo.png">
 
     <style>
-
-        #mensagem{
-            display:none;
+        #mensagem {
+            display: none;
         }
-        .modal{
+
+        .modal {
             background-color: #dadada;
             width: 30%;
             height: 200px;
@@ -41,16 +41,16 @@
     <div id="mensagem">
         <div class="modal">
             <h3>Deseja confirmar a edição?</h3>
-    
+
             <div>
                 <button value="Confirmar" id="btnConfirmar" onclick="confirmar()">Confirmar</button>
-            <button value="Cancelar" id="btnCancelar" onclick="cancelar()">Cancelar</button>
+                <button value="Cancelar" id="btnCancelar" onclick="cancelar()">Cancelar</button>
             </div>
-            
-    
+
+
         </div>
     </div>
-    
+
     <div class="fundo"></div>
     <header>
         <nav>
@@ -65,10 +65,13 @@
                     style="width: 100%; display: flex; align-items: center; justify-content: center; color: #00C2CB; font-size: 25px; font-weight: bold; margin-top: 30px;">
                 </div>
                 <li class="cad1"><a href="../Dashboard/dashInicial.html">Início</a></li>
-                <li class="cad1" id="cad1"><a href="../Telas de Cadastro/cadastroMaquina.html">Cadastrar máquina</a></li>
+                <li class="cad1" id="cad1"><a href="../Telas de Cadastro/cadastroMaquina.html">Cadastrar máquina</a>
+                </li>
                 <li class="agora" id="cad1"><a href="../Telas de Cadastro/funcionariosRead.html">Editar máquina</a></li>
-                <li class="cad1" id="cad1"><a href="../Telas de Cadastro/cadastroAplicativo.html">Cadastrar aplicativo</a></li>
-                <li class="cad1" id="cad1"><a href="../Telas de Cadastro/NovoFuncionario.html">Cadastrar funcionário</a></li>
+                <li class="cad1" id="cad1"><a href="../Telas de Cadastro/cadastroAplicativo.html">Cadastrar
+                        aplicativo</a></li>
+                <li class="cad1" id="cad1"><a href="../Telas de Cadastro/NovoFuncionario.html">Cadastrar funcionário</a>
+                </li>
                 <li class="cad1" id="cad1"><a href="../Telas de Cadastro/funcionariosRead.html">Editar funcionário</a>
                 </li>
                 <li onclick="sair()"><a href="../login.html">Sair</a></li>
@@ -95,6 +98,7 @@
     <script src="../headers/mobile-navbar.js"></script>
 
 </body>
+
 </html>
 <script>
     var confirmarEdicao;
@@ -115,6 +119,12 @@
                             
                             <input id="senha_input" class="inputs_cadastro" value="${maquina.senha_maquina}" type="text">
 
+                            <select id="selectHardware" class="selectHardware">
+                                <option value="">Selecione</option>
+                                <option value="TOTEM">Totem</option>
+                                <option value="DESKTOP">Desktop</option>
+                            </select>
+
                             <button style="margin-top: 10%" onclick="btnEdicao()" id="botao_cadastro">Editar</button>                   
                         `
                     }
@@ -127,16 +137,16 @@
         });
     }
 
-    function btnEdicao(){
+    function btnEdicao() {
         mensagem.style.display = "block"
     }
 
-    function confirmar(){
+    function confirmar() {
         mensagem.style.display = "none"
         editarMaquina();
     }
 
-    function cancelar(){
+    function cancelar() {
         mensagem.style.display = "none"
     }
     function editarMaquina() {

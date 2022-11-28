@@ -33,25 +33,21 @@ a{
 
 a:hover{
     font-weight: bold;
-
 }
 
-.logo{
-    width: 4%;
-    height: 90%;
-}
-.logo img{
-    width: 100%;
-    height: 100%;
-}
+
+.logo img {
+    width: 20%;
+  }
 
 nav{
     display: flex;
     justify-content: space-around;
     align-items: center;
     background: #010E3C;
-    height: 15vh;
+    height: 10vh;
     width: 100%;
+    z-index: 0;
 }
 
 /* .nav-list li{
@@ -79,18 +75,20 @@ nav{
 
 
     .nav-list {
-        position: absolute;
-        top: 12.2vh;
+        position: fixed;
+        margin: 0;
         right: 0;
-        width: 25vw;
+        top: 0;
+        width: 18vw;
+        height: 100vh;
         background: #010e3c;
-        color: #00C2CB;
         flex-direction: column;
         align-items: center;
         justify-content: space-around;
         transform: translateX(100%);
         transition: transform 0.3s ease-in;
         z-index: 999;
+        color: #00c2cb;
     }
 
     .nav-list li{
@@ -137,13 +135,10 @@ nav{
     transform: rotate(45deg) translate(-5px, -7px);
 } /* . */
 
-nav.sticky{
-    background: #010e3cc9;
-}
 
 .main {
     width: 100vw;
-    height: 85vh;
+    height: 90vh;
     display: flex;
     align-items: center;
     justify-content: center;

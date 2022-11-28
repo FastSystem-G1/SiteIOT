@@ -35,7 +35,7 @@ a:hover{
 }
 
 .logo img{
-    width: 35%;
+    width: 20%;
 }
 
 nav{
@@ -43,8 +43,9 @@ nav{
     justify-content: space-around;
     align-items: center;
     background: #010E3C;
-    height: 15vh;
+    height: 10vh;
     width: 100%;
+    z-index: 0;
 }
 
 .mobile-menu{
@@ -68,11 +69,12 @@ nav{
 
 
     .nav-list {
-        position: absolute;
-        top: 12.2vh;
+        position: fixed;
+        margin: 0;
         right: 0;
-        width: 25vw;
-        height: 110vh;
+        top: 0;
+        width: 18vw;
+        height: 100vh;
         background: #010e3c;
         flex-direction: column;
         align-items: center;
@@ -80,6 +82,7 @@ nav{
         transform: translateX(100%);
         transition: transform 0.3s ease-in;
         z-index: 999;
+        color: #00c2cb;
     }
 
     .nav-list li{
@@ -126,15 +129,11 @@ nav{
     transform: rotate(45deg) translate(-5px, -7px);
 } /* . */
 
-nav.sticky{
-    background: #010e3cc9;
-}
-
 /*MAIN*/
 
 .main {
     width: 100vw;
-    height: 80vh;
+    height: 88vh;
     display: flex;
     padding:0 0 5px 0;
     align-items: center;
@@ -283,7 +282,6 @@ margin: 0;
     padding: 4px;
     margin-top: 25px;
     border: 0;
-
     outline: none;
     font-size: medium;
     background-color: transparent;
@@ -298,6 +296,26 @@ input::-webkit-input-placeholder {
 #id_select {
     width: 240px;
 }
+
+.selectHardware {
+    padding: 7px;
+    padding: 4px;
+    width: 305px;
+    margin-top: 25px;
+    border: 0;
+    border-bottom: 1px solid rgb(255, 255, 255, 0.4);
+    outline: none;
+    background-color: transparent;
+    color: rgba(255, 255, 255);
+    cursor: pointer;
+  }
+  
+  option {
+    font-size: 15px;
+    background-color: #010e3c;
+    color: white;
+    border-radius: 10px;
+  }
 
 #botao_cadastro {
     padding: 5px 40px;
