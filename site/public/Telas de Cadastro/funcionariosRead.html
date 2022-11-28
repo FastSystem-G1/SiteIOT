@@ -46,28 +46,18 @@
         
                 <div class="usuariosRegistros">
                     <div class="titulos">
-                        <div><h3>Nome</h3></div>
-                        <div><h3>Cargo</h3></div>
-                        <div><h3>email</h3></div>
-                        <div><h3>cpf</h3></div>
-                        <div><h3>telefone</h3></div>
-                        <div></div>
+                        <div>Nome</div>
+                        <div>Cargo</div>
+                        <div>E-mail</div>
+                        <div>CPF</div>
+                        <div>Telefone</div>
                     </div>
-        
                     <div class="informacoes" id="idInformacoes"></div>
-                
                 </div>
             </div>
         </div>
     </div>
-    
-<!-- nome
-cargo
-email
-cpf
-telefone -->
-    
-      <script src="../headers/mobile-navbar.js"></script>
+    <script src="../headers/mobile-navbar.js"></script>
 </body>
 
 </html>
@@ -80,22 +70,9 @@ function sair(){
 }
 
 function atualizarFeed() {
-    
-    //erro();
     var idEmpresa = sessionStorage.EMPRESA;
-    
-    // alert(funcionarioAtual)
     fetch(`/listas/exibirFuncionarios/${idEmpresa}`).then(function (resposta) {
         if (resposta.ok) {
-            
-            // if (resposta.status == 204) {
-            //     var feed = document.getElementById("ultimo_artigo");
-            //     var mensagem = document.createElement("span");
-            //     mensagem.innerHTML = "Nenhum resultado encontrado."
-            //     feed.appendChild(mensagem);
-            //     throw "Nenhum resultado encontrado!!";
-            // }
-
             resposta.json().then(function (resposta) {
                 console.log("Dados recebidos: ", JSON.stringify(resposta));
 
@@ -107,22 +84,20 @@ function atualizarFeed() {
                     if(funcionario.isAdmin == '1'){
                         cargo = 'ADM'
                     }
+
                     idInformacoes.innerHTML +=
                     `
-                    <div class="colunaFuncionario">
-                    <div style="display:none"><span id="spanFuncionario">${funcionario.id_funcionario}</span></div>
-                    <div><span>${funcionario.nome_funcionario}</span></div>
-                    <div><span>${cargo}</span></div>
-                    <div><span>${funcionario.email_funcionario}</span></div>
-                    <div><span>${funcionario.cpf_funcionario}</span></div>
-                    <div><span>${funcionario.telefone_funcionario}</span></div>
-                    <div class="botoes">
-                      <button class="buttonEditarDeletar" onclick="editar(${funcionario.id_funcionario})">Editar</button>
-                      <button class="buttonEditarDeletar" onclick="deletar(${funcionario.id_funcionario})">Deletar</button>
-                      </div>
+                    <div class="funcionario">
+                            <div class="campo" id="nome">${funcionario.nome_funcionario}</div>
+                            <div class="campo" id="cargo">${cargo}</div>
+                            <div class="campo" id="email">${funcionario.email_funcionario}</div>
+                            <div class="campo" id="cpf">${funcionario.cpf_funcionario}</div>
+                            <div class="campo" id="telefone">${funcionario.telefone_funcionario}</div>
+                            <div class="campo" id="icones">
+                                <img src="./img/lixeira.png" alt="Excluir" onclick="deletar(${funcionario.id_funcionario})">
+                                <img src="./img/lapis.png" alt="Editar" onclick="editar(${funcionario.id_funcionario})">
+                            </div>
                     </div>
-                    
-                    
                     `
                 }
 
@@ -172,4 +147,5 @@ function deletar(idFuncionario) {
         // window.location = "edicao_funcionario.html"
         window.location = "teste.html"
 
-    }</script>
+    }
+</script>
