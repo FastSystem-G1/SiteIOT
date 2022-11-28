@@ -33,7 +33,7 @@ function cadastrar(id_empresa, id_app) {
 
 function deletar(empresa, aplicativo) {
     var instrucao = `
-    DELETE FROM App_Empresa WHERE fk_empresa = ${empresa} AND fk_app = ${aplicativo};
+        DELETE FROM App_Empresa WHERE fk_empresa = ${empresa} AND fk_app = ${aplicativo};
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);

@@ -4,7 +4,11 @@ function listarMaquina(empresa) {
     instrucaoSql = ''
 
     if (process.env.AMBIENTE_PROCESSO == "producao") {
-        instrucaoSql = ``;
+        instrucaoSql = `
+            SELECT * FROM Maquina
+            INNER JOIN Empresa ON Empresa.id_empresa = Maquina.fk_empresa
+            WHERE id_empresa = ${empresa};
+        `;
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
         instrucaoSql = `
             SELECT * FROM Maquina
@@ -24,7 +28,26 @@ function pegarMaquinas(componente, medida) {
     instrucaoSql = ''
 
     if (process.env.AMBIENTE_PROCESSO == "producao") {
-        instrucaoSql = ``;
+        if (componente == "Processador") {
+            instrucaoSql = `
+                SELECT DISTINCT(COUNT(medida)), fk_maquina FROM Registro
+                INNER JOIN Componente ON id_componente = fk_componente
+                WHERE nome_componente LIKE '${componente}%' AND 
+                data_hora BETWEEN (SELECT DATEADD(SECOND, -30, CURRENT_TIMESTAMP)) AND CURRENT_TIMESTAMP 
+                AND medida > ${medida}
+                GROUP BY fk_componente, fk_maquina;
+            `;
+        } else {
+            instrucaoSql = `
+                SELECT DISTINCT(COUNT(medida)), fk_maquina FROM Registro
+                INNER JOIN Componente ON id_componente = fk_componente
+                WHERE nome_componente LIKE '${componente}%' AND 
+                data_hora BETWEEN (SELECT DATEADD(SECOND, -30, CURRENT_TIMESTAMP)) AND CURRENT_TIMESTAMP 
+                AND ((medida * 100) / capacidade_componente) > ${medida}
+                GROUP BY fk_componente, fk_maquina;
+            `;
+        }
+        
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
         if (componente == "Processador") {
             instrucaoSql = `
@@ -94,14 +117,18 @@ function verificarProcessos(empresa) {
     instrucaoSql = ''
 
     if (process.env.AMBIENTE_PROCESSO == "producao") {
-        instrucaoSql = ``;
+        instrucaoSql = `
+            SELECT nome_processo, is_autorizado, nome_maquina, data_hora FROM Registro_Processo 
+            JOIN Maquina ON Maquina.id_maquina = Registro_Processo.fk_maquina 
+            WHERE is_autorizado = 0 AND fk_empresa = ${empresa} AND 
+            data_hora >= (SELECT CONVERT(VARCHAR, GETDATE(), 3));
+        `;
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
         instrucaoSql = `
             SELECT nome_processo, is_autorizado, nome_maquina, data_hora FROM Registro_Processo 
             JOIN Maquina ON id_maquina = fk_maquina 
             WHERE is_autorizado = 0 AND fk_empresa = ${empresa} AND 
-            DATE_FORMAT (data_hora,'%d/%m/%Y') = DATE_FORMAT (NOW(), '%d/%m/%Y') 
-            GROUP BY fk_maquina;
+            DATE_FORMAT (data_hora, '%d/%m/%Y') = DATE_FORMAT (NOW(), '%d/%m/%Y');
         `;
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
