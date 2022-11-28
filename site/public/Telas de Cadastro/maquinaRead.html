@@ -14,6 +14,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap" rel="stylesheet">
     <script src="../js/funcoes.js"></script>
     <link rel="icon" href="img/logo.png">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="sweetalert2.min.js"></script>
+    <link rel="stylesheet" href="sweetalert2.min.css">
     <style>
         #mensagem {
             display: none;
@@ -149,33 +152,77 @@ telefone -->
 
         if (maquinaAtual == idMaquina) {
             alert("Não pode se deletar")
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Esta máquina não pode ser deletada!',
+                color: "#010E3C",
+                confirmButtonColor: "#010E3C",
+            })
         }
         else {
-            fetch(`/listas/deletarMaquina/${idMaquina}`, {
-                method: "DELETE",
-                headers: {
-                    "Content-Type": "application/json"
-                }
-            }).then(function (resposta) {
+            Swal.fire({
+                title: 'Deletar máquina?',
+                text: "A máquina será deletada da lista!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: "#010E3C",
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Sim, deletar!',
+                cancelButtonText: 'Cancelar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire({
+                        title:  'Deletado com sucesso!',
+                        text: 'A máquina foi excluída da lista',
+                        icon: 'success',
+                        confirmButtonColor: "#010E3C",
+                    })
+                    fetch(`/listas/deletarMaquina/${idMaquina}`, {
+                        method: "DELETE",
+                        headers: {
+                            "Content-Type": "application/json"
+                        }
+                    }).then(function (resposta) {
 
-                if (resposta.ok) {
-                    window.alert("Máquina deletada com sucesso pelo usuario de email: " + sessionStorage.getItem("ID_USUARIO") + "!");
-                    window.location = "maquinaRead.html"
-                } else if (resposta.status == 404) {
-                    window.alert("Deu 404!");
+                        if (resposta.ok) {
+                            setTimeout(() => {
+                                window.location = 'maquinaRead.html';
+                            }, "2200")
+                        } else if (resposta.status == 404) {
+                            window.alert("Deu 404!");
+                        } else {
+                            throw ("Houve um erro ao tentar deletar a Máquina! Código da resposta: " + resposta.status);
+                        }
+                    }).catch(function (resposta) {
+                        console.log(`#ERRO: ${resposta}`);
+                    });
                 } else {
-                    throw ("Houve um erro ao tentar deletar a Máquina! Código da resposta: " + resposta.status);
+                    setTimeout(() => {
+                        window.location = 'maquinaRead.html';
+                    }, "1500")
                 }
-            }).catch(function (resposta) {
-                console.log(`#ERRO: ${resposta}`);
-            });
+
+            })
         }
     }
 
     function editarMaquina(idMaquina) {
         sessionStorage.ID_MAQUINA_EDITANDO = idMaquina;
         console.log("cliquei em editar - " + idMaquina);
-        window.alert("Você será redirecionado à página de edição do Funcionario de id número: " + idMaquina);
-        window.location = "edicaoMaquina.html"
-
+        Swal.fire({
+            confirmButtonColor: "#010E3C",
+            title: 'Você será redirecionado à página de edição de máquina de id número: '  + idMaquina,
+            showClass: {
+                popup: 'animate__animated animate__fadeInDown'
+            },
+            hideClass: {
+                popup: 'animate__animated animate__fadeOutUp'
+            }
+        })
+        setTimeout(() => {
+                        window.location = 'edicaoMaquina.html';
+                    }, "2200")
+        /* window.alert("Você será redirecionado à página de edição do Funcionario de id número: " + idMaquina);
+        window.location = "edicaoMaquina.html" */
     }</script>
