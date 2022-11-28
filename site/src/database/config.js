@@ -22,7 +22,7 @@ var mySqlConfig = {
     host: "localhost",
     database: "fastsystem",
     user: "root",
-    password: "",
+    password: "Jady220922",
     port: "3307",
 }; 
 
