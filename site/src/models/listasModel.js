@@ -68,10 +68,10 @@ function listarMaquinaEmpresa(idEmpresa) {
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }
-function editarMaquina(novoNomeMaquina, novoEmailMaquina, novaSenhaMaquina, idFuncMaquina) {
-    console.log("ACESSEI O post MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function editar(): ");
+function editarMaquina(tipoMaquina, novoNomeMaquina, novoEmailMaquina, novaSenhaMaquina, idFuncMaquina) {
     var instrucao = `
-        UPDATE maquina SET nome_maquina = '${novoNomeMaquina}',
+        UPDATE maquina SET tipo_maquina = '${tipoMaquina}',
+        nome_maquina = '${novoNomeMaquina}',
         email_maquina ='${novoEmailMaquina}', senha_maquina = '${novaSenhaMaquina}'
         WHERE id_maquina = ${idFuncMaquina};
     `

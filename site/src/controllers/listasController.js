@@ -87,12 +87,13 @@ function testar(req, res) {
 }
 
 function editarMaquina(req, res) {
+    var tipoMaquina = req.body.hardwareServer;
     var novoNomeMaquina = req.body.nomeServer;
     var novoEmailMaquina = req.body.emailServer;
     var novaSenhaMaquina = req.body.senhaServer;
     var idFuncMaquina = req.params.id_maquina;
 
-    listasModel.editarMaquina(novoNomeMaquina, novoEmailMaquina, novaSenhaMaquina, idFuncMaquina)
+    listasModel.editarMaquina(tipoMaquina, novoNomeMaquina, novoEmailMaquina, novaSenhaMaquina, idFuncMaquina)
         .then(
             function (resultado) {
                 res.json(resultado);

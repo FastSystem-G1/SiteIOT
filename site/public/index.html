@@ -41,7 +41,7 @@
                 <div class="textoBanner">
                     <span>Bem-vindo(a) à FastSystem</span>
                     <h2>Temos tudo o que você precisa, para expandir seus negócios</h2>
-                    <button class="btnSobre" onclick="telaServico()"><a href="https://app.pipefy.com/public/form/xt4fI2ub">Contratar serviço ou suporte</a></button>
+                    <button class="btnSobre" onclick="telaServico()"><b>Contratar serviço ou suporte</b></button>
                 </div>
 
             </div>
@@ -145,6 +145,11 @@
 </html>
 
 <script>
+
+function telaServico(){
+    window.location = "https://app.pipefy.com/public/form/xt4fI2ub";
+}
+
     function clickmenu() {
 
         if (itens.style.display == 'block') {
@@ -153,8 +158,6 @@
         else {
             itens.style.display = 'block';
         }
-
-
     }
 
     const menuItems = document.querySelectorAll('.navbar a[href^="#"]');
