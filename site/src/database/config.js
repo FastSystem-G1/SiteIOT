@@ -22,13 +22,10 @@ var mySqlConfig = {
     host: "localhost",
     database: "fastsystem",
     user: "root",
-<<<<<<< HEAD
+    password: "Dinheir@",
+    port: "3306",
     password: "Dinheir@",
     port: "3306"
-=======
-    password: "Jady220922",
-    port: "3307"
->>>>>>> 52d6010fd63fc0f7661b45be8bc7353afce3ece0
 }; 
 
 function executar(instrucao) {

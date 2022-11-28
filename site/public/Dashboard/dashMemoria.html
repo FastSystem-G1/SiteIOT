@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-    <title>Dashboad || Memoria</title>
-    <!-- <script src="../js/funcoes.js"></script> -->
+    <title>Dashboard || Memoria</title>
+    <script src="../js/funcoes.js"></script>
     <link rel="stylesheet" href="dashCPUMemoria.css">
     <link rel="icon" href="img/logo.png">
     <script type="text/javascript" src="https://www.chartjs.org/dist/2.8.0/Chart.min.js"></script>
@@ -87,6 +87,7 @@
 
 <script>
     //window.onload = validarSessao();
+    window.onload = validarUsuario();
     id_nome_maquina.innerHTML = sessionStorage.NOME_MAQUINA;
     let proximaAtualizacao;
     var maquina = sessionStorage.ID_MAQUINA;
