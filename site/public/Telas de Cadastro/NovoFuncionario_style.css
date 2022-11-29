@@ -1,23 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 body {
-
-    height: 100%;
-    width: 100%;
+    height: 100vh;
     margin: 0;
     padding: 0;
     font-family: 'Quicksand', sans-serif;
     background: linear-gradient(289.13deg, #03C8DC 0%, #01558F 28.83%, #003E73 59.87%, #021545 93.23%);
     overflow-x: hidden;
 }
-
-/* fundo{
-    height: 100vh;
-    width: 98vw;
-    z-index: -1;
-    position: fixed;
-    
-} */
 
 h2 {
     text-align: center;
@@ -42,11 +32,10 @@ a{
 
 a:hover{
     font-weight: bold;
-
 }
 
 .logo img{
-    width: 35%;
+    width: 20%;
 }
 
 nav{
@@ -54,13 +43,10 @@ nav{
     justify-content: space-around;
     align-items: center;
     background: #010E3C;
-    height: 15vh;
+    height: 10vh;
     width: 100%;
+    z-index: 0;
 }
-
-/* .nav-list li{
-    letter-spacing: 3px;
-} */
 
 .mobile-menu{
     display: none;
@@ -83,11 +69,12 @@ nav{
 
 
     .nav-list {
-        position: absolute;
-        top: 12.2vh;
+        position: fixed;
+        margin: 0;
         right: 0;
-        width: 25vw;
-        height: 110vh;
+        top: 0;
+        width: 18vw;
+        height: 100vh;
         background: #010e3c;
         flex-direction: column;
         align-items: center;
@@ -95,6 +82,7 @@ nav{
         transform: translateX(100%);
         transition: transform 0.3s ease-in;
         z-index: 999;
+        color: #00c2cb;
     }
 
     .nav-list li{
@@ -141,14 +129,11 @@ nav{
     transform: rotate(45deg) translate(-5px, -7px);
 } /* . */
 
-nav.sticky{
-    background: #010e3cc9;
-}
-
 /*MAIN*/
 
 .main {
     width: 100vw;
+    height: 88vh;
     display: flex;
     padding:0 0 5px 0;
     align-items: center;
@@ -175,42 +160,32 @@ nav.sticky{
 }
 
 #imagem_logo_cadastro {
-    /* border-radius: 20px 0px 0px 20px;
-    border-style: solid;
-    border-color: black;
-    border-right: none; */
     width: 100%;
-
 }
 
 .box1 {
+    width: 40%;
     border-radius: 80px 0px 0px 80px;
     background-color: #010E3C;
-    width: 40%;
     display: flex;
     justify-content: center;
     align-items: center;
-   /*  border-radius: 70px 0px 0px 70px; */
 }
 
 .box2 {
-    color: black;
-  /*   border-radius: 3px;
-    border-style: solid;
-    border-color: black; */
+    width: 60%;
+
     border-left: none;
     border-radius: 0px 80px 80px 0px;
-    width: 60%;
-    height: 100%;
     background: rgba(255, 255, 255, 0.4);
+
     display: flex;
     flex-direction: column;
     justify-content: center;
-
-   /*  border-radius: 0px 20px 20px 0px; */
 }
 
 .titulo_novo_integrante {
+    width: 100%;
     height: 9%;
     margin-top: 1%;
     width: 100%;
@@ -246,6 +221,7 @@ nav.sticky{
     color: white;
     border-radius: 10px;
 }
+
 .imagemVerificacao{
     width: 15vw;
 }
@@ -302,16 +278,15 @@ margin: 0;
 }
 
 .inputs_cadastro {
-    padding: 7px;
     width: 300px;
     padding: 4px;
     margin-top: 25px;
     border: 0;
-    border-bottom: 1px solid rgb(255, 255, 255, 0.4);
     outline: none;
-    background-color: transparent;
-    color: rgba(255, 255, 255);
     font-size: medium;
+    background-color: transparent;
+    border-bottom: 1px solid rgb(255, 255, 255, 0.4);
+    color: rgba(255, 255, 255);
 }
 
 input::-webkit-input-placeholder {
@@ -321,6 +296,26 @@ input::-webkit-input-placeholder {
 #id_select {
     width: 240px;
 }
+
+.selectHardware {
+    padding: 7px;
+    padding: 4px;
+    width: 305px;
+    margin-top: 25px;
+    border: 0;
+    border-bottom: 1px solid rgb(255, 255, 255, 0.4);
+    outline: none;
+    background-color: transparent;
+    color: rgba(255, 255, 255);
+    cursor: pointer;
+  }
+  
+  option {
+    font-size: 15px;
+    background-color: #010e3c;
+    color: white;
+    border-radius: 10px;
+  }
 
 #botao_cadastro {
     padding: 5px 40px;
@@ -339,8 +334,6 @@ input::-webkit-input-placeholder {
     background-color: white;
     color: #010E3C;
 }
-
-
 
 .boxAplicativo {
     justify-content: space-between;
@@ -400,3 +393,12 @@ body::-webkit-scrollbar {
     border-radius: 20px;       /* roundness of the scroll thumb */
     border: none;  
   }
+
+.telaCadastro {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

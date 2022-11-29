@@ -15,34 +15,32 @@
     <script src="js/script.js"></script>
     <script src="js/funcoes.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="sweetalert2.min.js"></script>
+    <link rel="stylesheet" href="sweetalert2.min.css">
     <title>Login | Fast System</title>
 </head>
 
 <body>
+
+  <header>
+    <nav>
+        <a class="logo" href="index.html"><img src="img/logo.png" alt=""></a>
+        <div class="mobile-menu">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
+        <ul class="nav-list">
+            <li><a href="index.html">Início</a></li>
+            <li class="agora"><a href="login.html">Login</a></li>
+            <li></li>
+        </ul>
+    </nav>
+</header>
     <div class="containerPrincipal">
 
-        <div class="" id="headerLogin">
-            <div class="container containerLogin">
-                <h1>
-                    <img src="img/logo.png" alt="">
-                </h1>
-
-
-                <div class="divNavbar">
-                    <span class="material-icons" id="menuBurger" onclick="clickmenu()">
-                        <img src="img/burger.png" alt="">
-                    </span>
-
-                    
-
-                    <ul class="navbar">
-                        <li><a href="index.html">Início</a></li>
-                        <li class="agora"><a href="login.html">Login</a></li>
-                    </ul>
-
-                </div>
-            </div>
-        </div>
+      
 
         <ul id="itens" class="navbar-mobile">
             <li class="agora"><a href="index.html">Inicio</a></li>
@@ -59,15 +57,11 @@
                         <div class="tituloForm">
                             <h2>Login</h2>
                         </div>
-
-
                         <div class="containerInputsForm">
                             <input type="text" id="emailInput" placeholder="E-mail">
                             <input type="password" id="senhaInput" placeholder="Senha">
-
-                          <button onclick="entrar()" class="botaoForm">Entrar</button>
+                            <button onclick="entrar()" class="botaoForm">Entrar</button>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -84,7 +78,7 @@
         </div>
 
     </div>
-
+<script src="headers/mobile-navbar.js"></script>
 </body>
 
 </html>
@@ -95,10 +89,30 @@
     var senhaVar = senhaInput.value;
 
     if (emailVar.length == 0 || senhaVar.length == 0) {
-        console.log("Campos vazios");
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Preencha todos os campos para continuar!',
+        color: "#010E3C",
+        confirmButtonColor: "#010E3C",
+      })
     } else if (emailVar.indexOf("@") == -1 || emailVar.indexOf(".com") == -1 || senhaVar.length <=7){
-        console.log("Email ou senha inválido! Verifique e tente novamente");        
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Email ou senha inválido! Verifique e tente novamente',
+        color: "#010E3C",
+        confirmButtonColor: "#010E3C",
+      })
     } else {
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Login efetuado com sucesso!',
+        showConfirmButton: false,
+        timer: 1500,
+        color: "#010E3C",
+      })
       fetchlogin();
     }
 
@@ -127,17 +141,25 @@
               sessionStorage.NOME_USUARIO = json.nome_funcionario;
               sessionStorage.ID_USUARIO = json.id_funcionario;
               sessionStorage.EMPRESA = json.fk_empresa;
+              sessionStorage.CARGO = json.is_admin;
 
               setTimeout(function () {
-                window.location = "./pos-login.html";
+                window.location = "/Dashboard/dashInicial.html";
               }, 1000); // apenas para exibir o loading
             });
           } else {
             console.log("Houve um erro ao tentar realizar o login!");
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'Email ou senha inválido! Verifique e tente novamente',
+              color: "#010E3C",
+              confirmButtonColor: "#010E3C",
+            })
             
             resposta.text().then((texto) => {
               console.error(texto);
-              finalizarAguardar(texto);
+              // finalizarAguardar(texto);
             });
           }
         })

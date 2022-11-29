@@ -3,7 +3,7 @@ body{
     padding: 0;
     font-family: 'Quicksand', sans-serif;
     height: 100vh;
-    
+    overflow-x: hidden;
 }
 .containerPrincipal{
     width: 100%;
@@ -145,137 +145,127 @@ background-image: url(../img/fundo_login.png);
 }
 
 /*================================================NAVBAR=============================================*/
-.header{
-    height: 15vh;
-    background-color: #010E3C;
-    background-size: cover;
+a{
     color: #00C2CB;
+    text-decoration: none;
+    transition: 0.3s;
+    font-family: 'Quicksand', sans-serif;
+}
+
+a:hover{
+    font-weight: bold;
+}
+
+.logo img{
+    width: 35%;
+}
+
+nav{
     display: flex;
+    justify-content: space-around;
     align-items: center;
-    font-size: 15px;
+    background: #010E3C;
+    height: 15vh;
     width: 100%;
     z-index: 999;
     position: fixed;
 }
 
-/* .headerL{
-    height: 15vh;
-    background-color: #010E3C;
+main{
+    background-color: rgb(255, 255, 255);
     background-size: cover;
-    color: #00C2CB;
+    height: 88vh;
+}
+
+.nav-list{
+    list-style: none;
     display: flex;
-    align-items: center;
-    font-size: 15px;
-    width: 100%;
-    position: fixed;
-} */
-
-.container img{
-    width: 35%;
 }
 
-.header .container{
-    display: flex;
-    justify-content:space-between;
-}
-.banner .container.login ,.container.cadastro{
-    justify-content: center;
+.nav-list li{
+    letter-spacing: 3px;
+    margin-left: 32px;
 }
 
+.mobile-menu{
+    display: none;
+    cursor: pointer;
+}
 
+.mobile-menu div{
+    width: 32px;
+    height: 2px;
+    background: #fff;
+    margin: 8px;
+    transition: 0.3s;
+}
 
 .agora{
     font-weight: bolder;
     font-size: 18px;
 }
-.navbar{
-    display: flex;
-    list-style: none;
-    width: 40%;
-    justify-content: space-evenly;
-    align-items: center;
-    position: fixed;
-}
-.navbar a{
-    text-decoration: none;
-    color: #00C2CB;
+
+@media (max-width:999px){
+    body{
+        overflow-x: hidden;
+    }
+
+    .nav-list {
+        position: absolute;
+        top: 12.2vh;
+        right: 0;
+        width: 25vw;
+        height: 100vh;
+        background: #010e3cc9;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        transform: translateX(100%);
+        transition: transform 0.3s ease-in;
+        z-index: 999;
+    }
+
+    .nav-list li{
+        margin-left: 0;
+        opacity: 0;
+    }
+
+    .mobile-menu{
+        display: block;
+    }
 }
 
-.navbar button{
-    background-color: transparent;
-    background-size: cover;
-    color: #00C2CB;
-    cursor: pointer;
-    border: none;
-    font-family:  'Quicksand', sans-serif;
-    font-size: 15px;
+.nav-list.active{
+    transform: translateX(0);
 }
 
-.navbar-mobile{
-    position: absolute;
-    margin-top: 10%;
-    right: 0;
-    display: flex;
-    flex-direction: column;
-    list-style: none;
-    width: 35%;
-    height: 300px;
-    justify-content: space-evenly;
-    align-items: center;
-   
+@keyframes navLinkFade {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
-.navbar-mobile li{
 
-    background-color: #010E3C;
-    color: white;
-    width: 100%;
-    padding: 10%;
+.mobile-menu.active .line1 {
+    transform: rotate(-45deg) translate(-8px, 8px);
 }
-.navbar-mobile li:hover{
 
-    background-color: #00C2CB;
-    color: white;
-    cursor: pointer;
+.mobile-menu.active .line2 {
+    opacity: 0;
 }
-.navbar-mobile a{
-    text-decoration: none;
-    color: white;
-}
-.navbar-mobile a:hover{
-    text-decoration: none;
-    color: white;
-}
-#menuBurger{
-    color: white;
-    width: 15%;
-    text-align: center;
-    padding: 5px;
-    justify-content: center;
-}
-#menuBurger:hover{
-    cursor: pointer;
-}
-#itens{
-    display: none;
-}
-.divNavbar{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-end;
-    width: 50%;
 
-}
-.divNavbar img{
-    width: 25px;
+.mobile-menu.active .line3 {
+    transform: rotate(45deg) translate(-5px, -7px);
+} /* . */
 
+nav.sticky{
+    background: #010e3cc9;
 }
-.navbar{
-    display: none;
-}
-.material-icons{
-    width: 100%;
-}
+
 /*================================================SERVIÇOS=============================================*/
 
 .servicos{

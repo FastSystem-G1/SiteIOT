@@ -14,43 +14,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap" rel="stylesheet">
     <script src="../js/funcoes.js"></script>
     <link rel="icon" href="img/logo.png">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="sweetalert2.min.js"></script>
+    <link rel="stylesheet" href="sweetalert2.min.css">
 
-    <style>
-
-        #mensagem{
-            display:none;
-        }
-        .modal{
-            background-color: #dadada;
-            width: 30%;
-            height: 200px;
-            margin-left: 40%;
-            margin-top: 15%;
-            position: absolute;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-
-        }
-    </style>
 </head>
 
 <body onload="listarEdicaoMaquina()">
 
-    <div id="mensagem">
-        <div class="modal">
-            <h3>Deseja confirmar a edição?</h3>
-    
-            <div>
-                <button value="Confirmar" id="btnConfirmar" onclick="confirmar()">Confirmar</button>
-            <button value="Cancelar" id="btnCancelar" onclick="cancelar()">Cancelar</button>
-            </div>
-            
-    
-        </div>
-    </div>
-    
     <div class="fundo"></div>
     <header>
         <nav>
@@ -67,11 +38,11 @@
                 <li class="cad1"><a href="../Dashboard/dashInicial.html">Início</a></li>
                 <li class="cad1" id="cad1"><a href="../Telas de Cadastro/cadastroMaquina.html">Cadastrar máquina</a>
                 </li>
-                <li class="cad1" id="cad1"><a href="../Telas de Cadastro/funcionariosRead.html">Editar máquina</a></li>
+                <li class="agora" id="cad1"><a href="../Telas de Cadastro/funcionariosRead.html">Editar máquina</a></li>
                 <li class="cad1" id="cad1"><a href="../Telas de Cadastro/cadastroAplicativo.html">Cadastrar
                         aplicativo</a></li>
-                <li class="agora" id="cad1"><a href="../Telas de Cadastro/NovoFuncionario.html">Cadastrar
-                        funcionário</a></li>
+                <li class="cad1" id="cad1"><a href="../Telas de Cadastro/NovoFuncionario.html">Cadastrar funcionário</a>
+                </li>
                 <li class="cad1" id="cad1"><a href="../Telas de Cadastro/funcionariosRead.html">Editar funcionário</a>
                 </li>
                 <li onclick="sair()"><a href="../login.html">Sair</a></li>
@@ -87,18 +58,10 @@
                     <img src="img/logo3.png" id="imagem_logo_cadastro">
                 </div>
                 <div class="box2">
-
-                    <div class="titulo_novo_integrante">
-                        <h2 style="margin-bottom: 10%;" id="h2_novo_integrante">
-                            Editar informações
-                        </h2>
-                    </div>
-
-                    <div class="campos_cadastro">
-                        <div id="teste">
-
-                        </div>
-                    </div>
+                    <h2 style="margin-bottom: 20px;" id="h2_novo_integrante">
+                        Editar informações da máquina
+                    </h2>
+                    <div class="telaCadastro" id="tela"></div>
                 </div>
             </div>
         </div>
@@ -108,116 +71,122 @@
 </body>
 
 </html>
-
 <script>
-    var confirmarEdicao;
-    function listarEdicaoMaquina() {
 
-        //erro();
+    function listarEdicaoMaquina() {
         var idMaquina = sessionStorage.ID_MAQUINA_EDITANDO;
         console.log(idMaquina);
-        //var idFuncionario = sessionStorage.ID_USUARIO;
-        //alert(idFuncionario)
         fetch(`/listas/edicaoMaquina/${idMaquina}`).then(function (resposta) {
             if (resposta.ok) {
-
-                // if (resposta.status == 204) {
-                //     var feed = document.getElementById("ultimo_artigo");
-                //     var mensagem = document.createElement("span");
-                //     mensagem.innerHTML = "Nenhum resultado encontrado."
-                //     feed.appendChild(mensagem);
-                //     throw "Nenhum resultado encontrado!!";
-                // }
-
                 resposta.json().then(function (resposta) {
                     console.log("Dados recebidos: ", JSON.stringify(resposta));
-
-                    // var feed = document.getElementById("idInformacoes");
-                    // feed.innerHTML = "";
                     for (let i = 0; i < resposta.length; i++) {
                         var maquina = resposta[i];
-
-                        teste.innerHTML +=
+                        tela.innerHTML +=
                             `
-                    
-                    <input class="inputs_cadastro" id="nome_input" type="text" value="${maquina.nome_maquina}">
-                    
-                  <input id="email_input" class="inputs_cadastro" value="${maquina.email_maquina}"
-                    type="email">
-                    
-                    <input id="senha_input" class="inputs_cadastro" value="${maquina.senha_maquina}" type="text">
-                    <br>
-                    <button style="margin-top: 10%" onclick="btnEdicao()" id="botao_cadastro">Editar</button>                   
-                    `
-                    }
+                            <input class="inputs_cadastro" id="nome_input" type="text" value="${maquina.nome_maquina}">
+                            
+                            <input id="email_input" class="inputs_cadastro" value="${maquina.email_maquina}" type="email">
+                            
+                            <input id="senha_input" class="inputs_cadastro" value="${maquina.senha_maquina}" type="text">
 
-                    // finalizarAguardar();
+                            <select id="selectHardware" class="selectHardware">
+                                <option value="">Selecione</option>
+                                <option value="TOTEM">Totem</option>
+                                <option value="DESKTOP">Desktop</option>
+                            </select>
+
+                            <button style="margin-top: 10%" onclick="btnEdicao()" id="botao_cadastro">Editar</button>                   
+                        `
+                    }
                 });
             } else {
                 throw ('Houve um erro na API!');
             }
         }).catch(function (resposta) {
             console.error(resposta);
-            // finalizarAguardar();
         });
     }
 
-    function btnEdicao(){
-        mensagem.style.display = "block"
-    }
 
-    function confirmar(){
-        //confirmarEdicao = btnConfirmar.value;
-        mensagem.style.display = "none"
-        editarMaquina();
-    }
-
-    function cancelar(){
-        mensagem.style.display = "none"
-    }
-    function editarMaquina() { //`/post/listarPosts/${idUsuario}`)
-
-    
-    var confirmarEdicao = btnConfirmar.value;
-        confirmarEdicao = btnCancelar.value;
-    
-        // mensagem.style.display = "none"
-    
+    function btnEdicao() {
         var nomeMaquinaVar = nome_input.value;
         var emailVar = email_input.value;
         var senhaVar = senha_input.value;
-
+        var hardwareVar = selectHardware.value;
         var idMaquina = sessionStorage.getItem("ID_MAQUINA_EDITANDO");
-        // alert(nomeMaquinaVar)
-        console.log("Apertou botão editar");
-        fetch(`/listas/editarMaquina/${idMaquina}`, {
 
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            
-            body: JSON.stringify({
-                
-                nomeServer: nomeMaquinaVar,
-                emailServer: emailVar,
-                senhaServer: senhaVar,
-                idServer: idMaquina
-
+        if (hardwareVar == "" || nomeMaquinaVar == "" || emailVar == "" || senhaVar == "") {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Preencha todos os campos para continuar!',
+                color: "#010E3C",
+                confirmButtonColor: "#010E3C",
             })
-        }).then(function (resposta) {
+        } else if (nomeMaquinaVar.length < 3) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Nome inválido!',
+                text: 'Insira mais de 3 caracteres',
+                color: "#010E3C",
+                confirmButtonColor: "#010E3C",
+            })
+        } else if (emailVar.length < 3 || emailVar.indexOf("@") == -1 || emailVar.indexOf("@") == 0 || !emailVar.endsWith(".com")) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Email inválido!',
+                text: 'Verifique se o e-mail atende aos requisitos',
+                color: "#010E3C",
+                confirmButtonColor: "#010E3C",
+            })
+        } else if (senhaVar.length < 3) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Senha inválida!',
+                text: 'Insira mais de 3 caracteres',
+                color: "#010E3C",
+                confirmButtonColor: "#010E3C",
+            })
+        } else {
 
-            if (resposta.ok) {
-                window.alert("Máquina atualizada com sucesso pelo usuario de email: " + sessionStorage.getItem("EMAIL_USUARIO") + "!");
-                window.location = "maquinaRead.html"
-            } else if (resposta.status == 404) {
-                window.alert("Deu 404!");
-            } else {
-                throw ("Houve um erro ao tentar realizar a atualização! Código da resposta: " + resposta.status);
-            }
-        }).catch(function (resposta) {
-            console.log(`#ERRO: ${resposta}`);
-        });
+            fetch(`/listas/editarMaquina/${idMaquina}`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    hardwareServer: hardwareVar,
+                    nomeServer: nomeMaquinaVar,
+                    emailServer: emailVar,
+                    senhaServer: senhaVar,
+                    idServer: idMaquina
+                })
+            }).then(function (resposta) {
+                if (resposta.ok) {
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Edição de máquina realizado com sucesso!',
+                        showConfirmButton: false,
+                        timer: 1500,
+                        color: "#010E3C",
+                    })
+                    setTimeout(() => {
+                        window.location = 'maquinaRead.html';
+                    }, "2200")
+                } else if (resposta.status == 404) {
+                    window.alert("Deu 404!");
+                } else {
+                    throw ("Houve um erro ao tentar realizar a atualização! Código da resposta: " + resposta.status);
+                }
+            }).catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+            });
+        }
+
+
+
+
     }
-
 </script>

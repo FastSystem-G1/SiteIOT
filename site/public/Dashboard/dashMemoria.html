@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+    <title>Dashboard || Memoria</title>
+    <script src="../js/funcoes.js"></script>
+    <link rel="stylesheet" href="dashCPUMemoria.css">
+    <link rel="icon" href="img/logo.png">
+    <script type="text/javascript" src="https://www.chartjs.org/dist/2.8.0/Chart.min.js"></script>
+
+</head>
+
+<body>
+    <div class="fundo"></div>
+    <header>
+        <nav>
+            <a class="logo" href="dashInicial.html"><img src="img/logo.png" alt=""></a>
+            <div class="mobile-menu">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+            <ul class="nav-list" id="nav-content"  tabindex="0">
+                <div id="texto_func" style="width: 100%; display: flex; align-items: center; justify-content: center; color: #00C2CB; font-size: 25px; font-weight: bold; margin-top: 30px;"></div>
+                <li class="card1"><a href="../Dashboard/dashInicial.html">Início</a></li>
+                <li class="cad1" id="cad1"><a href="../Telas de Cadastro/cadastroMaquina.html">Cadastrar máquina</a></li>
+                <li class="card1" id="cad1"><a href="../Telas de Cadastro/maquinaRead.html">Editar máquina</a></li>                  
+                <li class="cad1" id="cad1"><a href="../Telas de Cadastro/cadastroAplicativo.html">Cadastrar aplicativo</a></li>
+                <li class="cad1" id="cad1"><a href="../Telas de Cadastro/NovoFuncionario.html">Cadastrar funcionário</a></li>
+                <li class="card1" id="cad1"><a href="../Telas de Cadastro/funcionariosRead.html">Editar funcionário</a></li>  
+                <li onclick="sair()"><a href="../login.html">Sair</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="main">
+        <div class="containerDash">
+            <div class="boxDashMenu">
+
+                <h1 id="id_nome_maquina">Nome da Máquina</h1>
+
+                <ul class="navbarMenu">
+                    <li><a href="dashCPU.html">
+                            <h3><img src="img/bi_cpu.png" alt=""> CPU</h3>
+                        </a></li>
+                    <li class="agora"><a href="dashMemoria.html">
+                            <h3><img src="img/bi_memory.png" alt=""> MEMÓRIA </h3>
+                        </a></li>
+                    <li><a href="DashDisco.html">
+                            <h3><img src="img/bi_disc.png" alt=""> DISCO </h3>
+                        </a></li>
+                </ul>
+            </div>
+
+            <div class="containerDashCPU">
+
+                <div class="boxInfoUso">
+                    <div class="box1">
+                        <h3>Em uso</h3>
+                        <h4 id="id_em_uso"></h4>
+                    </div>
+                    <div class="box1">
+                        <h3>Disponível</h3>
+                        <h4 id="id_disponivel"></h4>
+                    </div>
+                </div>
+                <div class="tituloEdata">
+                    <h3>MEMÓRIA</h3>
+                    <h3 id="data">__/__/__</h3>
+                </div>
+                <div class="boxGraph">
+                    <canvas id="myChart" class="graph"></canvas>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="../headers/mobile-navbar.js"></script>
+</body>
+
+</html>
+
+<script>
+    //window.onload = validarSessao();
+    window.onload = validarUsuario();
+    id_nome_maquina.innerHTML = sessionStorage.NOME_MAQUINA;
+    let proximaAtualizacao;
+    var maquina = sessionStorage.ID_MAQUINA;
+    var componente = 'Memória';
+    var idComponentePlotar;
+
+    window.onload = obterIdComponente(maquina, componente);
+
+    function obterIdComponente(maquina, componente) {
+        fetch(`/medidas/idComponente/${maquina}/${componente}`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    obterDadosGrafico(resposta[0].id_componente);
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+    }
+
+    function obterDadosGrafico(componente) {
+        /*if (proximaAtualizacao != undefined) {
+            clearTimeout(proximaAtualizacao);
+        }*/
+        fetch(`/medidas/ultimas/${componente}`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    plotarGrafico(resposta);
+
+                    for (i = 0; i < resposta.length; i++) {
+                        var registro = resposta[i];
+                    }
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+    }
+
+    function plotarGrafico(resposta) {
+        console.log('iniciando plotagem do gráfico...');
+        // Criando estrutura para plotar gráfico - labels
+        const dados = {
+            labels: [
+                'Em uso',
+                'Livre'
+            ],
+            datasets: [{
+                label: 'GigaBytes',
+                data: [],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(75, 192, 192, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(75, 192, 192, 1)'
+                ],
+                borderWidth: 3
+            }]
+        };
+
+        console.log('----------------------------------------------')
+        console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
+        console.log(resposta)
+
+        // Inserindo valores recebidos em estrutura para plotar o gráfico
+        for (i = 0; i < resposta.length; i++) {
+            var registro = resposta[i];
+
+            data.innerHTML = registro.data;
+            
+            dados.datasets[i].data.push(registro.medida);
+            id_em_uso.innerHTML = `<span>${((registro.medida * 100) / registro.capacidade_componente).toFixed(2)}%</span>`;
+
+            dados.datasets[i].data.push(registro.livre);
+            id_disponivel.innerHTML = `<span>${((registro.livre * 100) / registro.capacidade_componente).toFixed(2)}%</span>`;
+
+            idComponentePlotar = registro.id_componente;
+        }
+
+        // Criando estrutura para plotar gráfico - config
+        const config = {
+            type: 'pie',
+            data: dados,
+        };
+
+        // Adicionando gráfico criado em div na tela
+        let myChart = new Chart(
+            document.getElementById('myChart'),
+            config
+        );
+
+        setTimeout(() => obterDadosGrafico(idComponentePlotar), 10000);
+    }
+
+    function sair() {
+        sessionStorage.clear();
+    }
+</script>
