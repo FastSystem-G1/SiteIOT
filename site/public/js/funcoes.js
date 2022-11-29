@@ -7,7 +7,7 @@ function validarUsuario() {
     var cargo = sessionStorage.CARGO;
     //LOCAL cargo == TRUE
     // NUVEM cargo =="true"
-    if (email =! null && nome != null && cargo == 1)  {
+    if (email =! null && nome != null && cargo == "true")  {
         document.getElementById('nav-content').innerHTML = 
         `<div style="display: flex; align-items: center; flex-direction: column; justify-content: space-around;
             letter-spacing: 3px;
@@ -68,7 +68,7 @@ function validarSessao2() {
     var nome = sessionStorage.NOME_USUARIO;
     var cargo = sessionStorage.CARGO;
 
-    if (email =! null && nome != null && cargo == TRUE)  {
+    if (email =! null && nome != null && cargo == 1)  {
         document.getElementById('nav-content').innerHTML = 
         `<div style="display: flex; justify-content: center; align-items: center; flex-direction: column; justify-content: space-around; align-items: center;
         letter-spacing: 3px;
@@ -88,7 +88,7 @@ function validarSessao2() {
         `;
       
 
-    }else if(email =! null && nome != null && cargo == false){
+    }else if(email =! null && nome != null && cargo == 0){
 
         document.getElementById('nav-content').innerHTML = 
         `<div style="display: flex; justify-content: center; align-items: center; flex-direction: column; justify-content: space-around; align-items: center;

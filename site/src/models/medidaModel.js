@@ -38,7 +38,7 @@ function buscarUltimasMedidas (componente) {
             (capacidade_componente - medida) AS livre
             FROM Registro
             JOIN Componente ON Componente.id_Componente = Registro.fk_componente
-            WHERE id_componente = 5 
+            WHERE id_componente = ${componente} 
             ORDER BY data_hora DESC;
         `;
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {

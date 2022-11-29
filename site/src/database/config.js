@@ -1,21 +1,21 @@
- var mysql = require("mysql2");
-//var sql = require('mssql');
+//var mysql = require("mysql2");
+var sql = require('mssql');
 
 // CONEXÃO DO SQL SERVER - AZURE (NUVEM)
-// var sqlServerConfig = {
-//     server: "fast-system-server.database.windows.net",
-//     database: "FastSystem",
-//     user: "admin-fast-system",
-//     password: "#Gfgrupo10",
-//     pool: {
-//         max: 10,
-//         min: 0,
-//         idleTimeoutMillis: 30000
-//     },
-//     options: {
-//         encrypt: true, // for azure
-//     }
-// }
+var sqlServerConfig = {
+    server: "srvfastsystem.database.windows.net",
+    database: "bdFastSystem",
+    user: "adminFastSystem",
+    password: "#Gfgrupo1",
+    pool: {
+        max: 10,
+        min: 0,
+        idleTimeoutMillis: 30000
+    },
+    options: {
+        encrypt: true, // for azure
+    }
+}
 
 // CONEXÃO DO MYSQL WORKBENCH (LOCAL)
 var mySqlConfig = {
