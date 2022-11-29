@@ -118,10 +118,11 @@ function verificarProcessos(empresa) {
 
     if (process.env.AMBIENTE_PROCESSO == "producao") {
         instrucaoSql = `
-            SELECT nome_processo, is_autorizado, nome_maquina, data_hora FROM Registro_Processo 
+            SELECT nome_processo, nome_maquina FROM Registro_Processo 
             JOIN Maquina ON Maquina.id_maquina = Registro_Processo.fk_maquina 
             WHERE is_autorizado = 0 AND fk_empresa = ${empresa} AND 
-            data_hora >= (SELECT CONVERT(VARCHAR, GETDATE(), 3));
+            data_hora >= (SELECT CONVERT(VARCHAR, GETDATE(), 23))
+            GROUP BY nome_processo, nome_maquina;
         `;
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
         instrucaoSql = `
